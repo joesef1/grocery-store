@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-// import commerce from './lib/commerce';
-// import ProductsList from './components/ProductsList';
+import React, { useState, useEffect } from 'react';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -8,8 +7,8 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar.jsx';
 import { ContexAuthState } from './context/context-authstate';
 
+
 function App() {
-  // const [products, setProducts] = useState([]);
 
   return (
     <ContexAuthState>
