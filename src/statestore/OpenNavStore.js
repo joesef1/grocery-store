@@ -1,9 +1,9 @@
 import { create } from 'zustand'
 
 const useOpenNavStore = create((set) => ({
-  nav: false,
-  openNav: () => set((state) => ({ nav: true })),
-  closeNav: () => set({ nav: false }),
+  currentstate: false,
+  openNav: () => set((state) => ({ currentstate: true })),
+  closeNav: () => set({ currentstate: false }),
 }))
 
 export default useOpenNavStore;
