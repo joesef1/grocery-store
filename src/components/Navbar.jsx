@@ -1,3 +1,4 @@
+
 import React,{ useContext , useRef, useEffect  } from 'react'
 import { MyContext } from '../context/context-authstate';
 import { Link } from 'react-router-dom';
@@ -17,18 +18,26 @@ const Navbar = () => {
   const { normalSearchState, activeSearchState } = SearchState();
 
 
-const searchInputRef = useRef(null);    
+  
+  const inputRef = useRef();
+  const searchIconRef = useRef();
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (searchInputRef.current && !searchInputRef.current.contains(event.target) && currentSearchState) {
-        normalSearchState();
-      }
+    function handleClickOutside(event) {
+      if ( !currentSearchState && searchIconRef.current && searchIconRef.current.contains(event.target)) {
+        console.log("ok");
+        normalSearchState()
+      } 
+      //  else if (!currentSearchState) {
+      //     normalSearchState()
+      // }
+      // else{
+      //   activeSearchState()
+      // }
     }
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    }
-  }, [currentSearchState, normalSearchState]);
+    document.addEventListener('click', handleClickOutside);
+  }, []);
+  
+
 
 
   const navigate = useNavigate();
@@ -47,7 +56,9 @@ const searchInputRef = useRef(null);
 
     {!currentSearchState&&(
     <div className=''>
-      <input ref={searchInputRef}  className='w-[85%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text"></input>
+      <input 
+      ref={inputRef}
+        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text"></input>
     </div>
       )}
 
@@ -75,6 +86,7 @@ const searchInputRef = useRef(null);
       {/* {currentSearchState&&()} */}
       <div className='text-2xl cursor-pointer'>
         <FiSearch
+        ref={searchIconRef}
          onClick={activeSearchState}
          />
       </div>

@@ -6,7 +6,7 @@ const SearchState = create((set) => ({
   activeSearchState: () => set({ currentSearchState:  false}),
 }))
 
-export default SearchState();
+export default SearchState;
 
 // const currentSearchState = SearchState((state) => state.currentSearchState)
 // const normalSearchState = SearchState((state) => state.normalSearchState)
