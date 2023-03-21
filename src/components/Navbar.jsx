@@ -1,3 +1,16 @@
+// function handleClickOutside(event) {
+//   if ( searchRef.current && searchRef.current.contains(event.target)) {
+//     // console.log("ok");
+//     // showinput()
+//     if (!currentSearchState) {
+//       hideinput()
+//     }else{
+//       showinput()
+//     }
+//   } else{
+//     hideinput()
+//   }
+
 
 import React,{ useContext , useRef, useEffect  } from 'react'
 import { MyContext } from '../context/context-authstate';
@@ -15,29 +28,31 @@ import SearchState from '../statestore/SearchState';
 const Navbar = () => {
   const openNav = useOpenNavStore((state) => state.openNav)
   const currentSearchState = SearchState((state) => state.currentSearchState)
-  const { normalSearchState, activeSearchState } = SearchState();
+  const { showinput, hideinput } = SearchState();
 
 
   
   const inputRef = useRef();
-  const searchIconRef = useRef();
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if ( !currentSearchState && searchIconRef.current && searchIconRef.current.contains(event.target)) {
-        console.log("ok");
-        normalSearchState()
-      } 
-      //  else if (!currentSearchState) {
-      //     normalSearchState()
-      // }
-      // else{
-      //   activeSearchState()
-      // }
-    }
-    document.addEventListener('click', handleClickOutside);
-  }, []);
-  
+    const searchRef = useRef();
 
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside, true);
+  }, []);
+
+
+    function handleClickOutside(e) {
+      if (searchRef.current.contains(e.target)) {
+        console.log("icon");
+      } else {
+        if (inputRef.current && inputRef.current.contains(e.target)) {
+          console.log(inputRef);
+        }else{
+            hideinput()
+        }
+      
+      }
+      
+    }
 
 
   const navigate = useNavigate();
@@ -84,10 +99,10 @@ const Navbar = () => {
     <div className=' flex'>
       {/* search */}
       {/* {currentSearchState&&()} */}
-      <div className='text-2xl cursor-pointer'>
+      <div ref={searchRef} className='text-2xl cursor-pointer'>
         <FiSearch
-        ref={searchIconRef}
-         onClick={activeSearchState}
+        
+         onClick={()=>{showinput()}}
          />
       </div>
       
