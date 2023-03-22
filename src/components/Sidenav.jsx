@@ -84,7 +84,7 @@ const closeNav = useOpenNavStore((state) => state.closeNav)
 
         {currentstate && (
           <motion.div
-            className="bg-black opacity-40 absolute top-0 right-0 left-0 bottom-0"
+            className="bg-black opacity-40 absolute h-[100vh] top-0 right-0 left-0 bottom-0"
             initial="hidden"
             animate={currentstate ? 'visible' : 'hidden'}
             variants={overlayVariants}

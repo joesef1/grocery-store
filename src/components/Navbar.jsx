@@ -66,7 +66,7 @@ const Navbar = () => {
   return (
     <>
     
-    <div className=''>
+    <div className='fixed w-[100%] z-50'>
     <Sidenav/>
 
     {!currentSearchState&&(
@@ -120,15 +120,15 @@ const Navbar = () => {
     
     </div>
     
-      {/* <Link to="/">Home </Link> */}
-
+{/* 
       {user ? (
         <button onClick={logout}> Sign Out </button>
       ) : (
         <Link className='text-slate-500	' to="/Login">Login </Link>
-      )}
+      )} */}
       
       </div>
+      <div className='w-[100%] z-0 py-[51px]'></div>
     </>
   );
 };
