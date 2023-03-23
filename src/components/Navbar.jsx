@@ -73,7 +73,7 @@ const Navbar = () => {
     <div className=''>
       <input 
       ref={inputRef}
-        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text"></input>
+        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text" placeholder='E.g: Meat,Egg'></input>
     </div>
       )}
 

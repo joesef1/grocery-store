@@ -41,3 +41,15 @@
     transform: rotate(360deg);
   }
 }
+/* accordion list */
+/* CSS */
+#accordion-flush-body-1 {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+#accordion-flush-body-1.open {
+  max-height: 500px; /* change the value to the max height you want to allow for the content */
+}
+/* accordion list */
