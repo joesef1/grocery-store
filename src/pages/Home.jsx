@@ -5,10 +5,10 @@ import MainSection from '../components/MainSection'
 const Home = () => {
   return (
     <>
-    {/* <div className='flex'> */}
+    <div className=' bg-[#F9F9F9]'>
       <CategorySection/>
       <MainSection/>
-    {/* </div> */}
+    </div>
     </>
   )
 }
