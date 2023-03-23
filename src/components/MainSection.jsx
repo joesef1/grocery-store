@@ -6,7 +6,7 @@ import ItemSection from './ItemSection'
 
 const MainSection = () => {
   return (
-    <div className='ml-[330px] m-9 '>
+    <div className='ml-[330px] m-9 z-100'>
     <Banner/>  
     <ItemSection/>  
     </div>

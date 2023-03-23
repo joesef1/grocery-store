@@ -66,7 +66,7 @@ const Navbar = () => {
   return (
     <>
     
-    <div className='fixed w-[100%] z-50'>
+    <div className='fixed w-[100%] z-50 bg-white'>
     <Sidenav/>
 
     {!currentSearchState&&(

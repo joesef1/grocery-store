@@ -15,10 +15,10 @@ const ItemSection = () => {
         {/* <button className="bg-gray-100 w-[100%] hover:bg-slate-600 flex text-md py-2 px-4 rounded-md mt-4 relative">Add<i className='fa fa-plus bg-gray-400 p-2 rounded-md absolute right-0 top-0 bottom-0 py-3'></i></button> */}
         <div className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
           <div className='w-[80%]'>
-          <button className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center hover:bg-slate-600 flex text-md  px-4 relative">Add</button>
+          <button className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
           </div>
           <div className='w-[20%]'>
-          <button className='bg-gray-500 px-3 h-[35px] flex w-[100%] rounded-r-md justify-center text-2xl' >+</button>
+          <button className='bg-gray-200 px-3 h-[35px] flex w-[100%] rounded-r-md justify-center text-2xl' >+</button>
           </div>
         </div>
         

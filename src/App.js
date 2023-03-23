@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar.jsx';
+import Footer from './components/Footer';
 import { ContexAuthState } from './context/context-authstate';
 
 
@@ -19,6 +20,8 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
       </Routes>
+    <Footer />
+
     </BrowserRouter>
     </ContexAuthState>
   );
