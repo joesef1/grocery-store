@@ -17,7 +17,7 @@ const Banner = () => {
   };
 
   return (
-    <div className='rounded-md mb-8' style={bannerStyle}>
+    <div className='rounded-md mb-8 ' style={bannerStyle}>
       <h1 className='text-4xl bold font-bold mb-3 capitalize'>Products Delivered in 90 Minutes</h1>
       <p className='text-lg capitalize text-slate-400'>Get your products delivered at your doorsteps all day everyday</p>
     </div>

@@ -22,7 +22,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/FAQ" element={<FAQ />} />
       </Routes>
-    <Footer />
+    {/* <Footer /> */}
     </BrowserRouter>
     </ContexAuthState>
   )

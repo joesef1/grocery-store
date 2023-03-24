@@ -22,7 +22,7 @@ const faqStyle = {
 
   return (
     
-  <div className=' mb-8' style={faqStyle}>
+  <div className=' mb-[100px]' style={faqStyle}>
     <h1 id='eplore' className='font-dancingScript text-2xl mb-4'>explore</h1>
     <h1 className='text-4xl bold font-bold mb-3 capitalize'>{props.pagename}</h1>
   </div>

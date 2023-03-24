@@ -1,9 +1,11 @@
 import { Fragment, useState } from "react";
+import Space from "./Space";
 import {
   Accordion,
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
+
 
 
 function Icon({ id, open }) {
@@ -30,8 +32,10 @@ const AccordionSection = () => {
     setOpen(open === value ? 0 : value);
   };
   return (
-    <>
-    <div className="w-[60%] mx-auto  ">
+    <div >
+    <Space/>
+
+    <div className="w-[60%] mx-auto ">
       <Fragment>
   <Accordion
     open={open === 1}
@@ -211,28 +215,42 @@ const AccordionSection = () => {
     className="border-b border-gray-200"
   >
     <AccordionHeader
-      // className="flex items-center justify-between px-4 py-3 text-lg font-medium text-gray-700 bg-gray-100 cursor-pointer"
       className="flex items-center justify-between px-4 py-6 text-md font-medium text-gray-700 bg-[#ebebeb]   cursor-pointer"
-
 
       onClick={() => handleOpen(9)}
     >
-      <span>Can I edit my personal information?
- </span>
+      <span>Can I edit my personal information?</span>
       <span className="text-gray-500">
       </span>
     </AccordionHeader>
-    {/* <AccordionBody className="px-4 py-3 text-gray-500 bg-gray-50"> */}
     <AccordionBody className="px-4 py-9 text-gray-500  bg-[#f8f8f8]">
+    Yes. You can edit your personal information in the ‘My Account’ section by logging in.
+    </AccordionBody>
+  </Accordion>
+  <Accordion
+    open={open === 9}
+    icon={<Icon id={9} open={open} />}
+    className="border-b border-gray-200"
+  >
+    <AccordionHeader
+      className="flex items-center justify-between px-4 py-6 text-md font-medium text-gray-700 bg-[#ebebeb]   cursor-pointer"
 
+      onClick={() => handleOpen(9)}
+    >
+      <span>Can I edit my personal information?</span>
+      <span className="text-gray-500">
+      </span>
+    </AccordionHeader>
+    <AccordionBody className="px-4 py-9 text-gray-500  bg-[#f8f8f8]">
     Yes. You can edit your personal information in the ‘My Account’ section by logging in.
     </AccordionBody>
   </Accordion>
 </Fragment>
      </div>
      {/* <div className="h-20"></div> */}
+     {/* <Space/> */}
 
-     </>
+     </div>
   )
 }
 

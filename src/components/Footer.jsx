@@ -6,7 +6,7 @@ import myweb from '../assets/images/myweb.png'
 
 const Footer = () => {
   return (
-    <div class=' border-t-[1px] bg-white flex w-full px-12 py-10 justify-between items-center left-0 right-0 h-12 absolute z-10 shadow-md '>
+    <div class=' border-t-[1px] bg-white flex w-full px-12 py-10 justify-between items-center left-0 right-0 h-12 absolute z-10 shadow-md mb-[100px]'>
   <div><h1 class='text-gray-500'>All right reserved - Developed by yousef</h1></div>
   <div className='flex'>
     <img className='w-7 cursor-pointer mr-3' src={linkedin} alt="" />
