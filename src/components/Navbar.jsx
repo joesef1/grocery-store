@@ -120,8 +120,8 @@ const Navbar = () => {
     
     </div>
     
-{/* 
-      {user ? (
+
+      {/* {user ? (
         <button onClick={logout}> Sign Out </button>
       ) : (
         <Link className='text-slate-500	' to="/Login">Login </Link>

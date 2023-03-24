@@ -52,4 +52,9 @@
 #accordion-flush-body-1.open {
   max-height: 500px; /* change the value to the max height you want to allow for the content */
 }
+
+#eplore{
+  font-family: 'Dancing Script', cursive;
+}
 /* accordion list */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');

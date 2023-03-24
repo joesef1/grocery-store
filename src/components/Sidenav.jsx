@@ -2,6 +2,7 @@ import React from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { motion, AnimatePresence } from 'framer-motion';
 import useOpenNavStore from '../statestore/OpenNavStore';
+import { Link } from 'react-router-dom';
 
 
 const Sidenav = () => {
@@ -69,7 +70,10 @@ const closeNav = useOpenNavStore((state) => state.closeNav)
                   <a href="#">Blog</a>
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <a href="#">FAQs</a>
+                  <Link to="/FAQ">FAQs</Link>
+                  {/* <Link to="/Login">Login </Link> */}
+
+                  
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   <a href="#">Term & Conditions</a>
