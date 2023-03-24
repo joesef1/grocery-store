@@ -23,10 +23,9 @@ function App() {
         <Route path="/FAQ" element={<FAQ />} />
       </Routes>
     <Footer />
-
     </BrowserRouter>
     </ContexAuthState>
-  );
+  )
 }
 
 export default App;
