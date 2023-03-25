@@ -58,3 +58,19 @@
 }
 /* accordion list */
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&display=swap');
+
+
+#bannerimg:before {
+  background-color: #000;
+  content: "";
+  display: block;
+  opacity: .3;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+

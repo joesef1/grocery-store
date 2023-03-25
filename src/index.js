@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <ProSidebarProvider>
   <App />
-</ProSidebarProvider>;
+</ProSidebarProvider>
   </React.StrictMode>
-);
+)
 

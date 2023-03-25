@@ -1,17 +1,3 @@
-// function handleClickOutside(event) {
-//   if ( searchRef.current && searchRef.current.contains(event.target)) {
-//     // console.log("ok");
-//     // showinput()
-//     if (!currentSearchState) {
-//       hideinput()
-//     }else{
-//       showinput()
-//     }
-//   } else{
-//     hideinput()
-//   }
-
-
 import React,{ useContext , useRef, useEffect  } from 'react'
 import { MyContext } from '../context/context-authstate';
 import { Link } from 'react-router-dom';
@@ -86,8 +72,11 @@ const Navbar = () => {
               </div>
               {/* {currentSearchState&&(  )} */}
                 <img
+                className=' cursor-pointer'
                 src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
                 alt=""
+              onClick={()=>{navigate("/")}}
+
               />  
             
               

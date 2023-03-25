@@ -2,12 +2,15 @@ import React from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { motion, AnimatePresence } from 'framer-motion';
 import useOpenNavStore from '../statestore/OpenNavStore';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
+
 
 
 const Sidenav = () => {
+
 const currentstate = useOpenNavStore((state) => state.currentstate)
 const closeNav = useOpenNavStore((state) => state.closeNav)
+const navigate = useNavigate();
 
 
   const variants = {
@@ -48,8 +51,9 @@ const closeNav = useOpenNavStore((state) => state.closeNav)
             exit="closed"
             variants={variants}
           >
-            <div className="flex justify-between py-9">
+            <div className="flex justify-between py-9 cursor-pointer">
               <img
+              onClick={()=>{navigate("/")}}
                 src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
                 alt=""
               />
@@ -68,6 +72,7 @@ const closeNav = useOpenNavStore((state) => state.closeNav)
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   <a href="#">Blog</a>
+                  
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   <Link to="/FAQ">FAQs</Link>
@@ -76,7 +81,9 @@ const closeNav = useOpenNavStore((state) => state.closeNav)
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <a href="#">Term & Conditions</a>
+                  {/* <a href="#">Term & Conditions</a> */}
+                  <Link to="/Terms">Terms & conditions</Link>
+
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   <a href="#">Contact</a>
