@@ -11,7 +11,7 @@ const faqStyle = {
   backgroundImage: `url(${props.imgname})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  height: '380px',
+  height: '330px',
   backgroundColor: 'rgba(0, 0, 0, 0.2)',
   display: 'flex',
   alignItems: 'center',
