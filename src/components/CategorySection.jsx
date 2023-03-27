@@ -1,4 +1,4 @@
-// import React from 'react'
+import React,{useState} from 'react'
 // import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Sidebar, Menu, MenuItem, SubMenu ,useProSidebar } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
@@ -12,15 +12,22 @@ import  milk from '../assets/icons/milk.png';
 import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
 import  lemonadas from '../assets/icons/lemonades.png';
+import  Data from '../Data';
+
 
 // import "react-pro-sidebar/dist/css/styles.css";
 const CategorySection = () => {
-  // const { rtl  } = useProSidebar();
+  const [data, setData] = useState(Data);
 
+  const filterResult = (item) => {
+  const result = Data.filter((curData)=>{
+    // return curData.name= item;
+    return  curData.name === item;
+  });
+  setData(result)
 
-
-  
-
+  console.log(result[0].subcategories);
+  };
 
 
 
@@ -37,8 +44,8 @@ const CategorySection = () => {
     
 <Sidebar backgroundColor='#fff'	 className=' h-[100vh] ' style={{width: '300px', backgroundColor: '#fff'}} >
   <Menu >
-  <SubMenu  className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
-      <MenuItem> Flower Vegetables</MenuItem>
+  <SubMenu onClick={() => filterResult('fresh vegetables')}  className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
+      <MenuItem > Flower Vegetables</MenuItem>
       <MenuItem> Leaf Vegetables </MenuItem>
       <MenuItem> Root Vegetables </MenuItem>
       <MenuItem> Seed Vegetables </MenuItem>
