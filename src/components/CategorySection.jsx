@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 // import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Sidebar, Menu, MenuItem, SubMenu ,useProSidebar } from 'react-pro-sidebar';
 import { Link } from 'react-router-dom';
@@ -7,37 +7,36 @@ import  frozen from '../assets/icons/cold.png';
 import  carrot from '../assets/icons/carrot.png';
 import  coffee from '../assets/icons/coffee.png';
 import  canned from '../assets/icons/canned-food.png';
-// import  jam from '../assets/icons/jam';
 import  milk from '../assets/icons/milk.png';
 import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
 import  lemonadas from '../assets/icons/lemonades.png';
-import Datestore from '../statestore/Datestore';
+import  Data from '../Data';
+
 
 
 const CategorySection = () => {
-const currentDatastate = Datestore((state) => state.currentDatastate)
 
-  const [data, setData] = useState(currentDatastate);
 
-  const filterResult = (item) => {
-    const result = data.find((category) => category.name === item);
-    if (result) {
-      const subcategories = result.subcategories;
-      const allProducts = subcategories.reduce((acc, cur) => {
-        return [...acc, ...cur.products];
-      }, []);
-      setData(allProducts);
-    }
-  };
+
   
-  console.log(data);
+  const [originalData, setOriginalData] = useState(Data);
+const [data, setData] = useState(originalData);
+
+const filterResult = (category) => {
+  const result = originalData.filter((item) => item.category === category);
+  setData(result);
+  console.log(result);
+};
+
+const filterSubcategory = (subcategory) => {
+  const result = data.filter((item) => item.subcategory === subcategory);
+  setData(result);
+  console.log(result);
+};
 
 
-
-
-
-
+  
 
   return (
     <>
@@ -50,7 +49,7 @@ const currentDatastate = Datestore((state) => state.currentDatastate)
   <Menu >
   <SubMenu onClick={() => filterResult('fresh vegetables')}  className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
       <MenuItem > Flower Vegetables</MenuItem>
-      <MenuItem> Leaf Vegetables </MenuItem>
+      <MenuItem onClick={() => filterSubcategory('leaf vegetables')}> Leaf Vegetables </MenuItem>
       <MenuItem> Root Vegetables </MenuItem>
       <MenuItem> Seed Vegetables </MenuItem>
       <MenuItem> stem Vegetables </MenuItem>
