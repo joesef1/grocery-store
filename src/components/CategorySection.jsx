@@ -12,22 +12,26 @@ import  milk from '../assets/icons/milk.png';
 import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
 import  lemonadas from '../assets/icons/lemonades.png';
-import  Data from '../Data';
+import Datestore from '../statestore/Datestore';
 
 
-// import "react-pro-sidebar/dist/css/styles.css";
 const CategorySection = () => {
-  const [data, setData] = useState(Data);
+const currentDatastate = Datestore((state) => state.currentDatastate)
+
+  const [data, setData] = useState(currentDatastate);
 
   const filterResult = (item) => {
-  const result = Data.filter((curData)=>{
-    // return curData.name= item;
-    return  curData.name === item;
-  });
-  setData(result)
-
-  console.log(result[0].subcategories);
+    const result = data.find((category) => category.name === item);
+    if (result) {
+      const subcategories = result.subcategories;
+      const allProducts = subcategories.reduce((acc, cur) => {
+        return [...acc, ...cur.products];
+      }, []);
+      setData(allProducts);
+    }
   };
+  
+  console.log(data);
 
 
 
@@ -52,7 +56,7 @@ const CategorySection = () => {
       <MenuItem> stem Vegetables </MenuItem>
     </SubMenu>
 
-    <SubMenu   className='bg-white' icon={<img src={apple} width='21' alt="" />} label="fresh fruits">
+    <SubMenu onClick={() => filterResult('fresh fruits')}  className='bg-white' icon={<img src={apple} width='21' alt="" />} label="fresh fruits">
       <MenuItem> Berries</MenuItem>
       <MenuItem> Citrus Fruits</MenuItem>
       <MenuItem> Drupes </MenuItem>
