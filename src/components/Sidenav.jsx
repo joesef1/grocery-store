@@ -97,7 +97,9 @@ const navigate = useNavigate();
 
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <a href="#">Contact</a>
+                  {/* <a href="#">Contact</a> */}
+                  <Link to="/Contact">Contact</Link>
+
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   

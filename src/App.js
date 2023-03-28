@@ -8,6 +8,7 @@ import Navbar from './components/Navbar.jsx';
 import Terms from './pages/Terms.jsx';
 import Footer from './components/Footer';
 import FAQ from './pages/FAQ.jsx';
+import Contact from './pages/Contact';
 import { ContexAuthState } from './context/context-authstate';
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/Terms" element={<Terms />} />
+        <Route path="/Contact" element={<Contact />} />
       </Routes>
     {/* <Footer /> */}
     </BrowserRouter>
