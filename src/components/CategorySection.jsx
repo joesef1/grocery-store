@@ -1,38 +1,43 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState} from 'react'
 // import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { Sidebar, Menu, MenuItem, SubMenu ,useProSidebar } from 'react-pro-sidebar';
-import { Link } from 'react-router-dom';
+import { Sidebar, Menu, MenuItem, SubMenu  } from 'react-pro-sidebar';
+// import { Link } from 'react-router-dom';
 import  apple from '../assets/icons/apple.png';
 import  frozen from '../assets/icons/cold.png';
 import  carrot from '../assets/icons/carrot.png';
 import  coffee from '../assets/icons/coffee.png';
 import  canned from '../assets/icons/canned-food.png';
+// import  jam from '../assets/icons/jam';
 import  milk from '../assets/icons/milk.png';
 import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
 import  lemonadas from '../assets/icons/lemonades.png';
 import  Data from '../Data';
+// import  usesubcategoryStore  from "../statestore/usesubcategoryStore";
 
 
 
 const CategorySection = () => {
+  // const originalData = usesubcategoryStore((state) => state.originalData);
+  // const data = usesubcategoryStore((state) => state.data);
+  // const setOriginalData = usesubcategoryStore((state) => state.setOriginalData);
+  // const setData = usesubcategoryStore((state) => state.setData);
+  // const filtercategory = usesubcategoryStore((state) => state.filtercategory);
+  // const filterSubcategory = usesubcategoryStore((state) => state.filterSubcategory);
 
 
-
-  
   const [originalData, setOriginalData] = useState(Data);
 const [data, setData] = useState(originalData);
 
-const filterResult = (category) => {
+const filtercategory = (category) => {
   const result = originalData.filter((item) => item.category === category);
   setData(result);
-  console.log(result);
+  // console.log(result);
 };
 
 const filterSubcategory = (subcategory) => {
-  const result = data.filter((item) => item.subcategory === subcategory);
-  setData(result);
-  console.log(result);
+  const subcategoryresult = data.filter((item) => item.subcategory === subcategory);
+  setData(subcategoryresult);
 };
 
 
@@ -47,15 +52,26 @@ const filterSubcategory = (subcategory) => {
     
 <Sidebar backgroundColor='#fff'	 className=' h-[100vh] ' style={{width: '300px', backgroundColor: '#fff'}} >
   <Menu >
-  <SubMenu onClick={() => filterResult('fresh vegetables')}  className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
+  <SubMenu
+                // onClick={() => filterByCategory("fresh vegetables")}
+
+   onClick={() => filtercategory('fresh vegetables')} 
+    className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
       <MenuItem > Flower Vegetables</MenuItem>
-      <MenuItem onClick={() => filterSubcategory('leaf vegetables')}> Leaf Vegetables </MenuItem>
+      <MenuItem 
+      // onClick={() => filterSubcategory("leaf vegetables")}
+      onClick={() => filterSubcategory('leaf vegetables')}
+      > 
+      Leaf Vegetables </MenuItem>
       <MenuItem> Root Vegetables </MenuItem>
       <MenuItem> Seed Vegetables </MenuItem>
       <MenuItem> stem Vegetables </MenuItem>
     </SubMenu>
 
-    <SubMenu onClick={() => filterResult('fresh fruits')}  className='bg-white' icon={<img src={apple} width='21' alt="" />} label="fresh fruits">
+    <SubMenu 
+    // onClick={() => filterByCategory("fresh fruits")}
+    onClick={() => filtercategory('fresh fruits')} 
+     className='bg-white' icon={<img src={apple} width='21' alt="" />} label="fresh fruits">
       <MenuItem> Berries</MenuItem>
       <MenuItem> Citrus Fruits</MenuItem>
       <MenuItem> Drupes </MenuItem>
@@ -101,14 +117,6 @@ const filterSubcategory = (subcategory) => {
 
     </SubMenu>
   
-
-    
-
-
-
-
-
-
   </Menu>
 </Sidebar>
 

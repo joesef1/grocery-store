@@ -1,4 +1,7 @@
-import React from 'react';
+import React,{ useContext} from 'react'
+import { MyContext } from '../context/context-authstate';
+import {signOut} from "firebase/auth";
+import { auth } from "../firebase-config";
 import { IoMdClose } from 'react-icons/io';
 import { motion, AnimatePresence } from 'framer-motion';
 import useOpenNavStore from '../statestore/OpenNavStore';
@@ -7,6 +10,14 @@ import { Link, useNavigate  } from 'react-router-dom';
 
 
 const Sidenav = () => {
+  //
+  const  user  = useContext(MyContext);
+  
+  const logout = async () => {
+    await signOut(auth);
+    navigate("/Login");
+  };
+  //
 
 const currentstate = useOpenNavStore((state) => state.currentstate)
 const closeNav = useOpenNavStore((state) => state.closeNav)
@@ -87,6 +98,17 @@ const navigate = useNavigate();
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   <a href="#">Contact</a>
+                </li>
+                <li class="py-3 text-lg cursor-pointer">
+                  
+                    {/* <Link to="/Login">Login </Link> */}
+                    {user ? (
+        <button onClick={logout}> Sign Out </button>
+      ) : (
+        <Link className='text-slate-500	' to="/Login">Login </Link>
+      )}
+                  
+
                 </li>
               </ul>
             </nav>
