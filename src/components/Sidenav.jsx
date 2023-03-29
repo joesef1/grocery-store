@@ -79,10 +79,13 @@ const navigate = useNavigate();
                   <a href="#">Extented Search</a>
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <a href="#">Shop</a>
+                  {/* <a href="#">Shop</a> */}
+                  <Link to="/Shop">Shop</Link>
+
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <a href="#">Blog</a>
+                  {/* <a href="#">Blog</a> */}
+                  <Link to="/Blog">Blog</Link>
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
