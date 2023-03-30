@@ -6,11 +6,9 @@ import Pagination from '../components/Pagination'
 import Sorteddata from '../components/Sorteddata'
 
 
-
-
 const Shop = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(2);
+    const [postsPerPage, setPostsPerPage] = useState(4);
     //
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
@@ -27,7 +25,10 @@ const Shop = () => {
       />
 
 
-      <Sorteddata  Data={currentPosts} />
+      <Sorteddata 
+       Data={currentPosts}
+       totalPosts={Data.length}
+        />
 
       <Pagination
         totalPosts={Data.length}

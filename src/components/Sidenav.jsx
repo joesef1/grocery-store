@@ -75,9 +75,9 @@ const navigate = useNavigate();
             <hr className=" border-gray-100 w-full" />
             <nav className="py-5">
               <ul>
-                <li class="py-3 text-lg cursor-pointer">
+                {/* <li class="py-3 text-lg cursor-pointer">
                   <a href="#">Extented Search</a>
-                </li>
+                </li> */}
                 <li class="py-3 text-lg cursor-pointer">
                   {/* <a href="#">Shop</a> */}
                   <Link to="/Shop">Shop</Link>

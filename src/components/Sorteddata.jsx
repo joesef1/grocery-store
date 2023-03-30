@@ -1,10 +1,7 @@
 import React, {useState} from 'react'
-// import Data from '../Data'
-import { Select, Option } from "@material-tailwind/react";
-import Pagination from '../components/Pagination'
 
 
-const Sorteddata = ({Data}) => {
+const Sorteddata = ({Data,totalPosts}) => {
   
   const [sortingOrder, setSortingOrder] = useState('Defult');
 
@@ -25,7 +22,7 @@ const Sorteddata = ({Data}) => {
       {/*  */}
           {/* sorting */}
           <div className='flex justify-between mx-auto w-[94%] mb-10'>
-        <div>Showing 25–48 of 146 results</div>
+        <div>Showing 4 of {totalPosts} results</div>
         {/*  */}      
 <select
   id="sort"
@@ -63,13 +60,6 @@ const Sorteddata = ({Data}) => {
       ))}
     </div>
 
-
-<Pagination
-        // totalPosts={Data.length}
-        // postsPerPage={postsPerPage}
-        // setCurrentPage={setCurrentPage}
-        // currentPage={currentPage}
-      />
 
 </div>
   )

@@ -13,16 +13,16 @@ const Pagination = ({
   }
 
   return (
-    <div className="flex flex-wrap justify-center mt-4">
+    <div className="flex flex-wrap justify-center my-10">
       {pages.map((page, index) => {
         return (
           <button
             key={index}
             onClick={() => setCurrentPage(page)}
-            className={`w-10 h-10 font-semibold text-lg mx-2 rounded-md transition-colors duration-300 ${
+            className={`w-8 bg-[#212121]  h-8 font-semibold text-sm mx-2 rounded-md transition-colors duration-300 ${
               page === currentPage
-                ? "bg-yellow-400 text-black"
-                : "bg-transparent text-white border-2 border-white hover:bg-yellow-400"
+                ? "bg-[#212121] text-white"
+                : "bg-transparent text-black border-2 border-white hover:bg-[#212121] hover:text-white"
             }`}
           >
             {page}

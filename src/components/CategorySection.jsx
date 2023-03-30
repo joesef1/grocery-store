@@ -13,32 +13,60 @@ import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
 import  lemonadas from '../assets/icons/lemonades.png';
 import  Data from '../Data';
+import create from 'zustand';
+
 // import  usesubcategoryStore  from "../statestore/usesubcategoryStore";
 
+//
+  const usesubcategoryStore = create((set) => ({
+  originalData: [Data],
+  data: [],
+  setOriginalData: (originalData) => set({ originalData }),
+  setData: (data) => set({ data }),
+  filtercategory: (category) => {
+    const result = Data.filter((item) => item.category === category);
+    set({ data: result });
+    // console.log(data1);
 
+  },
+  filterSubcategory: (subcategory) => {
+    const subcategoryresult = Data.filter((item) => item.subcategory === subcategory);
+    set({ data: subcategoryresult });
+    console.log(subcategoryresult);
+  },
+})); 
+  // 
 
 const CategorySection = () => {
+  const [originalData, setOriginalData] = useState(Data);
+  const [data, setData] = useState(originalData);
+  
+  
+
+
   // const originalData = usesubcategoryStore((state) => state.originalData);
-  // const data = usesubcategoryStore((state) => state.data);
+  const filtereddata = usesubcategoryStore((state) => state.data);
   // const setOriginalData = usesubcategoryStore((state) => state.setOriginalData);
   // const setData = usesubcategoryStore((state) => state.setData);
-  // const filtercategory = usesubcategoryStore((state) => state.filtercategory);
-  // const filterSubcategory = usesubcategoryStore((state) => state.filterSubcategory);
+  const filtercategory = usesubcategoryStore((state) => state.filtercategory);
+  const filterSubcategory = usesubcategoryStore((state) => state.filterSubcategory);
 
 
-  const [originalData, setOriginalData] = useState(Data);
-const [data, setData] = useState(originalData);
+  // const [originalData, setOriginalData] = useState(Data);
+// const [data, setData] = useState(originalData);
 
-const filtercategory = (category) => {
-  const result = originalData.filter((item) => item.category === category);
-  setData(result);
-  // console.log(result);
-};
+// const filtercategory = (category) => {
+//   const result = originalData.filter((item) => item.category === category);
+//   setData(result);
+//   // console.log(data);
+// };
 
-const filterSubcategory = (subcategory) => {
-  const subcategoryresult = data.filter((item) => item.subcategory === subcategory);
-  setData(subcategoryresult);
-};
+// const filterSubcategory = (subcategory) => {
+//   const subcategoryresult = originalData.filter((item) => item.subcategory === subcategory);
+//   setData(subcategoryresult);
+//   console.log(data);
+
+// };
 
 
   
@@ -53,14 +81,14 @@ const filterSubcategory = (subcategory) => {
 <Sidebar backgroundColor='#fff'	 className=' h-[100vh] ' style={{width: '300px', backgroundColor: '#fff'}} >
   <Menu >
   <SubMenu
-                // onClick={() => filterByCategory("fresh vegetables")}
+                onClick={() => filtercategory("fresh vegetables")}
 
-   onClick={() => filtercategory('fresh vegetables')} 
+  //  onClick={() => filtercategory('fresh vegetables')} 
     className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
       <MenuItem > Flower Vegetables</MenuItem>
       <MenuItem 
-      // onClick={() => filterSubcategory("leaf vegetables")}
-      onClick={() => filterSubcategory('leaf vegetables')}
+      onClick={() => filterSubcategory("leaf vegetables")}
+      // onClick={() => filterSubcategory('leaf vegetables')}
       > 
       Leaf Vegetables </MenuItem>
       <MenuItem> Root Vegetables </MenuItem>
@@ -69,8 +97,8 @@ const filterSubcategory = (subcategory) => {
     </SubMenu>
 
     <SubMenu 
-    // onClick={() => filterByCategory("fresh fruits")}
-    onClick={() => filtercategory('fresh fruits')} 
+    onClick={() => filtercategory("fresh fruits")}
+    // onClick={() => filtercategory('fresh fruits')} 
      className='bg-white' icon={<img src={apple} width='21' alt="" />} label="fresh fruits">
       <MenuItem> Berries</MenuItem>
       <MenuItem> Citrus Fruits</MenuItem>
