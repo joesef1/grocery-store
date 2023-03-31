@@ -6,13 +6,16 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from "../firebase-config";
 import Sidenav from '../components/Sidenav';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import Cart from './Cart';
 import { FiSearch } from 'react-icons/fi';
 import { HiOutlineShoppingCart } from 'react-icons/hi';
 import useOpenNavStore from '../statestore/OpenNavStore';
+import useopencartstore from '../statestore/opencartstore';
 import SearchState from '../statestore/SearchState';
 
 const Navbar = () => {
   const openNav = useOpenNavStore((state) => state.openNav)
+  const opencart = useopencartstore((state) => state.opencart)
   const currentSearchState = SearchState((state) => state.currentSearchState)
   const { showinput, hideinput } = SearchState();
 
@@ -54,6 +57,8 @@ const Navbar = () => {
     
     <div className='fixed w-[100%] z-50 bg-white'>
     <Sidenav/>
+
+    <Cart />
 
     {!currentSearchState&&(
     <div className=''>
@@ -100,7 +105,7 @@ const Navbar = () => {
       
       {/* cart */}
       <div className='text-2xl cursor-pointer ml-6'>
-      <HiOutlineShoppingCart/>
+      <HiOutlineShoppingCart onClick={opencart}/>
       </div>
       {/* cart */}
       
