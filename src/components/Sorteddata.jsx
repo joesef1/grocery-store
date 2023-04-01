@@ -1,8 +1,19 @@
 import React, {useState} from 'react'
+import AddToCart from '../statestore/AddToCart'
 
 
 const Sorteddata = ({Data,totalPosts}) => {
+  //
+  // const { addtocart  } = AddToCart();
+const addtocart = AddToCart((state) => state.addtocart)
+
+
+  // const addtocarts = (itemId) => {
+  //   console.log(itemId);
+  // }
   
+
+  //
   const [sortingOrder, setSortingOrder] = useState('Defult');
 
   const sortedData = [...Data];
@@ -49,7 +60,7 @@ const Sorteddata = ({Data,totalPosts}) => {
   
           <div className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
             <div className='w-[80%]'>
-            <button className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
+            <button onClick={()=>{addtocart(product)}} className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
             </div>
             <div className='w-[20%]'>
             <button className='bg-gray-200 px-3 h-[35px] flex w-[100%] rounded-r-md justify-center text-2xl' >+</button>

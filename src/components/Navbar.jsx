@@ -43,14 +43,7 @@ const Navbar = () => {
       
     }
 
-
   const navigate = useNavigate();
-  const  user  = useContext(MyContext);
-  
-  const logout = async () => {
-    await signOut(auth);
-    navigate("/Login");
-  };
 
   return (
     <>
@@ -96,8 +89,8 @@ const Navbar = () => {
       <div ref={searchRef} className='text-2xl cursor-pointer'>
         <FiSearch
         
-         onClick={()=>{showinput()}}
-         />
+        onClick={()=>{showinput()}}
+        />
       </div>
       
 
@@ -113,13 +106,7 @@ const Navbar = () => {
     {/* right */}
     
     </div>
-    
-
-      {/* {user ? (
-        <button onClick={logout}> Sign Out </button>
-      ) : (
-        <Link className='text-slate-500	' to="/Login">Login </Link>
-      )} */}
+  
       
       </div>
       <div className='w-[100%] z-0 py-[51px]'></div>

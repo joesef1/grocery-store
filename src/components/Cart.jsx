@@ -9,10 +9,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import useopencartstore from '../statestore/opencartstore';
 
 import { Link, useNavigate  } from 'react-router-dom';
+import AddToCart from '../statestore/AddToCart'
+import Data from '../Data'
 
 
 const Cart = () => {
+//
+const AddItems = AddToCart((state) => state.AddItems)
+// const AddItems = useStore (state => state.AddToCart.AddItems)
 
+
+//
   const currentstate = useopencartstore((state) => state.currentstate)
   const closecart = useopencartstore((state) => state.closecart)
   // const opencart = useopencartstore((state) => state.opencart)
@@ -69,7 +76,7 @@ const unhoveritem = () => {
 }
     
 const deleteitem = () => {
-  console.log('delete');
+  console.log(AddItems[1]);
 }
 
   return (
@@ -93,7 +100,18 @@ const deleteitem = () => {
         {/* header  */}
 
 
+
+
+
+
+
+
+        {/* {AddItems.map((product) => (
+          <h1>product</h1>
+    ))} */}
+
         {/* added items */}
+
         <div onMouseEnter={hoveritem} onMouseLeave={unhoveritem} className='flex flex-col	'> 
         <hr className=" border-gray-100 w-full" />
               <div className='flex justify-between align-center py-4 my-5 '>
@@ -164,6 +182,7 @@ const deleteitem = () => {
         {/* added items */}
 
 
+    
 
 
 
@@ -180,24 +199,20 @@ const deleteitem = () => {
 
 
 
+{/*  */}
+{AddItems.map((item, index) => (
+        <div key={index}>
+          <p>{item.name}</p>
+          <p>{item.price}</p>
+          {/* Add any other properties you want to render */}
+        </div>
+      ))}
+
+{/*  */}
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-between text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
+<div onClick={()=>{console.log(AddItems)}} className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-between text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
 <div><p>Proceed To Checkout</p></div>
 <div className='flex justify-around items-center'><span className='w-[1px] h-5 bg-white mr-5'></span> <p>$3.22</p></div>
 </div>

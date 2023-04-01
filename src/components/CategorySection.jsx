@@ -12,64 +12,16 @@ import  milk from '../assets/icons/milk.png';
 import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
 import  lemonadas from '../assets/icons/lemonades.png';
-import  Data from '../Data';
-import create from 'zustand';
 
-// import  usesubcategoryStore  from "../statestore/usesubcategoryStore";
 
-//
-  const usesubcategoryStore = create((set) => ({
-  originalData: [Data],
-  data: [],
-  setOriginalData: (originalData) => set({ originalData }),
-  setData: (data) => set({ data }),
-  filtercategory: (category) => {
-    const result = Data.filter((item) => item.category === category);
-    set({ data: result });
-    // console.log(data1);
+import  usesubcategoryStore  from "../statestore/usesubcategoryStore";
 
-  },
-  filterSubcategory: (subcategory) => {
-    const subcategoryresult = Data.filter((item) => item.subcategory === subcategory);
-    set({ data: subcategoryresult });
-    console.log(subcategoryresult);
-  },
-})); 
-  // 
 
 const CategorySection = () => {
-  const [originalData, setOriginalData] = useState(Data);
-  const [data, setData] = useState(originalData);
-  
-  
 
+  const { filtercategory, filterSubcategory  } = usesubcategoryStore();
+  // const filtercategory = usesubcategoryStore((state) => state.filtercategory)
 
-  // const originalData = usesubcategoryStore((state) => state.originalData);
-  const filtereddata = usesubcategoryStore((state) => state.data);
-  // const setOriginalData = usesubcategoryStore((state) => state.setOriginalData);
-  // const setData = usesubcategoryStore((state) => state.setData);
-  const filtercategory = usesubcategoryStore((state) => state.filtercategory);
-  const filterSubcategory = usesubcategoryStore((state) => state.filterSubcategory);
-
-
-  // const [originalData, setOriginalData] = useState(Data);
-// const [data, setData] = useState(originalData);
-
-// const filtercategory = (category) => {
-//   const result = originalData.filter((item) => item.category === category);
-//   setData(result);
-//   // console.log(data);
-// };
-
-// const filterSubcategory = (subcategory) => {
-//   const subcategoryresult = originalData.filter((item) => item.subcategory === subcategory);
-//   setData(subcategoryresult);
-//   console.log(data);
-
-// };
-
-
-  
 
   return (
     <>

@@ -1,14 +1,15 @@
 import React from 'react'
-// import {product} from '../assets/data/data.js'
-import Data from '../Data'
+import usesubcategoryStore from '../statestore/usesubcategoryStore'
+
 
 
 
 const ItemSection = () => {
+  const data = usesubcategoryStore((state) => state.data)
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    {Data.map((product) => (
+    {data.map((product) => (
       <div key={product.id} className="bg-white rounded-lg shadow-md p-4">
         <img src={product.cover} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.cover" />
         <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
