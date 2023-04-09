@@ -11,9 +11,18 @@ import useopencartstore from '../statestore/opencartstore';
 import { Link, useNavigate  } from 'react-router-dom';
 import AddToCart from '../statestore/AddToCart'
 import Data from '../Data'
+//
+import { useSelector, useDispatch } from 'react-redux';
+import { closesidecart  } from '../store/sidecartSlice.js';
 
+
+//
 
 const Cart = () => {
+  //
+  const dispatch = useDispatch();
+  const globalState = useSelector((state) => state);
+  //
 //
 const AddItems = AddToCart((state) => state.AddItems)
 const deleteitem = AddToCart((state) => state.deleteitem)
@@ -78,6 +87,11 @@ const unhoveritem = () => {
   setOnhover(false)
 }
     
+//
+const handleopencart = (status) => {
+  dispatch(closesidecart())
+  }
+//
 
   return (
 
@@ -86,7 +100,7 @@ const unhoveritem = () => {
         <motion.div
           className="px-8 z-20 bg-white border-b-4 fixed top-0 bottom-0 right-0  w-[27rem]"
           initial="closed"
-          animate={currentstate ? 'open' : 'closed'}
+          animate={globalState.sidecart.sidecartstate ? 'open' : 'closed'}
           exit="closed"
           variants={variants}
         >
@@ -94,12 +108,14 @@ const unhoveritem = () => {
         <div className='flex justify-between align-center py-7'> 
         <div><h2 className='text-xl font-bold'>Shopping Cart</h2></div>
             <div className="flex items-center justify-center text-2xl cursor-pointer">
-              <IoMdClose onClick={closecart} />
+              <IoMdClose 
+              onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
+               />
             </div>
         </div>
         {/* header  */}
 
-
+      
     
 
         {/* added items */}
@@ -131,7 +147,7 @@ const unhoveritem = () => {
                                 // onClick={()=>deleteitem(index)}
                                 onClick={handleDelete(index)}
 
-                                 />
+                                />
                             </div>
                           </>
                         )}
@@ -182,8 +198,6 @@ const unhoveritem = () => {
               </div>
 
 
-
-
               
         </div>
         </div>
@@ -204,13 +218,13 @@ const unhoveritem = () => {
         </motion.div>
       
 
-      {currentstate && (
+      {globalState.sidecart.sidecartstate && (
         <motion.div
           className="bg-black opacity-40 absolute h-[100vh] top-0 right-0 left-0 bottom-0"
           initial="hidden"
-          animate={currentstate ? 'visible' : 'hidden'}
+          animate={globalState.sidecart.sidecartstate ? 'visible' : 'hidden'}
           variants={overlayVariants}
-          onClick={closecart}
+          onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
         ></motion.div>
       )}
     </AnimatePresence>

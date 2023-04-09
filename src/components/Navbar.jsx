@@ -14,7 +14,8 @@ import useopencartstore from '../statestore/opencartstore';
 import SearchState from '../statestore/SearchState';
 //
 import { useSelector, useDispatch } from 'react-redux';
-import { opensidenav , closesidenav } from '../store/sidebarSlice';
+import { opensidenav  } from '../store/sidebarSlice';
+import { opensidecart  } from '../store/sidecartSlice.js';
 //
 
 const Navbar = () => {
@@ -54,7 +55,11 @@ const Navbar = () => {
 
   //
   const sidebarHandeler = (status) => {
-      dispatch(opensidenav())
+    dispatch(opensidenav())
+    }
+
+    const handleopencart = (status) => {
+      dispatch(opensidecart())
       }
     
 
@@ -118,7 +123,10 @@ const Navbar = () => {
       
       {/* cart */}
       <div className='text-2xl cursor-pointer ml-6'>
-      <HiOutlineShoppingCart onClick={opencart}/>
+      <HiOutlineShoppingCart
+      //  onClick={opencart}
+       onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
+       />
       </div>
       {/* cart */}
       

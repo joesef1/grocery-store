@@ -16,6 +16,6 @@ const sidecartSlice = createSlice({
   },
 });
 
-export const  {opensidenav,closesidenav}  = sidecartSlice.actions
+export const  {opensidecart,closesidecart}  = sidecartSlice.actions
 export default sidecartSlice.reducer;
 
