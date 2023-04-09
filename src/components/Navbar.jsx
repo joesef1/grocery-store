@@ -16,6 +16,7 @@ import SearchState from '../statestore/SearchState';
 import { useSelector, useDispatch } from 'react-redux';
 import { opensidenav  } from '../store/sidebarSlice';
 import { opensidecart  } from '../store/sidecartSlice.js';
+import {opensearchIcon , closesearchIcon} from '../store/searchIconSlice';
 //
 
 const Navbar = () => {
@@ -45,6 +46,8 @@ const Navbar = () => {
           console.log(inputRef);
         }else{
             hideinput()
+            dispatch(closesearchIcon())
+            
         }
       
       }
@@ -61,9 +64,10 @@ const Navbar = () => {
     const handleopencart = (status) => {
       dispatch(opensidecart())
       }
-    
 
-  
+      const showsearchinput = (status) => {
+        dispatch(opensearchIcon())
+        }
   //
   return (
     <>
@@ -73,7 +77,8 @@ const Navbar = () => {
 
     <Cart />
 
-    {!currentSearchState&&(
+    {/* {!currentSearchState&&( */}
+    {globalState.searchIcon.sidenavstate&&(
     <div className=''>
       <input 
       ref={inputRef}
@@ -114,7 +119,8 @@ const Navbar = () => {
       <div ref={searchRef} className='text-2xl cursor-pointer'>
         <FiSearch
         
-        onClick={()=>{showinput()}}
+        // onClick={()=>{showinput()}}
+        onClick={()=>{showsearchinput(globalState.searchIcon.sidenavstate)}}
         />
       </div>
       
