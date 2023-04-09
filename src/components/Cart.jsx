@@ -16,14 +16,16 @@ import Data from '../Data'
 const Cart = () => {
 //
 const AddItems = AddToCart((state) => state.AddItems)
-// const AddItems = useStore (state => state.AddToCart.AddItems)
-
-
+const deleteitem = AddToCart((state) => state.deleteitem)
 //
+const handleDelete = (index) => {
+  deleteitem(index);
+  // console.log(index);
+};
+
+
   const currentstate = useopencartstore((state) => state.currentstate)
   const closecart = useopencartstore((state) => state.closecart)
-  // const opencart = useopencartstore((state) => state.opencart)
-  // const navigate = useNavigate();
   
   
     const variants = {
@@ -68,16 +70,14 @@ const AddItems = AddToCart((state) => state.AddItems)
       }
     // 
 const [onhover, setOnhover] = useState(false);
-const hoveritem = () => {
+const hoveritem = (i) => {
   setOnhover(true)
+  // console.log(i);
 }
 const unhoveritem = () => {
   setOnhover(false)
 }
     
-const deleteitem = () => {
-  console.log(AddItems[1]);
-}
 
   return (
 
@@ -100,31 +100,38 @@ const deleteitem = () => {
         {/* header  */}
 
 
-
-
-
-
-
-
-        {/* {AddItems.map((product) => (
-          <h1>product</h1>
-    ))} */}
+    
 
         {/* added items */}
 
-        <div onMouseEnter={hoveritem} onMouseLeave={unhoveritem} className='flex flex-col	'> 
+        
+        {/* added items */}
+
+{/*  */}
+{AddItems.map((item,index) => (
+        <div key={`${item.id}-${index}*${Date.now()}`}>
+          <div   className='flex flex-col	'> 
         <hr className=" border-gray-100 w-full" />
-              <div className='flex justify-between align-center py-4 my-5 '>
-                <div onClick={deleteitem} className='w-[25%] relative rounded-md cursor-pointer'>
-                  <div className='  	'>
-                  <img className='' src={itemsIge} alt="" />
+              <div
+               onMouseEnter={()=> hoveritem(index)}
+              //  onMouseLeave={unhoveritem}
+                className='flex justify-between align-center py-4 my-5 '>
+                <div  className='w-[25%] relative rounded-md cursor-pointer'>
+                  <div 
+                  onClick={deleteitem(item.id)}
+                   className='  	'>
+                  <img  className='' src={itemsIge} alt="" />
                   </div>
                   {/*  */}
-                  {onhover && (
+                  {onhover  && (
                           <>
                             <div className='absolute bg-black top-0 left-0 right-0 bottom-0 rounded-lg opacity-50'></div>
                             <div className='bg-slate-200 rounded-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
-                              <IoMdClose />
+                              <IoMdClose
+                                // onClick={()=>deleteitem(index)}
+                                onClick={handleDelete(index)}
+
+                                 />
                             </div>
                           </>
                         )}
@@ -135,8 +142,8 @@ const deleteitem = () => {
                 </div>
 
                 <div className='w-[70%] flex justify-start flex-col	'>
-                  <p className='text-[#212121] font-xl text-sm mb-1'>Barney Chocolate Butter Blend 284g</p>
-                  <p className='text-gray-400 font-xl text-sm mb-2'>Unit Price $2.29</p>
+                  <p className='text-[#212121] font-xl text-sm mb-1'>{item.name}</p>
+                  <p className='text-gray-400 font-xl text-sm mb-2'>Unit Price {item.price}</p>
                   <div className='flex justify-between'>
                   {/*  */}
                   <div className="custom-number-input h-10 w-32">
@@ -166,7 +173,7 @@ const deleteitem = () => {
       </div>
     </div>
                   {/*  */}
-                  <p className='font-bold translate-y-5 text-md'>$2.29</p>
+                  <p className='font-bold translate-y-5 text-md'>{item.price}</p>
 
                   </div>
 
@@ -179,32 +186,6 @@ const deleteitem = () => {
 
               
         </div>
-        {/* added items */}
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/*  */}
-{AddItems.map((item, index) => (
-        <div key={index}>
-          <p>{item.name}</p>
-          <p>{item.price}</p>
-          {/* Add any other properties you want to render */}
         </div>
       ))}
 
@@ -212,7 +193,7 @@ const deleteitem = () => {
 
 
 
-<div onClick={()=>{console.log(AddItems)}} className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-between text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
+<div  className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-between text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
 <div><p>Proceed To Checkout</p></div>
 <div className='flex justify-around items-center'><span className='w-[1px] h-5 bg-white mr-5'></span> <p>$3.22</p></div>
 </div>

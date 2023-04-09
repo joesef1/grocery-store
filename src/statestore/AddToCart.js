@@ -7,7 +7,13 @@ const AddToCart = create((set) => ({
   addtocart: (pro) => set((state) => ({
     ...state,
     AddItems: [...state.AddItems, pro]
+  })),
+
+  deleteitem: (index) => set((state) => ({
+    // ...state,
+    // AddItems: state.AddItems.filter((i) => i === index)
   }))
+  
   
   
 }))
