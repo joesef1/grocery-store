@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 // import counterReducer from './counterSlice';
-import sidebarSlice from './sidebarSlice';
+import sidebarReducer from './sidebarSlice';
+import sidecartReducer from './sidecartSlice';
 
 export default configureStore({
   reducer: {
     // counter: counterReducer,
-    sidebar: sidebarSlice,
+    sidenavigation: sidebarReducer,
+    sidecart: sidecartReducer,
   },
 });

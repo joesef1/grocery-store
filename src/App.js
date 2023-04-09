@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+//
+import store from './store/store';
+import { Provider } from 'react-redux';
+
+//
+
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -17,6 +24,7 @@ import { ContexAuthState } from './context/context-authstate';
 function App() {
 
   return (
+    <Provider store={store}>
     <ContexAuthState>
     <BrowserRouter>
     <Navbar />
@@ -33,6 +41,8 @@ function App() {
     {/* <Footer /> */}
     </BrowserRouter>
     </ContexAuthState>
+    </Provider>
+
   )
 }
 

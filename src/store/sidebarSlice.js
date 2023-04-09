@@ -2,15 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 const sidebarSlice = createSlice({
-  name: 'sidebar',
+  name: 'sidenavigation',
   initialState: { sidenavstate: false},
   reducers: {
 
     opensidenav: (state ) => {
-      state.sidenavstate = false;
+      state.sidenavstate = true;
     },
     closesidenav: (state ) => {
-      state.sidenavstate = true;
+      state.sidenavstate = false;
     },
     
   },

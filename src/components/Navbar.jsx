@@ -12,8 +12,15 @@ import { HiOutlineShoppingCart } from 'react-icons/hi';
 import useOpenNavStore from '../statestore/OpenNavStore';
 import useopencartstore from '../statestore/opencartstore';
 import SearchState from '../statestore/SearchState';
+//
+import { useSelector, useDispatch } from 'react-redux';
+import { opensidenav , closesidenav } from '../store/sidebarSlice';
+//
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const globalState = useSelector((state) => state);
+
   const openNav = useOpenNavStore((state) => state.openNav)
   const opencart = useopencartstore((state) => state.opencart)
   const currentSearchState = SearchState((state) => state.currentSearchState)
@@ -45,6 +52,14 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
+  //
+  const sidebarHandeler = (status) => {
+      dispatch(opensidenav())
+      }
+    
+
+  
+  //
   return (
     <>
     
@@ -66,7 +81,12 @@ const Navbar = () => {
       <div className='flex justify-start'>
     <div className="flex justify-between py-9">
       <div className="mr-10 flex items-center justify-center text-3xl cursor-pointer">
-                <RxHamburgerMenu  onClick={openNav} />
+                <RxHamburgerMenu 
+                // onClick={openNav} 
+          onClick={() => sidebarHandeler(globalState.sidenavigation.sidenavstate)}
+        
+                
+                />
               </div>
               {/* {currentSearchState&&(  )} */}
                 <img

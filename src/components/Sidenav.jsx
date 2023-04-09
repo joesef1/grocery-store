@@ -4,12 +4,32 @@ import {signOut} from "firebase/auth";
 import { auth } from "../firebase-config";
 import { IoMdClose } from 'react-icons/io';
 import { motion, AnimatePresence } from 'framer-motion';
-import useOpenNavStore from '../statestore/OpenNavStore';
 import { Link, useNavigate  } from 'react-router-dom';
 
 
+//
+import { useSelector, useDispatch } from 'react-redux';
+import { opensidenav , closesidenav } from '../store/sidebarSlice';
+//
+
 
 const Sidenav = () => {
+
+  //
+  const dispatch = useDispatch();
+  const globalState = useSelector((state) => state);
+
+  const handelsidenav = (status) => {
+    if (status) {
+      dispatch(closesidenav())
+    }else{
+      console.log('close');
+    }
+      }
+  //
+
+
+
   //
   const  user  = useContext(MyContext);
   
@@ -19,8 +39,7 @@ const Sidenav = () => {
   };
   //
 
-const currentstate = useOpenNavStore((state) => state.currentstate)
-const closeNav = useOpenNavStore((state) => state.closeNav)
+
 const navigate = useNavigate();
 
 
@@ -58,7 +77,7 @@ const navigate = useNavigate();
           <motion.div
             className="px-8 z-20 bg-white border-b-4 border-black absolute h-screen w-[24.5rem]"
             initial="closed"
-            animate={currentstate ? 'open' : 'closed'}
+            animate={globalState.sidenavigation.sidenavstate ? 'open' : 'closed'}
             exit="closed"
             variants={variants}
           >
@@ -69,33 +88,30 @@ const navigate = useNavigate();
                 alt=""
               />
               <div className="flex items-center justify-center text-2xl cursor-pointer">
-                <IoMdClose onClick={closeNav} />
+                {/* <IoMdClose onClick={closeNav} /> */}
+                <IoMdClose onClick={() => handelsidenav(globalState.sidenavigation.sidenavstate)} />
+                
+
               </div>
             </div>
             <hr className=" border-gray-100 w-full" />
             <nav className="py-5">
               <ul>
-                {/* <li class="py-3 text-lg cursor-pointer">
-                  <a href="#">Extented Search</a>
-                </li> */}
+              
                 <li class="py-3 text-lg cursor-pointer">
-                  {/* <a href="#">Shop</a> */}
                   <Link to="/Shop">Shop</Link>
 
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  {/* <a href="#">Blog</a> */}
                   <Link to="/Blog">Blog</Link>
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   <Link to="/FAQ">FAQs</Link>
-                  {/* <Link to="/Login">Login </Link> */}
 
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  {/* <a href="#">Term & Conditions</a> */}
                   <Link to="/Terms">Terms & conditions</Link>
 
                 </li>
@@ -120,13 +136,15 @@ const navigate = useNavigate();
           </motion.div>
         
 
-        {currentstate && (
+        {globalState.sidenavigation.sidenavstate && (
+        //  {currentstate && (
           <motion.div
             className="bg-black opacity-40 absolute h-[100vh] top-0 right-0 left-0 bottom-0"
             initial="hidden"
-            animate={currentstate ? 'visible' : 'hidden'}
+            animate={globalState.sidenavigation.sidenavstate  ? 'visible' : 'hidden'}
             variants={overlayVariants}
-            onClick={closeNav}
+            onClick={() => handelsidenav(globalState.sidenavigation.sidenavstate)}
+            
           ></motion.div>
         )}
       </AnimatePresence>
