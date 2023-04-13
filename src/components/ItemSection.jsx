@@ -1,15 +1,23 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import usesubcategoryStore from '../statestore/usesubcategoryStore'
-
+import {useDispatch, useSelector } from "react-redux";
+import { getitems } from '../store/itemSlice';
 
 
 
 const ItemSection = () => {
-  const data = usesubcategoryStore((state) => state.data)
+const {isLoading , items} = useSelector(state => state.items);
+const dispatch = useDispatch();
 
+
+  const data = usesubcategoryStore((state) => state.data)
+  useEffect(() => {
+    dispatch(getitems());
+  }, [dispatch]);
+  
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-    {data.map((product) => (
+    {items.map((product) => (
       <div key={`${product.id}+${Date.now()}`} className="bg-white rounded-lg shadow-md p-4">
         <img src={product.cover} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.cover" />
         <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>

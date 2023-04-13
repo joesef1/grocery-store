@@ -7,19 +7,25 @@ import  frozen from '../assets/icons/cold.png';
 import  carrot from '../assets/icons/carrot.png';
 import  coffee from '../assets/icons/coffee.png';
 import  canned from '../assets/icons/canned-food.png';
+import  all from '../assets/icons/all.png';
 // import  jam from '../assets/icons/jam';
 import  milk from '../assets/icons/milk.png';
 import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
 import  lemonadas from '../assets/icons/lemonades.png';
+import { filtercategory } from '../store/itemSlice';
+import { filtersubcategory } from '../store/itemSlice';
+import {useDispatch } from "react-redux";
+import { getitems } from '../store/itemSlice';
 
 
-import  usesubcategoryStore  from "../statestore/usesubcategoryStore";
+
+// import  usesubcategoryStore  from "../statestore/usesubcategoryStore";
 
 
 const CategorySection = () => {
-
-  const { filtercategory, filterSubcategory  } = usesubcategoryStore();
+  const dispatch = useDispatch();
+  // const { filtercategory, filterSubcategory  } = usesubcategoryStore();
   // const filtercategory = usesubcategoryStore((state) => state.filtercategory)
 
 
@@ -32,14 +38,16 @@ const CategorySection = () => {
     
 <Sidebar backgroundColor='#fff'	 className=' h-[100vh] ' style={{width: '300px', backgroundColor: '#fff'}} >
   <Menu >
-  <SubMenu
-                onClick={() => filtercategory("fresh vegetables")}
+  <MenuItem onClick={()=> dispatch(getitems())}  className='bg-white' icon={<img src={all} width='21' alt="" />}>All categorys</MenuItem>
 
-  //  onClick={() => filtercategory('fresh vegetables')} 
+  <SubMenu
+                onClick={() => dispatch(filtercategory("fresh vegetables"))}
+                // onClick={() => filtercategory("fresh vegetables")}
+
     className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
       <MenuItem > Flower Vegetables</MenuItem>
       <MenuItem 
-      onClick={() => filterSubcategory("leaf vegetables")}
+      onClick={() => dispatch(filtersubcategory("leaf vegetables"))}
       // onClick={() => filterSubcategory('leaf vegetables')}
       > 
       Leaf Vegetables </MenuItem>
@@ -49,8 +57,10 @@ const CategorySection = () => {
     </SubMenu>
 
     <SubMenu 
-    onClick={() => filtercategory("fresh fruits")}
-    // onClick={() => filtercategory('fresh fruits')} 
+    // onClick={() => filtercategory("")}
+    onClick={() => dispatch(filtercategory("fresh fruits"))}
+
+     
      className='bg-white' icon={<img src={apple} width='21' alt="" />} label="fresh fruits">
       <MenuItem> Berries</MenuItem>
       <MenuItem> Citrus Fruits</MenuItem>

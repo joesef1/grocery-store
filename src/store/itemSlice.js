@@ -15,28 +15,54 @@ export const getitems = createAsyncThunk(
 })
 
 
-// //insertitem
-// export const insertitem = createAsyncThunk(
-//   'item/insertitem',
-//   async(dataitem, thunkAPI) => {
-//     const {rejectWithValue, getState} = thunkAPI
-//   try {
-//     dataitem.nameofuser = getState().auth.name
-//     const res = await fetch('http://localhost:3005/item',{
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//       body: JSON.stringify(dataitem)  
-//     })  
-//     const data = await res.json();
-//     return data;
+// //filteritem (category)
+export const filtercategory = createAsyncThunk(
+  'item/filtercategory',
+  async(category, thunkAPI) => {
+    const {rejectWithValue, getState} = thunkAPI
+  try {
+    const res = await fetch('http://localhost:3007/item',{
+      method: 'Get',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      // body: JSON.stringify(category)  
+    })  
+    const data = await res.json();
+    const result = data.filter((item) => item.category === category);
     
-//   } catch (error) {
-//     return rejectWithValue(error.message);
-//   }
-// })
-// //
+    return result;
+    
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+})
+//
+
+
+// //filteritem (category)
+export const filtersubcategory = createAsyncThunk(
+  'item/filtersubcategory',
+  async(subcategory, thunkAPI) => {
+    const {rejectWithValue, getState} = thunkAPI
+  try {
+    const res = await fetch('http://localhost:3007/item',{
+      method: 'Get',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      // body: JSON.stringify(category)  
+    })  
+    const data = await res.json();
+    const result = data.filter((item) => item.subcategory === subcategory);
+    
+    return result;
+    
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+})
+//
 
 // //deleteitems
 // export const deleteitems = createAsyncThunk(
@@ -98,22 +124,42 @@ export const itemSlice = createSlice({
       state.error = action.payload
     },
 
-    // // insertitem
-    // [insertitem.pending]: (state, action) => {
-    //   state.isLoading = true
-    //   state.error = false      
-    // },
-    // [insertitem.fulfilled]: (state, action) => {
-    //   state.isLoading = false
-    //   // console.log(action);
-    //   state.items.push(action.payload);      
-    // },
-    // [insertitem.rejected]: (state, action) => {
-    //   state.isLoading = false
-    //   // console.log(action);
-    //   state.error = action.payload
-    // },
-    // //
+    // filtercategorytitem
+    [filtercategory.pending]: (state, action) => {
+      state.isLoading = true
+      state.error = false      
+    },
+    [filtercategory.fulfilled]: (state, action) => {
+      state.isLoading = false
+      // console.log(action.payload);
+      state.items = action.payload;      
+    },
+    [filtercategory.rejected]: (state, action) => {
+      state.isLoading = false
+      // console.log(action);
+      state.error = action.payload
+    },
+    //
+
+    
+    // filtercategorytitem
+    [filtersubcategory.pending]: (state, action) => {
+      state.isLoading = true
+      state.error = false      
+    },
+    [filtersubcategory.fulfilled]: (state, action) => {
+      state.isLoading = false
+      console.log(action.payload);
+      state.items = action.payload;      
+    },
+    [filtersubcategory.rejected]: (state, action) => {
+      state.isLoading = false
+      console.log(action);
+      state.error = action.payload
+    },
+    //
+
+
     //     // deleteitems
     //     [deleteitems.pending]: (state, action) => {
     //       state.isLoading = true

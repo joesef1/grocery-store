@@ -36,11 +36,16 @@ const Sidenav = () => {
   const logout = async () => {
     await signOut(auth);
     navigate("/Login");
+    dispatch(closesidenav())
   };
   //
 
 
 const navigate = useNavigate();
+const logoevent = () => {
+  navigate("/")
+  dispatch(closesidenav())
+}
 
 
   const variants = {
@@ -83,7 +88,7 @@ const navigate = useNavigate();
           >
             <div className="flex justify-between py-9 cursor-pointer">
               <img
-              onClick={()=>{navigate("/")}}
+              onClick={()=>logoevent()}
                 src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
                 alt=""
               />
@@ -99,25 +104,26 @@ const navigate = useNavigate();
               <ul>
               
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link to="/Shop">Shop</Link>
+                  <Link onClick={()=>dispatch(closesidenav())} to="/Shop">Shop</Link>
+
 
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link to="/Blog">Blog</Link>
+                  <Link onClick={()=>dispatch(closesidenav())} to="/Blog">Blog</Link>
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link to="/FAQ">FAQs</Link>
+                  <Link onClick={()=>dispatch(closesidenav())} to="/FAQ">FAQs</Link>
 
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link to="/Terms">Terms & conditions</Link>
+                  <Link onClick={()=>dispatch(closesidenav())} to="/Terms">Terms & conditions</Link>
 
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   {/* <a href="#">Contact</a> */}
-                  <Link to="/Contact">Contact</Link>
+                  <Link onClick={()=>dispatch(closesidenav())} to="/Contact">Contact</Link>
 
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
@@ -126,7 +132,7 @@ const navigate = useNavigate();
                     {user ? (
         <button onClick={logout}> Sign Out </button>
       ) : (
-        <Link className='text-slate-500	' to="/Login">Login </Link>
+        <Link onClick={()=>dispatch(closesidenav())} className='text-slate-500	' to="/Login">Login </Link>
       )}
                   
 

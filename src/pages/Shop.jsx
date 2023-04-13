@@ -38,8 +38,8 @@ const Shop = () => {
 
 
       <Sorteddata 
-       items={currentPosts}
-       totalPosts={items.length}
+      items={currentPosts}
+      totalPosts={items.length}
       //  items={items}
         />
 
