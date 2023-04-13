@@ -6,7 +6,7 @@ export const getitems = createAsyncThunk(
   async(_, thunkAPI) => {
     const {rejectWithValue} = thunkAPI
   try {
-    const res = await fetch('http://localhost:3005/item');
+    const res = await fetch('http://localhost:3007/item');
     const data = await res.json();
     return data;
   } catch (error) {
@@ -90,7 +90,6 @@ export const itemSlice = createSlice({
     },
     [getitems.fulfilled]: (state, action) => {
       state.isLoading = false
-      // console.log(action);
       state.items = action.payload;      
     },
     [getitems.rejected]: (state, action) => {

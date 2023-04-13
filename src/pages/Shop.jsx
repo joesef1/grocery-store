@@ -1,20 +1,32 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import shop from '../assets/images/Grocery-1-1.jpg'
 import Pagebanner from '../components/Pagebanner'
 import Data from '../Data'
 import Pagination from '../components/Pagination'
 import Sorteddata from '../components/Sorteddata'
+//
+import {getitems} from "../store/itemSlice";
+import {useDispatch, useSelector } from "react-redux";
 
+//
 
 const Shop = () => {
+  //
+  // const [selectedData, setSelectedData] = useState(null);
+  const {isLoading , items} = useSelector(state => state.items);
+  const dispatch = useDispatch();
+
+  //
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(4);
-    //
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
-    const currentPosts = Data.slice(firstPostIndex, lastPostIndex);
+    const currentPosts = items.slice(firstPostIndex, lastPostIndex);
 
-
+    useEffect(() => {
+      dispatch(getitems());
+    }, [dispatch]);
+    
 
   return (
     <div>
@@ -26,12 +38,13 @@ const Shop = () => {
 
 
       <Sorteddata 
-       Data={currentPosts}
-       totalPosts={Data.length}
+       items={currentPosts}
+       totalPosts={items.length}
+      //  items={items}
         />
 
       <Pagination
-        totalPosts={Data.length}
+        totalPosts={items.length}
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}

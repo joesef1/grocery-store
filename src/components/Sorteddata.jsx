@@ -1,12 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import AddToCart from '../statestore/AddToCart'
+import { useDispatch, useSelector } from "react-redux";
+import { getitems } from '../store/itemSlice';
 
 
-const Sorteddata = ({Data,totalPosts}) => {
+
+
+const Sorteddata = ({items,totalPosts}) => {
+  const dispatch = useDispatch();
+
+
   //
   // const { addtocart  } = AddToCart();
 const addtocart = AddToCart((state) => state.addtocart)
 
+// console.log(items);
 
   // const addtocarts = (itemId) => {
   //   console.log(itemId);
@@ -16,7 +24,7 @@ const addtocart = AddToCart((state) => state.addtocart)
   //
   const [sortingOrder, setSortingOrder] = useState('Defult');
 
-  const sortedData = [...Data];
+  const sortedData = [...items];
 
   if (sortingOrder === 'low-to-high') {
     sortedData.sort((a, b) => a.price - b.price);

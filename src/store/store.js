@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import sidebarReducer from './sidebarSlice';
 import sidecartReducer from './sidecartSlice';
 import saerchReducer from './searchIconSlice';
+import items from './itemSlice';
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     sidenavigation: sidebarReducer,
     sidecart: sidecartReducer,
     searchIcon: saerchReducer,
+    items,
   },
 });
