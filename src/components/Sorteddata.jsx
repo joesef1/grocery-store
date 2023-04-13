@@ -1,7 +1,8 @@
 import React, {useState,useEffect} from 'react'
-import AddToCart from '../statestore/AddToCart'
+// import AddToCart from '../statestore/AddToCart'
 import { useDispatch, useSelector } from "react-redux";
 import { getitems } from '../store/itemSlice';
+import { insertitem } from '../store/cartSlice';
 
 
 
@@ -12,7 +13,7 @@ const Sorteddata = ({items,totalPosts}) => {
 
   //
   // const { addtocart  } = AddToCart();
-const addtocart = AddToCart((state) => state.addtocart)
+// const addtocart = AddToCart((state) => state.addtocart)
 
 // console.log(items);
 
@@ -68,7 +69,10 @@ const addtocart = AddToCart((state) => state.addtocart)
   
           <div className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
             <div className='w-[80%]'>
-            <button onClick={()=>{addtocart(product)}} className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
+            <button
+            // onClick={()=>{addtocart(product)}} 
+          onClick={()=>dispatch(insertitem(product.id))}
+            className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
             </div>
             <div className='w-[20%]'>
             <button className='bg-gray-200 px-3 h-[35px] flex w-[100%] rounded-r-md justify-center text-2xl' >+</button>

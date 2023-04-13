@@ -22,6 +22,8 @@ const Cart = () => {
   //
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state);
+const {cart} = useSelector(state => state.cart);
+
   //
 //
 const AddItems = AddToCart((state) => state.AddItems)
@@ -33,8 +35,8 @@ const handleDelete = (index) => {
 };
 
 
-  const currentstate = useopencartstore((state) => state.currentstate)
-  const closecart = useopencartstore((state) => state.closecart)
+  // const currentstate = useopencartstore((state) => state.currentstate)
+  // const closecart = useopencartstore((state) => state.closecart)
   
   
     const variants = {
@@ -110,7 +112,7 @@ const handleopencart = (status) => {
             <div className="flex items-center justify-center text-2xl cursor-pointer">
               <IoMdClose 
               onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
-               />
+              />
             </div>
         </div>
         {/* header  */}
@@ -124,7 +126,7 @@ const handleopencart = (status) => {
         {/* added items */}
 
 {/*  */}
-{AddItems.map((item,index) => (
+{cart.map((item,index) => (
         <div key={`${item.id}-${index}*${Date.now()}`}>
           <div   className='flex flex-col	'> 
         <hr className=" border-gray-100 w-full" />

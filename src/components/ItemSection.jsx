@@ -2,15 +2,18 @@ import React, {useEffect} from 'react'
 import usesubcategoryStore from '../statestore/usesubcategoryStore'
 import {useDispatch, useSelector } from "react-redux";
 import { getitems } from '../store/itemSlice';
+import { insertitem } from '../store/cartSlice';
 
 
 
 const ItemSection = () => {
+
+
 const {isLoading , items} = useSelector(state => state.items);
 const dispatch = useDispatch();
 
 
-  const data = usesubcategoryStore((state) => state.data)
+  // const data = usesubcategoryStore((state) => state.data)
   useEffect(() => {
     dispatch(getitems());
   }, [dispatch]);
@@ -23,9 +26,12 @@ const dispatch = useDispatch();
         <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
         <p className="text-gray-500 text-sm mb-5">{product.name}</p>
 
-        <div className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
+        <div  className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
           <div className='w-[80%]'>
-          <button className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
+          <button 
+          onClick={()=>dispatch(insertitem(product))}
+          // onClick={()=>console.log("ert")}
+           className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
           </div>
           <div className='w-[20%]'>
           <button className='bg-gray-200 px-3 h-[35px] flex w-[100%] rounded-r-md justify-center text-2xl' >+</button>

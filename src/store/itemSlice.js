@@ -22,7 +22,7 @@ export const filtercategory = createAsyncThunk(
     const {rejectWithValue, getState} = thunkAPI
   try {
     const res = await fetch('http://localhost:3007/item',{
-      method: 'Get',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -47,7 +47,7 @@ export const filtersubcategory = createAsyncThunk(
     const {rejectWithValue, getState} = thunkAPI
   try {
     const res = await fetch('http://localhost:3007/item',{
-      method: 'Get',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -63,6 +63,29 @@ export const filtersubcategory = createAsyncThunk(
   }
 })
 //
+// //insertitem
+// export const insertitem = createAsyncThunk(
+//   'cart/insertitem',
+//   async(addedItem, thunkAPI) => {
+//     const {rejectWithValue, getState} = thunkAPI
+//   try {
+//     // addedItem.nameofuser = getState().auth.name
+//     const res = await fetch('http://localhost:3007/item',{
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json; charset=UTF-8',
+//       },
+//       body: JSON.stringify(addedItem)  
+//     })  
+//     const data = await res.json();
+//     return data;
+    
+//   } catch (error) {
+//     return rejectWithValue(error.message);
+//   }
+// })
+// //
+
 
 // //deleteitems
 // export const deleteitems = createAsyncThunk(
