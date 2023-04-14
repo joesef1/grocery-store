@@ -45,11 +45,11 @@ export const insertitem = createAsyncThunk(
 
 // //deleteitems
 // export const deleteitems = createAsyncThunk(
-//   'item/deleteitems',
+//   'cart/insertitem',
 //   async(item, thunkAPI) => {
 //     const {rejectWithValue} = thunkAPI
 //   try {
-//    await fetch(`http://localhost:3005/item/${item.id}`,{
+//    await fetch(`http://localhost:3007/item/${item.id}`,{
 //       method: 'DELETE',
 //       headers: {
 //         'Content-Type': 'application/json; charset=UTF-8',
@@ -69,7 +69,18 @@ export const insertitem = createAsyncThunk(
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: {cart: [] , isLoading: false, error: null , readitem:null},
-  reducers: {},
+  reducers: {
+    deleteitems: (state, action) => {
+          // console.log(action.payload);
+          // console.log(state.cart);
+          state.cart = state.cart.filter((el) => el.id!== action.payload.id)
+          // console.log(state.cart);
+
+    },
+    clear:(state, action) => {
+      state.cart = []
+    }
+  },
   extraReducers: {
     //getitems
     
@@ -78,12 +89,16 @@ export const cartSlice = createSlice({
       state.isLoading = true
       state.error = false      
     },
+
     [insertitem.fulfilled]: (state, action) => {
       state.isLoading = false
-      
-    
-      state.cart.push(action.payload);
-      console.log(action.payload);
+      const foundeditem = state.cart.find((product)=> product.id === action.payload.id)
+    if (foundeditem) {
+      foundeditem.quantity += 1;
+    }else{
+      const cloneditem= {...action.payload , quantity: 1}
+      state.cart.push(cloneditem);
+    }
 
     },
     [insertitem.rejected]: (state, action) => {
@@ -94,24 +109,10 @@ export const cartSlice = createSlice({
     //
 
 
-    //     // deleteitems
-    //     [deleteitems.pending]: (state, action) => {
-    //       state.isLoading = true
-    //       state.error = false      
-    //     },
-    //     [deleteitems.fulfilled]: (state, action) => {
-    //       state.isLoading = false
-    //       state.items = state.items.filter((el) => el.id !== action.payload.id)
-    //     },
-    //     [deleteitems.rejected]: (state, action) => {
-    //       state.isLoading = false
-    //       state.error = action.payload
-    //     },
-
 
 
   }
 })
 
-
+export const {clear, deleteitems} = cartSlice.actions
 export default cartSlice.reducer

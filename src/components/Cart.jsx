@@ -14,12 +14,14 @@ import Data from '../Data'
 //
 import { useSelector, useDispatch } from 'react-redux';
 import { closesidecart  } from '../store/sidecartSlice.js';
+import {clear, deleteitems } from '../store/cartSlice';
+
 
 
 //
 
 const Cart = () => {
-  //
+  
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state);
 const {cart} = useSelector(state => state.cart);
@@ -33,7 +35,18 @@ const handleDelete = (index) => {
   deleteitem(index);
   // console.log(index);
 };
+//
+// const deleteitems = (deleteditem) => {
+//   cart.filter((item) => item.id !== deleteditem.id)
+//   console.log(cart);
+// }
 
+//
+const totalprice = cart.reduce((acc,item) => {
+  acc += item.price*item.quantity;
+  return acc;
+},0)
+//
 
   // const currentstate = useopencartstore((state) => state.currentstate)
   // const closecart = useopencartstore((state) => state.closecart)
@@ -76,8 +89,9 @@ const handleDelete = (index) => {
         setValue((prevValue) => prevValue - 1);
       }
     
-      function increment() {
-        setValue((prevValue) => prevValue + 1);
+      function increment(item) {
+        // setValue((prevValue) => prevValue + 1);
+        
       }
     // 
 const [onhover, setOnhover] = useState(false);
@@ -125,18 +139,22 @@ const handleopencart = (status) => {
         
         {/* added items */}
 
+<button onClick={()=> dispatch(clear())}>clear</button>
 {/*  */}
 {cart.map((item,index) => (
-        <div key={`${item.id}-${index}*${Date.now()}`}>
-          <div   className='flex flex-col	'> 
+        <div key={item.id*index}>
+          <div 
+          onClick={()=>dispatch(deleteitems(item))}
+          
+          className='flex flex-col	'> 
         <hr className=" border-gray-100 w-full" />
               <div
-               onMouseEnter={()=> hoveritem(index)}
+              //  onMouseEnter={()=> hoveritem(index)}
               //  onMouseLeave={unhoveritem}
                 className='flex justify-between align-center py-4 my-5 '>
                 <div  className='w-[25%] relative rounded-md cursor-pointer'>
                   <div 
-                  onClick={deleteitem(item.id)}
+                  // onClick={deleteitem(item.id)}
                    className='  	'>
                   <img  className='' src={itemsIge} alt="" />
                   </div>
@@ -144,10 +162,11 @@ const handleopencart = (status) => {
                   {onhover  && (
                           <>
                             <div className='absolute bg-black top-0 left-0 right-0 bottom-0 rounded-lg opacity-50'></div>
-                            <div className='bg-slate-200 rounded-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
+                            <div  className='bg-slate-200 rounded-full absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
                               <IoMdClose
-                                // onClick={()=>deleteitem(index)}
-                                onClick={handleDelete(index)}
+                                
+                                // onClick={handleDelete(index)}
+
 
                                 />
                             </div>
@@ -156,7 +175,6 @@ const handleopencart = (status) => {
 
                 
                   {/*  */}
-
                 </div>
 
                 <div className='w-[70%] flex justify-start flex-col	'>
@@ -178,13 +196,14 @@ const handleopencart = (status) => {
           type="text"
           className=" appearance-none outline-none focus:outline-none text-center w-full bg-[#212121] font-semibold text-md text-white focus:text-black md:text-base cursor-default flex items-center text-gray-700  outline-none"
           name="custom-input-number"
-          value={value}
+          value={item.quantity}
+          // value={value}
           onChange={(e) => setValue(e.target.value)}
         />
         <button
           data-action="increment"
           className="bg-[#212121] text-white   hover:bg-[#3f3f3f] h-full w-20 rounded-r cursor-pointer"
-          onClick={increment}
+          onClick={increment(item)}
         >
           <span className="m-auto  text-xl leading-6	 font-thin">+</span>
         </button>
@@ -211,7 +230,7 @@ const handleopencart = (status) => {
 
 <div  className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-between text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
 <div><p>Proceed To Checkout</p></div>
-<div className='flex justify-around items-center'><span className='w-[1px] h-5 bg-white mr-5'></span> <p>$3.22</p></div>
+<div className='flex justify-around items-center'><span className='w-[1px] h-5 bg-white mr-5'></span> <p>{totalprice.toFixed(2)}</p></div>
 </div>
 
 

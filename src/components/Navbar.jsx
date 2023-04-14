@@ -22,6 +22,7 @@ import {opensearchIcon , closesearchIcon} from '../store/searchIconSlice';
 const Navbar = () => {
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state);
+  const {cart} = useSelector((state) => state.cart);
 
   const openNav = useOpenNavStore((state) => state.openNav)
   const opencart = useopencartstore((state) => state.opencart)
@@ -128,11 +129,13 @@ const Navbar = () => {
       {/* search */}
       
       {/* cart */}
-      <div className='text-2xl cursor-pointer ml-6'>
+      <div className='text-2xl cursor-pointer ml-6 relative'>
       <HiOutlineShoppingCart
       //  onClick={opencart}
        onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
        />
+       
+       <span className=' bg-slate-200 w-3 h-3 absolute'>{cart.length}</span>
       </div>
       {/* cart */}
       
