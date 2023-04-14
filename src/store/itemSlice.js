@@ -105,7 +105,29 @@ export const filtersubcategory = createAsyncThunk(
 //   }
 // })
 // //
-
+export const currentSearchResult = createAsyncThunk(
+  'item/currentSearchResult',
+  async(written, thunkAPI) => {
+    const {rejectWithValue, getState} = thunkAPI
+  try {
+    const res = await fetch('http://localhost:3007/item',{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      // body: JSON.stringify(category)  
+    })  
+    const data = await res.json();
+    // const result = data.filter((item) => item.title === written);
+    const result = written;
+    
+    return result;
+    
+  } catch (error) {
+    return rejectWithValue(error.message);
+  }
+})
+//
 
 // //readitem
 // export const readitem = createAsyncThunk(
@@ -129,8 +151,21 @@ export const filtersubcategory = createAsyncThunk(
 
 export const itemSlice = createSlice({
   name: 'items',
-  initialState: {items: [] , isLoading: false, error: null , readitem:null},
-  reducers: {},
+  initialState: {items: [] , isLoading: false, error: null , readitem:null ,filteredItems: [],searchQuery: ''},
+  reducers: {
+    // currentSearchResults: (state, action) => { 
+    //   console.log(action.payload);
+    //  }
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
+    },
+    setFilteredItems: (state, action) => {
+      state.filteredItems = state.items.filter((item) =>
+        item.name.toLowerCase().includes(state.searchQuery.toLowerCase())
+      );
+    },
+
+  },
   extraReducers: {
     //getitems
     [getitems.pending]: (state, action) => {
@@ -215,10 +250,26 @@ export const itemSlice = createSlice({
     //       state.error = action.payload
     //     },
 
-
+    [currentSearchResult.pending]: (state, action) => {
+      state.isLoading = true
+      state.error = false      
+    },
+    [currentSearchResult.fulfilled]: (state, action) => {
+      state.isLoading = false
+      console.log("action.payload");
+      // state.items = action.payload;      
+    },
+    [currentSearchResult.rejected]: (state, action) => {
+      state.isLoading = false
+      console.log(action);
+      state.error = action.payload
+    },
 
   }
 })
+
+// export const {currentSearchResults} = itemSlice.actions
+export const { setSearchQuery, setFilteredItems } = itemSlice.actions;
 
 
 export default itemSlice.reducer

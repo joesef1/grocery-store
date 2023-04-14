@@ -70,16 +70,33 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: {cart: [] , isLoading: false, error: null , readitem:null},
   reducers: {
-    deleteitems: (state, action) => {
-          // console.log(action.payload);
-          // console.log(state.cart);
-          state.cart = state.cart.filter((el) => el.id!== action.payload.id)
-          // console.log(state.cart);
 
+    deleteitems: (state, action) => {
+    state.cart = state.cart.filter((el) => el.id!== action.payload.id)
     },
+
     clear:(state, action) => {
       state.cart = []
-    }
+    },
+    increaseQuantity: (state, action) => {  
+      const foundeditem = state.cart.find((product)=> product.id === action.payload.id)
+      if (foundeditem) {
+        foundeditem.quantity += 1;
+      }
+    },
+    decreaseQuantity: (state, action) => {  
+      const foundeditem = state.cart.find((product)=> product.id === action.payload.id)
+      if (foundeditem) {
+        if (foundeditem.quantity > 1) {
+            foundeditem.quantity -= 1;
+        }else{
+          state.cart = state.cart.filter((product)=> product.id!== action.payload.id)
+        }
+      
+      }
+    },
+
+
   },
   extraReducers: {
     //getitems
@@ -114,5 +131,5 @@ export const cartSlice = createSlice({
   }
 })
 
-export const {clear, deleteitems} = cartSlice.actions
+export const {clear, deleteitems,increaseQuantity,decreaseQuantity} = cartSlice.actions
 export default cartSlice.reducer

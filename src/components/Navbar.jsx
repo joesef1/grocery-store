@@ -17,16 +17,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import { opensidenav  } from '../store/sidebarSlice';
 import { opensidecart  } from '../store/sidecartSlice.js';
 import {opensearchIcon , closesearchIcon} from '../store/searchIconSlice';
+// import {currentSearchResult} from '../store/itemSlice';
+// import {currentSearchResults} from '../store/itemSlice';
+import { setSearchQuery, setFilteredItems } from '../store/itemSlice';
+
 //
 
 const Navbar = () => {
+
+// const currentSearchResults = (result) => {
+//   console.log(result);
+// }
+
+// const handleSearchQueryChange = (e) => {
+//   dispatch(currentSearchResults(e.target.value));
+// };
+
+
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state);
   const {cart} = useSelector((state) => state.cart);
 
   const openNav = useOpenNavStore((state) => state.openNav)
   const opencart = useopencartstore((state) => state.opencart)
-  const currentSearchState = SearchState((state) => state.currentSearchState)
+  // const currentSearchState = SearchState((state) => state.currentSearchState)
   const { showinput, hideinput } = SearchState();
 
 
@@ -70,6 +84,26 @@ const Navbar = () => {
         dispatch(opensearchIcon())
         }
   //
+
+
+
+  const searchQuery = useSelector((state) => state.items.searchQuery);
+  const filteredItems = useSelector((state) => state.items.filteredItems);
+
+  const handleSearchQueryChange = (e) => {
+    dispatch(setSearchQuery(e.target.value));
+  };
+
+  useEffect(() => {
+    dispatch(setFilteredItems());
+  }, [dispatch, searchQuery]);
+
+
+
+
+
+
+  //
   return (
     <>
     
@@ -82,6 +116,14 @@ const Navbar = () => {
     {globalState.searchIcon.sidenavstate&&(
     <div className=''>
       <input 
+        // onChange={(e) => {
+        //   dispatch(currentSearchResult(e.target.value))
+        // }}
+        // onChange={(e) => dispatch(currentSearchResults(e.target.value))}
+        // onChange={handleSearchQueryChange}
+        value={searchQuery} onChange={handleSearchQueryChange}
+    
+    
       ref={inputRef}
         className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text" placeholder='E.g: Meat,Egg'></input>
     </div>
@@ -133,9 +175,9 @@ const Navbar = () => {
       <HiOutlineShoppingCart
       //  onClick={opencart}
        onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
-       />
-       
-       <span className=' bg-slate-200 w-3 h-3 absolute'>{cart.length}</span>
+       />     
+         <span className=' bg-[#212121] text-white px-[6px] w-[19px] text-sm rounded-full absolute top-[-8px] right-[-5px] '>{cart.length}</span>
+
       </div>
       {/* cart */}
       

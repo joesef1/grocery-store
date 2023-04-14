@@ -70,8 +70,7 @@ const Sorteddata = ({items,totalPosts}) => {
           <div className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
             <div className='w-[80%]'>
             <button
-            // onClick={()=>{addtocart(product)}} 
-          onClick={()=>dispatch(insertitem(product.id))}
+          onClick={()=>dispatch(insertitem(product))}
             className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
             </div>
             <div className='w-[20%]'>
