@@ -18,6 +18,7 @@ import FAQ from './pages/FAQ.jsx';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Shop from './pages/Shop.jsx';
+import Details from './pages/Details.jsx';
 import { ContexAuthState } from './context/context-authstate';
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Blog" element={<Blog />} />
         <Route path="/Shop" element={<Shop />} />
+        <Route path="/Details" element={<Details />} />
       </Routes>
     {/* <Footer /> */}
     </BrowserRouter>
