@@ -64,7 +64,7 @@ const RelatedProducts = () => {
     slidesToScroll: 1,
     autoplay: true,
     speed: 800,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     cssEase: "linear",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />

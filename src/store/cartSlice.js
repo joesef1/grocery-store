@@ -18,50 +18,6 @@ export const insertitem = createAsyncThunk(
   }
 );
 
-//
-// //insertitem
-// export const insertitem = createAsyncThunk(
-//   'cart/insertitem',
-//   async(product, thunkAPI) => {
-//     const {rejectWithValue, getState} = thunkAPI
-//   try {
-//     // addedItem.nameofuser = getState().auth.name
-//     const res = await fetch('http://localhost:3007/item',{
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//       body: JSON.stringify(product)  
-//     })  
-//     const data = await res.json();
-//     return data;
-    
-//   } catch (error) {
-//     return rejectWithValue(error.message);
-//   }
-// })
-// //
-
-
-// //deleteitems
-// export const deleteitems = createAsyncThunk(
-//   'cart/insertitem',
-//   async(item, thunkAPI) => {
-//     const {rejectWithValue} = thunkAPI
-//   try {
-//    await fetch(`http://localhost:3007/item/${item.id}`,{
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//     });
-//     return item;
-//   } catch (error) {
-//     return rejectWithValue(error.message);
-//   }
-// })
-// //
-
 
 
 

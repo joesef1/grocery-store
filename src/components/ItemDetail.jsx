@@ -2,13 +2,28 @@ import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import { insertitem } from '../store/cartSlice';
 import {useDispatch, useSelector } from "react-redux";
+import {clear, deleteitems ,increaseQuantity,decreaseQuantity} from '../store/cartSlice';
+
 
 
 
 const ItemDetail = () => {
+
   const location = useLocation();
   const product = location.state;
   const dispatch = useDispatch();
+
+const {cart} = useSelector(state => state.cart);
+
+
+// const detailsitem = cart.find((item)=> item.id === product.id)
+// console.log(detailsitem.quantity);
+
+// const [detailsquantity, setDetailsQuantity] = useState(detailsitem.quantity);
+
+
+
+
 
   return (
     <div>
@@ -31,7 +46,7 @@ const ItemDetail = () => {
                   <button
                     data-action="decrement"
                     className="border-[#212121] border text-[#212121] hover:text-white ease-in duration-200  hover:bg-[#212121] h-full w-20 rounded-l cursor-pointer outline-none"
-                    // onClick={()=> dispatch(decreaseQuantity(item))}
+                    onClick={()=> dispatch(decreaseQuantity(product))}
                   >
                     <span className="m-auto text-xl leading-6 font-thin">−</span>
                   </button>
@@ -40,14 +55,14 @@ const ItemDetail = () => {
                     type="text"
                     className="border-[#212121] border appearance-none focus:outline-none text-center   font-semibold text-md text-black focus:text-black md:text-base cursor-default flex items-center  outline-none"
                     name="custom-input-number"
-                    // value={item.quantity}
+                    // value={detailsitem.quantity}
                     value='1'
                   />
 
                   <button
                     data-action="increment"
                     className="border-[#212121] border text-[#212121] hover:text-white ease-in duration-200  hover:bg-[#212121] h-full w-20 rounded-r cursor-pointer outline-none"
-                    // onClick={()=> dispatch(increaseQuantity(item))}
+                    onClick={()=> dispatch(increaseQuantity(product))}
                   >
                     <span className="m-auto text-xl leading-6 font-thin">+</span>
                   </button>

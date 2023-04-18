@@ -46,6 +46,13 @@ const totalprice = cart.reduce((acc,item) => {
   return acc;
 },0)
 //
+
+const checkoutprocess = totalprice.toFixed(2);
+const navigatetocheckout = () => {
+  navigate('/Checkout', { state: checkoutprocess });
+}
+
+
   
     const variants = {
       open: {
@@ -114,6 +121,7 @@ const exploreShop = () => {
 }
 
 
+
   return (
 
     <>
@@ -138,35 +146,12 @@ const exploreShop = () => {
 
       
     
-
         {/* added items */}
 
         
         {/* added items */}
 
 {/*  */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -225,8 +210,8 @@ const exploreShop = () => {
       
 
       <div className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-between text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
-<div><p>Proceed To Checkout</p></div>
-<div className='flex justify-around items-center'><span className='w-[1px] h-5 bg-white mr-5'></span> <p>{totalprice.toFixed(2)}</p></div>
+<div><p onClick={()=> navigatetocheckout()}>Proceed To Checkout</p></div>
+<div className='flex justify-around items-center'><span className='w-[1px] h-5 bg-white mr-5'></span> <p> {checkoutprocess}  </p></div>
 </div>
 
 
