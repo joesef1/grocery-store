@@ -2,12 +2,18 @@ import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import { insertitem } from '../store/cartSlice';
 import {useDispatch, useSelector } from "react-redux";
-import {clear, deleteitems ,increaseQuantity,decreaseQuantity} from '../store/cartSlice';
+import {clear, deleteitems ,increaseQuantity,decreaseQuantity } from '../store/cartSlice';
+// import {filtercategory,filtersubcategory} from '../store/itemSlice.js';
+import {filtercategoryShop,filtersubcategoryShop} from '../store/shopItemSlice';
+import {Link, useNavigate  } from 'react-router-dom';
+import { data } from 'autoprefixer';
 
 
 
 
 const ItemDetail = () => {
+const navigate = useNavigate();
+
 
   const location = useLocation();
   const product = location.state;
@@ -21,6 +27,25 @@ const {cart} = useSelector(state => state.cart);
 
 // const [detailsquantity, setDetailsQuantity] = useState(detailsitem.quantity);
 
+
+
+
+// const shopwithcaregory = (category) => {
+  // dispatch(filtercategory(category));
+  // navigate('/FilteredShop');
+  // navigate('/FilteredShop', { state: category });
+
+  
+// }
+
+// const shopwithsubcaregory = (subcategory) => {
+  // navigate('/FilteredShop', { state: subcategory });
+
+
+  // dispatch(filtercategory(subcategory));
+  // navigate('/FilteredShop');
+  // console.log(subcategory);
+// }
 
 
 
@@ -79,7 +104,25 @@ const {cart} = useSelector(state => state.cart);
           </div>
         </div>
       
-        <span>category: <span className='text-bold text-lg'> <a href="">{product.category}</a> , <a href="">{product.subcategory}</a></span> </span>
+        <span>category: <span className='text-bold text-lg'>
+        
+        {/* <p onClick={()=>shopwithcaregory(product.category)}>  
+        <a 
+        ></a> 
+        </p> */}
+        <Link
+        onClick={()=>dispatch(filtercategoryShop(product.category))}
+          to="/FilteredShop">{product.category}</Link>
+
+        
+        , 
+        <Link
+        onClick={()=>dispatch(filtersubcategoryShop(product.subcategory))}
+          to="/FilteredShop">{product.subcategory}</Link>
+        {/* <a
+        // onClick={()=>{shopwithsubcaregory(product.subcategory)}}
+        >{product.subcategory}</a> */}
+        </span> </span>
         
     </div>
 

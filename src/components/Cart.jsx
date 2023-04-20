@@ -1,4 +1,4 @@
-import React,{ useContext ,useState} from 'react'
+import React,{ useContext ,useState , useEffect} from 'react'
 import { MyContext } from '../context/context-authstate';
 import { IoMdClose } from 'react-icons/io';
 import  itemsIge  from '../assets/images/vegetables1-4.jpg';
@@ -20,7 +20,10 @@ import {clear, deleteitems ,increaseQuantity,decreaseQuantity} from '../store/ca
 
 //
 
+// const cartFromLocalstorage = JSON.parse(localStorage.getItem("cart") || "[]")
 const Cart = () => {
+
+
 const navigate = useNavigate();
 
   
@@ -29,6 +32,10 @@ const navigate = useNavigate();
   const globalState = useSelector((state) => state);
 const {cart} = useSelector(state => state.cart);
 
+// useEffect(() => {
+//   localStorage.setItem('cart', JSON.stringify(cart));
+//   }, [cart]);
+  
   //
 //
 const AddItems = AddToCart((state) => state.AddItems)
@@ -50,6 +57,7 @@ const totalprice = cart.reduce((acc,item) => {
 const checkoutprocess = totalprice.toFixed(2);
 const navigatetocheckout = () => {
   navigate('/Checkout', { state: checkoutprocess });
+  dispatch(closesidecart());
 }
 
 
@@ -230,7 +238,6 @@ const exploreShop = () => {
 
 <div onClick={()=> exploreShop()} className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-center text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
 <div className='flex justify-center ><p '> <p> Continue shoping</p></div>
-{/* <div className='flex justify-around items-center'><span className='w-[1px] h-5 bg-white mr-5'></span> <p>{totalprice.toFixed(2)}</p></div> */}
 </div>
 </>
 }

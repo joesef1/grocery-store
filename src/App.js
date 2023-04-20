@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from 'react';
-
-//
+import React from 'react';
 import store from './store/store';
 import { Provider } from 'react-redux';
-
-//
-
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Checkout from './pages/Checkout.js';
@@ -20,7 +14,12 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';
 import Shop from './pages/Shop.jsx';
 import Details from './pages/Details.jsx';
+import FilteredShop from './pages/FilteredShop.jsx';
+import ThankYou from './pages/ThankYou';
 import { ContexAuthState } from './context/context-authstate';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -29,6 +28,7 @@ function App() {
     <Provider store={store}>
     <ContexAuthState>
     <BrowserRouter>
+    <ToastContainer />
     <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -41,6 +41,8 @@ function App() {
         <Route path="/Shop" element={<Shop />} />
         <Route path="/Details" element={<Details />} />
         <Route path="/Checkout" element={<Checkout />} />
+        <Route path="/ThankYou" element={<ThankYou />} />
+        <Route path="/FilteredShop" element={<FilteredShop />} />
       </Routes>
     {/* <Footer /> */}
     </BrowserRouter>

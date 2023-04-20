@@ -5,6 +5,7 @@ import sidecartReducer from './sidecartSlice';
 import saerchReducer from './searchIconSlice';
 import items from './itemSlice';
 import cart from './cartSlice';
+import shopitems from './shopItemSlice';
 
 export default configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
     searchIcon: saerchReducer,
     items,
     cart,
+    shopitems,
   },
 });

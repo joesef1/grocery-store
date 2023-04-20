@@ -119,22 +119,29 @@ const logoevent = () => {
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
                   <Link onClick={()=>dispatch(closesidenav())} to="/Terms">Terms & conditions</Link>
-
                 </li>
+
                 <li class="py-3 text-lg cursor-pointer">
+                  <Link onClick={()=>dispatch(closesidenav())} to="/Checkout">Checkout</Link>
+                </li>
+
+                <li class="py-3 text-lg cursor-pointer ">
                   {/* <a href="#">Contact</a> */}
                   <Link onClick={()=>dispatch(closesidenav())} to="/Contact">Contact</Link>
 
                 </li>
-                <li class="py-3 text-lg cursor-pointer">
-                  
+
+                <li class="py-15 text-lg cursor-pointer bottom-8 absolute w-[85%]">
+                <hr className=" border-gray-100 w-full mb-9" />
+
+                  <a className='' href="">
                     {/* <Link to="/Login">Login </Link> */}
                     {user ? (
         <button onClick={logout}> Sign Out </button>
       ) : (
-        <Link onClick={()=>dispatch(closesidenav())} className='text-slate-500	' to="/Login">Login </Link>
+        <Link onClick={()=>dispatch(closesidenav())} className='text-slate-500' to="/Login">Login </Link>
       )}
-                  
+                  </a>
 
                 </li>
               </ul>
