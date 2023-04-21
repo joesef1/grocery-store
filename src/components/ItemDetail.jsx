@@ -11,7 +11,17 @@ import { data } from 'autoprefixer';
 
 
 
-const ItemDetail = () => {
+const 
+
+
+
+
+
+
+
+
+
+ItemDetail = () => {
 const navigate = useNavigate();
 
 
@@ -20,6 +30,8 @@ const navigate = useNavigate();
   const dispatch = useDispatch();
 
 const {cart} = useSelector(state => state.cart);
+const cartItem = cart.find(item => item.id === product.id);
+const quantityInCart = cartItem ? cartItem.quantity : 0;
 
 
 // const detailsitem = cart.find((item)=> item.id === product.id)
@@ -67,7 +79,6 @@ const {cart} = useSelector(state => state.cart);
           <div className='mr-3 '>
         
           <div className="flex flex-row  h-12  rounded-lg relative bg-transparent ">
-
                   <button
                     data-action="decrement"
                     className="border-[#212121] border text-[#212121] hover:text-white ease-in duration-200  hover:bg-[#212121] h-full w-20 rounded-l cursor-pointer outline-none"
@@ -80,8 +91,7 @@ const {cart} = useSelector(state => state.cart);
                     type="text"
                     className="border-[#212121] border appearance-none focus:outline-none text-center   font-semibold text-md text-black focus:text-black md:text-base cursor-default flex items-center  outline-none"
                     name="custom-input-number"
-                    // value={detailsitem.quantity}
-                    value='1'
+                    value={quantityInCart}
                   />
 
                   <button

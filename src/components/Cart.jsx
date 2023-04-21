@@ -4,12 +4,10 @@ import { IoMdClose } from 'react-icons/io';
 import  itemsIge  from '../assets/images/vegetables1-4.jpg';
 import { motion, AnimatePresence } from 'framer-motion';
 import useopencartstore from '../statestore/opencartstore';
-
 import { Link, useNavigate  } from 'react-router-dom';
 import AddToCart from '../statestore/AddToCart'
 import Data from '../Data'
 import cart from '../assets/images/empty-cart.svg'
-//
 import { useSelector, useDispatch } from 'react-redux';
 import { closesidecart  } from '../store/sidecartSlice.js';
 import {clear, deleteitems ,increaseQuantity,decreaseQuantity} from '../store/cartSlice';
