@@ -71,11 +71,12 @@ export const cartSlice = createSlice({
       localStorage.setItem('cart', JSON.stringify(state.cart));
       toast.success(`${action.payload.name} added to cart`, {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         icon: action.payload.img,
+        className: 'foo-bar',
       });
       
       

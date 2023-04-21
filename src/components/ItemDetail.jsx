@@ -11,7 +11,7 @@ import { data } from 'autoprefixer';
 
 
 
-const 
+const ItemDetail = () => {
 
 
 
@@ -21,7 +21,7 @@ const
 
 
 
-ItemDetail = () => {
+
 const navigate = useNavigate();
 
 
@@ -34,30 +34,17 @@ const cartItem = cart.find(item => item.id === product.id);
 const quantityInCart = cartItem ? cartItem.quantity : 0;
 
 
-// const detailsitem = cart.find((item)=> item.id === product.id)
-// console.log(detailsitem.quantity);
-
-// const [detailsquantity, setDetailsQuantity] = useState(detailsitem.quantity);
 
 
+const handleLinkClickcategoty = (categoty) => {
+  dispatch(filtercategoryShop(categoty))
+navigate('/FilteredShop', { state: categoty });
+}
 
-
-// const shopwithcaregory = (category) => {
-  // dispatch(filtercategory(category));
-  // navigate('/FilteredShop');
-  // navigate('/FilteredShop', { state: category });
-
-  
-// }
-
-// const shopwithsubcaregory = (subcategory) => {
-  // navigate('/FilteredShop', { state: subcategory });
-
-
-  // dispatch(filtercategory(subcategory));
-  // navigate('/FilteredShop');
-  // console.log(subcategory);
-// }
+const handleLinkClicksubcategoty = (subcategoty) => {
+  dispatch(filtersubcategoryShop(subcategoty))
+navigate('/FilteredShop', { state: subcategoty });
+}
 
 
 
@@ -120,15 +107,23 @@ const quantityInCart = cartItem ? cartItem.quantity : 0;
         <a 
         ></a> 
         </p> */}
-        <Link
-        onClick={()=>dispatch(filtercategoryShop(product.category))}
-          to="/FilteredShop">{product.category}</Link>
+        <p
+        onClick={()=>handleLinkClickcategoty(product.category)}
+          >{product.category}</p>
 
         
         , 
-        <Link
+        {/* <Link
         onClick={()=>dispatch(filtersubcategoryShop(product.subcategory))}
-          to="/FilteredShop">{product.subcategory}</Link>
+          to="/FilteredShop">{product.subcategory}</Link> */}
+
+<p
+        onClick={()=>handleLinkClicksubcategoty(product.subcategory)}
+          >{product.subcategory}</p>
+
+
+
+
         {/* <a
         // onClick={()=>{shopwithsubcaregory(product.subcategory)}}
         >{product.subcategory}</a> */}

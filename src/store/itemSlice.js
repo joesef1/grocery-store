@@ -63,48 +63,7 @@ export const filtersubcategory = createAsyncThunk(
   }
 })
 //
-// //insertitem
-// export const insertitem = createAsyncThunk(
-//   'cart/insertitem',
-//   async(addedItem, thunkAPI) => {
-//     const {rejectWithValue, getState} = thunkAPI
-//   try {
-//     // addedItem.nameofuser = getState().auth.name
-//     const res = await fetch('http://localhost:3007/item',{
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//       body: JSON.stringify(addedItem)  
-//     })  
-//     const data = await res.json();
-//     return data;
-    
-//   } catch (error) {
-//     return rejectWithValue(error.message);
-//   }
-// })
-// //
 
-
-// //deleteitems
-// export const deleteitems = createAsyncThunk(
-//   'item/deleteitems',
-//   async(item, thunkAPI) => {
-//     const {rejectWithValue} = thunkAPI
-//   try {
-//    await fetch(`http://localhost:3005/item/${item.id}`,{
-//       method: 'DELETE',
-//       headers: {
-//         'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//     });
-//     return item;
-//   } catch (error) {
-//     return rejectWithValue(error.message);
-//   }
-// })
-// //
 export const currentSearchResult = createAsyncThunk(
   'item/currentSearchResult',
   async(written, thunkAPI) => {
@@ -128,25 +87,6 @@ export const currentSearchResult = createAsyncThunk(
   }
 })
 //
-
-// //readitem
-// export const readitem = createAsyncThunk(
-//   'item/readitem',
-//   async(item, thunkAPI) => {
-//     const {rejectWithValue} = thunkAPI
-//   try {
-//    await fetch(`http://localhost:3005/item/${item.id}`,{
-//       method: 'GET',
-//       headers: {
-//         'Content-Type': 'application/json; charset=UTF-8',
-//       },
-//     });
-//     return item;
-//   } catch (error) {
-//     return rejectWithValue(error.message);
-//   }
-// })
-
 
 
 export const itemSlice = createSlice({
@@ -218,37 +158,6 @@ export const itemSlice = createSlice({
     //
 
 
-    //     // deleteitems
-    //     [deleteitems.pending]: (state, action) => {
-    //       state.isLoading = true
-    //       state.error = false      
-    //     },
-    //     [deleteitems.fulfilled]: (state, action) => {
-    //       state.isLoading = false
-    //       state.items = state.items.filter((el) => el.id !== action.payload.id)
-    //     },
-    //     [deleteitems.rejected]: (state, action) => {
-    //       state.isLoading = false
-    //       state.error = action.payload
-    //     },
-
-    //     //  readitems
-    //     [readitem.pending]: (state, action) => {
-    //       state.isLoading = true
-    //       state.error = false      
-    //     },
-    //     [readitem.fulfilled]: (state, action) => {
-    //       state.isLoading = false
-    //       state.readitem = action.payload ;
-    //       // console.log(readitem());
-    //       // console.log(state.readitem);
-    //       // console.log(action.payload);
-
-    //     },
-    //     [readitem.rejected]: (state, action) => {
-    //       state.isLoading = false
-    //       state.error = action.payload
-    //     },
 
     [currentSearchResult.pending]: (state, action) => {
       state.isLoading = true
