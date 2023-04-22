@@ -106,7 +106,11 @@ export const itemSlice = createSlice({
       
 
     },
-
+    // setFilteredItems: (state, action) => {
+    //   state.filteredItems = state.items.filter((item) =>
+    //     item.name.toLowerCase().includes(state.searchQuery.toLowerCase())
+    //   );
+    // },
 
 
 

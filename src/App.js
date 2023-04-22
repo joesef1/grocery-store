@@ -12,6 +12,8 @@ import Footer from './components/Footer';
 import FAQ from './pages/FAQ.jsx';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
+import CategoryBlog from './pages/CategoryBlog';
+import BlogDetails from './pages/BlogDetails';
 import Shop from './pages/Shop.jsx';
 import Details from './pages/Details.jsx';
 import FilteredShop from './pages/FilteredShop.jsx';
@@ -43,6 +45,8 @@ function App() {
         <Route path="/Checkout" element={<Checkout />} />
         <Route path="/ThankYou" element={<ThankYou />} />
         <Route path="/FilteredShop" element={<FilteredShop />} />
+        <Route path="/BlogDetails" element={<BlogDetails />} />
+        <Route path="/CategoryBlog" element={<CategoryBlog />} />
       </Routes>
     {/* <Footer /> */}
     </BrowserRouter>
