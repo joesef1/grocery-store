@@ -6,6 +6,7 @@ import saerchReducer from './searchIconSlice';
 import items from './itemSlice';
 import cart from './cartSlice';
 import shopitems from './shopItemSlice';
+import blog from './blogSlice';
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     items,
     cart,
     shopitems,
+    blog,
   },
 });
