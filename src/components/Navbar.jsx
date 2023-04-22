@@ -1,4 +1,4 @@
-import React,{ useContext , useRef, useEffect  } from 'react'
+import React,{ useContext , useRef, useEffect,useState  } from 'react'
 import { MyContext } from '../context/context-authstate';
 import { Link } from 'react-router-dom';
 import {signOut} from "firebase/auth";
@@ -19,7 +19,7 @@ import { opensidecart  } from '../store/sidecartSlice.js';
 import {opensearchIcon , closesearchIcon} from '../store/searchIconSlice';
 // import {currentSearchResult} from '../store/itemSlice';
 // import {currentSearchResults} from '../store/itemSlice';
-import { setSearchQuery, setFilteredItems } from '../store/itemSlice';
+import { setSearchQuery, setFilteredItems , emptythesearch } from '../store/itemSlice';
 
 //
 
@@ -55,17 +55,23 @@ const Navbar = () => {
 
     function handleClickOutside(e) {
       if (searchRef.current.contains(e.target)) {
-        console.log("icon");
+        // console.log("icon");
       } else {
         if (inputRef.current && inputRef.current.contains(e.target)) {
-          console.log(inputRef);
+          // console.log(inputRef);
         }else{
             hideinput()
             dispatch(closesearchIcon())
+            dispatch(emptythesearch())
+            setsearchword("");
+
             
         }
       
       }
+      
+      // dispatch(emptythesearch())
+
       
     }
 
@@ -87,18 +93,19 @@ const Navbar = () => {
 
 
 
-  const searchQuery = useSelector((state) => state.items.searchQuery);
-  const filteredItems = useSelector((state) => state.items.filteredItems);
-
-  const handleSearchQueryChange = (e) => {
-    dispatch(setSearchQuery(e.target.value));
-  };
-
-  useEffect(() => {
-    dispatch(setFilteredItems());
-  }, [dispatch, searchQuery]);
+  // const searchQuery = useSelector((state) => state.items.searchQuery);
+  // const targetedsearchword = useSelector((state) => state.items.targetedsearchword);
+  // const {cart} = useSelector((state) => state.cart);
 
 
+  const [searchword, setsearchword] = useState("");
+
+const handleSearchQueryChange = (e) => {
+  e.preventDefault()
+  const searchword = e.target.value
+  setsearchword(searchword)
+  dispatch(setSearchQuery(searchword));
+};
 
 
 
@@ -115,17 +122,18 @@ const Navbar = () => {
     {/* {!currentSearchState&&( */}
     {globalState.searchIcon.sidenavstate&&(
     <div className=''>
+
       <input 
-        // onChange={(e) => {
-        //   dispatch(currentSearchResult(e.target.value))
-        // }}
-        // onChange={(e) => dispatch(currentSearchResults(e.target.value))}
-        // onChange={handleSearchQueryChange}
-        value={searchQuery} onChange={handleSearchQueryChange}
+        value={searchword}
+        ref={inputRef}
+        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text" 
+        placeholder='E.g: Meat,Egg'
+        onChange={handleSearchQueryChange}
+
+        />
+        
     
-    
-      ref={inputRef}
-        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text" placeholder='E.g: Meat,Egg'></input>
+
     </div>
       )}
 

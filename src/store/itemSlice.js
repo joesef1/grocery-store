@@ -91,19 +91,36 @@ export const currentSearchResult = createAsyncThunk(
 
 export const itemSlice = createSlice({
   name: 'items',
-  initialState: {items: [] , isLoading: false, error: null , readitem:null ,filteredItems: [],searchQuery: ''},
+  initialState: {items: [] , isLoading: false, error: null , readitem:null ,filteredItems: [],targetedsearchword: ''},
   reducers: {
-    // currentSearchResults: (state, action) => { 
-    //   console.log(action.payload);
-    //  }
+  
     setSearchQuery: (state, action) => {
-      state.searchQuery = action.payload;
-    },
-    setFilteredItems: (state, action) => {
+       state.targetedsearchword = action.payload;
+
+      // console.log(state.targetedsearchword);
+
       state.filteredItems = state.items.filter((item) =>
-        item.name.toLowerCase().includes(state.searchQuery.toLowerCase())
-      );
+    item.name.toLowerCase().startsWith(state.targetedsearchword.toLowerCase())
+  );
+
+      
+
     },
+    // setFilteredItems: (state, action) => {
+    //   state.filteredItems = state.items.filter((item) =>
+    //     item.name.toLowerCase().includes(state.searchQuery.toLowerCase())
+    //   );
+    // },
+
+
+
+    emptythesearch: (state, action) => {
+      state.targetedsearchword = "";
+    //  console.log(state.items);
+      // console.log(action.payload);
+    },
+
+
 
   },
   extraReducers: {
@@ -147,12 +164,12 @@ export const itemSlice = createSlice({
     },
     [filtersubcategory.fulfilled]: (state, action) => {
       state.isLoading = false
-      console.log(action.payload);
+    ////  console.log(action.payload);
       state.items = action.payload;      
     },
     [filtersubcategory.rejected]: (state, action) => {
       state.isLoading = false
-      console.log(action);
+    ////  console.log(action);
       state.error = action.payload
     },
     //
@@ -165,12 +182,12 @@ export const itemSlice = createSlice({
     },
     [currentSearchResult.fulfilled]: (state, action) => {
       state.isLoading = false
-      console.log("action.payload");
+    ////  console.log("action.payload");
       // state.items = action.payload;      
     },
     [currentSearchResult.rejected]: (state, action) => {
       state.isLoading = false
-      console.log(action);
+    ////  console.log(action);
       state.error = action.payload
     },
 
@@ -178,7 +195,7 @@ export const itemSlice = createSlice({
 })
 
 // export const {currentSearchResults} = itemSlice.actions
-export const { setSearchQuery, setFilteredItems } = itemSlice.actions;
+export const { setSearchQuery, FilteredItems ,emptythesearch } = itemSlice.actions;
 
 
 export default itemSlice.reducer
