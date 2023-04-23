@@ -37,7 +37,7 @@ const ItemSection = () => {
         return (
           <div key={`${product.id}+${Date.now()}`} className="bg-white rounded-lg shadow-md p-4">
             <div onClick={() => routetodetails(product)}>
-              <img src={product.cover} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.cover" />
+              <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.image" />
             </div>
             <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
             <p className="text-gray-500 text-sm mb-5">{product.name}</p>
@@ -98,7 +98,7 @@ const ItemSection = () => {
         return (
           <div key={`${product.id}+${Date.now()}`} className="bg-white rounded-lg shadow-md p-4">
             <div onClick={() => routetodetails(product)}>
-              <img src={product.cover} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.cover" />
+              <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.image" />
             </div>
             <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
             <p className="text-gray-500 text-sm mb-5">{product.name}</p>
