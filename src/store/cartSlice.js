@@ -34,6 +34,7 @@ export const cartSlice = createSlice({
 
     clear:(state, action) => {
       state.cart = []
+      localStorage.clear()
     },
     increaseQuantity: (state, action) => {  
       const foundeditem = state.cart.find((product)=> product.id === action.payload.id)

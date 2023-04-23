@@ -18,7 +18,7 @@ const Shop = () => {
 
   //
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostsPerPage] = useState(4);
+    const [postsPerPage, setPostsPerPage] = useState(24);
     const lastPostIndex = currentPage * postsPerPage;
     const firstPostIndex = lastPostIndex - postsPerPage;
     const currentPosts = items.slice(firstPostIndex, lastPostIndex);
@@ -40,7 +40,8 @@ const Shop = () => {
       <Sorteddata 
       items={currentPosts}
       totalPosts={items.length}
-      //  items={items}
+      lastPostIndex={lastPostIndex}
+      firstPostIndex={firstPostIndex}
         />
 
       <Pagination

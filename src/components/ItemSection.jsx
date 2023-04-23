@@ -8,6 +8,7 @@ import notFound  from "../assets/images/not-found.svg";
 import {increaseQuantity,decreaseQuantity } from '../store/cartSlice';
 
 const ItemSection = () => {
+  const [itemsToShow, setItemsToShow] = useState(36);
   const navigate = useNavigate();
   const { isLoading, items,filteredItems, targetedsearchword } = useSelector(state => state.items);
   const { cart } = useSelector(state => state.cart);
@@ -91,7 +92,7 @@ const ItemSection = () => {
       
       : 
 
-      items.map((product) => {
+      items.slice(0, itemsToShow).map((product) => {
         const item = cart.find(item => item.id === product.id);
         const quantityInitem = item ? item.quantity : 0;
 
@@ -155,7 +156,7 @@ const ItemSection = () => {
 
 <div></div>
   {
-    filteredItems.length === 0 &&
+    filteredItems.length || items.length === 0 &&
     <div className='flex justify-center items-center flex-col w-full mx-auto'>
     <div>
     <img src={notFound} alt="" />
@@ -168,6 +169,12 @@ const ItemSection = () => {
     </div>
 
     </div>
+  }
+  
+
+    {/* Show more button */}
+    {itemsToShow !== items.length &&
+    <button  className='text-white bg-[#212121] rounded-md py-2' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
   }
 
 

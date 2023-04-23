@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const Sorteddata = ({items,totalPosts}) => {
+const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
   const routetodetails = (product) => {
     navigate('/Details', { state: product });
     console.log(product);
@@ -39,7 +39,7 @@ const Sorteddata = ({items,totalPosts}) => {
       {/*  */}
           {/* sorting */}
           <div className='flex justify-between mx-auto w-[94%] mb-10'>
-        <div>Showing 4 of {totalPosts} results</div>
+        <div>Showing {firstPostIndex}-{lastPostIndex} of {totalPosts} results</div>
         {/*  */}      
 <select
   id="sort"
