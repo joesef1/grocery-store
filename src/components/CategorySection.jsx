@@ -12,6 +12,7 @@ import  all from '../assets/icons/all.png';
 import  milk from '../assets/icons/milk.png';
 import  breakfast from '../assets/icons/english-breakfast.png';
 import  organic from '../assets/icons/organic.png';
+import  sauses from '../assets/images/sauses.png';
 import  lemonadas from '../assets/icons/lemonades.png';
 import { filtercategory } from '../store/itemSlice';
 import { filtersubcategory } from '../store/itemSlice';
@@ -45,15 +46,26 @@ const CategorySection = () => {
                 // onClick={() => filtercategory("fresh vegetables")}
 
     className='bg-white' icon={<img src={carrot} width='21' alt="" />} label="fresh vegetables">
-      <MenuItem > Flower Vegetables</MenuItem>
+      <MenuItem
+      onClick={() => dispatch(filtersubcategory("flower vegetables"))}
+      
+      > Flower Vegetables</MenuItem>
       <MenuItem 
       onClick={() => dispatch(filtersubcategory("leaf vegetables"))}
       // onClick={() => filterSubcategory('leaf vegetables')}
       > 
       Leaf Vegetables </MenuItem>
-      <MenuItem> Root Vegetables </MenuItem>
-      <MenuItem> Seed Vegetables </MenuItem>
-      <MenuItem> stem Vegetables </MenuItem>
+      <MenuItem 
+      onClick={() => dispatch(filtersubcategory("root vegetables"))}
+      > Root Vegetables </MenuItem>
+      <MenuItem
+      onClick={() => dispatch(filtersubcategory("seed vegetables"))}
+      
+      > Seed Vegetables </MenuItem>
+      <MenuItem 
+      onClick={() => dispatch(filtersubcategory("stem vegetables"))}
+      
+      > stem Vegetables </MenuItem>
     </SubMenu>
 
     <SubMenu 
@@ -62,48 +74,144 @@ const CategorySection = () => {
 
      
      className='bg-white' icon={<img src={apple} width='21' alt="" />} label="fresh fruits">
-      <MenuItem> Berries</MenuItem>
-      <MenuItem> Citrus Fruits</MenuItem>
-      <MenuItem> Drupes </MenuItem>
-      <MenuItem> tropical fruits </MenuItem>
+      <MenuItem 
+      onClick={() => dispatch(filtersubcategory("rerries"))}
+      > Berries</MenuItem>
+      <MenuItem 
+      onClick={() => dispatch(filtersubcategory("citrus fruite"))}
+      > Citrus Fruits</MenuItem>
+      <MenuItem 
+      onClick={() => dispatch(filtersubcategory("drupes"))}
+      > Drupes </MenuItem>
+      <MenuItem 
+      onClick={() => dispatch(filtersubcategory("tropical fruits"))}
+      > tropical fruits </MenuItem>
     </SubMenu>
 
 
-    <SubMenu   className='bg-white' icon={<img src={milk} width='21' alt="" />} label="dairy & Eggs">
-      <MenuItem> Berries</MenuItem>
-      <MenuItem> Citrus Fruits</MenuItem>
-      <MenuItem> Drupes </MenuItem>
-      <MenuItem> tropical fruits </MenuItem>
-    </SubMenu>
-      <MenuItem   className='bg-white' icon={<img src={breakfast} width='21' alt="" />} label="breakfast">breakfast</MenuItem>
+    <SubMenu 
+    onClick={() => dispatch(filtercategory("dairy & eggs"))}
 
-      <SubMenu   className='bg-white' icon={<img src={frozen} width='21' alt="" />} label="frozen">
-      <MenuItem>Cutted Fish </MenuItem>
-      <MenuItem>Cutted Meat </MenuItem>
-      <MenuItem>Ice cream </MenuItem>
-      <MenuItem>Packet Meal </MenuItem>
-      <MenuItem>Packet meat</MenuItem>
+    
+    className='bg-white' icon={<img src={milk} width='21' alt="" />} label="dairy & Eggs">
+      <MenuItem  
+            onClick={() => dispatch(filtersubcategory("butter"))}
+      > Butter</MenuItem>
+      <MenuItem  
+            onClick={() => dispatch(filtersubcategory("eggs"))}
+      > Eggs</MenuItem>
+      <MenuItem  
+            onClick={() => dispatch(filtersubcategory("milk"))}
+      > Milk </MenuItem>
+      <MenuItem  
+            onClick={() => dispatch(filtersubcategory("yougurt"))}
+      > Yougurt </MenuItem>
+    </SubMenu>
+      <MenuItem 
+    onClick={() => dispatch(filtercategory("breakfast"))}
+      
+      className='bg-white' icon={<img src={breakfast} width='21' alt="" />} label="breakfast">Breakfast</MenuItem>
+
+      <SubMenu 
+    onClick={() => dispatch(filtercategory("frozen"))}
+      className='bg-white' icon={<img src={frozen} width='21' alt="" />} label="frozen">
+      <MenuItem 
+            onClick={() => dispatch(filtersubcategory("cutted fish"))}
+      
+      >Cutted Fish </MenuItem>
+      <MenuItem 
+            onClick={() => dispatch(filtersubcategory("cutted meat"))}
+      
+      >Cutted Meat </MenuItem>
+      <MenuItem 
+            onClick={() => dispatch(filtersubcategory("icecream"))}
+      
+      >Ice cream </MenuItem>
+      <MenuItem 
+            onClick={() => dispatch(filtersubcategory("packet Meals"))}
+      
+      >Packet Meal </MenuItem>
+      <MenuItem 
+            onClick={() => dispatch(filtersubcategory("packet meat"))}
+      
+      >Packet meat</MenuItem>
     </SubMenu>
 
     
-    <SubMenu   className='bg-white' icon={<img src={organic} width='21' alt="" />} label="organic">
-      <MenuItem>honey </MenuItem>
-      <MenuItem>oil </MenuItem>
-      <MenuItem>syrup </MenuItem>
+    <SubMenu 
+    onClick={() => dispatch(filtercategory("organic"))}
+    
+    className='bg-white' icon={<img src={organic} width='21' alt="" />} label="organic">
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("honey"))}
+      >honey </MenuItem>
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("oil"))}
+      >oil </MenuItem>
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("syrups"))}
+      >syrup </MenuItem>
     </SubMenu>
 
-      <MenuItem   className='bg-white' icon={<img src={canned} width='21' alt="" />}>canned food</MenuItem>
+      <MenuItem  
+                  onClick={() => dispatch(filtercategory("canned food"))}
+
+      className='bg-white' icon={<img src={canned} width='21' alt="" />}>canned food</MenuItem>
   
 
-      <SubMenu  className='bg-white' icon={<img src={coffee} width='21' alt="" />} label="coffe & snacks">
-      <MenuItem>Chocolate </MenuItem>
-      <MenuItem>coffee </MenuItem>
-      <MenuItem>crisp </MenuItem>
+      <SubMenu 
+                  onClick={() => dispatch(filtercategory("coffe & snacks"))}
+      
+      className='bg-white'
+      
+      icon={<img src={coffee} width='21' alt="" />} label="coffe & snacks">
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("chocolate"))}
+
+      >Chocolate </MenuItem>
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("coffee"))}
+
+      >coffee </MenuItem>
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("chips"))}
+
+      >crisp </MenuItem>
     </SubMenu>
 
-    <SubMenu   className='bg-white' icon={<img src={lemonadas} width='21' alt="beverage & juice" />} label="beverage & juice">
-      <MenuItem>fizzy drinks </MenuItem>
-      <MenuItem>juice </MenuItem>
+    <SubMenu 
+                  onClick={() => dispatch(filtercategory("Beverage & Juice"))}
+    className='bg-white' icon={<img src={lemonadas} width='21' alt="beverage & juice" />} label="beverage & juice">
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("fizzy drinks"))}
+      >fizzy drinks </MenuItem>
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("juices"))}
+      >juice </MenuItem>
+
+    </SubMenu>
+
+
+
+    {/*  */}
+    <SubMenu 
+                  onClick={() => dispatch(filtercategory("sauces & jams"))}
+    className='bg-white' icon={<img src={sauses} width='21' alt="" />} label="sauces & jams">
+      <MenuItem 
+                  onClick={() => dispatch(filtersubcategory("jams"))}
+      >jams </MenuItem>
+
+<MenuItem 
+                  onClick={() => dispatch(filtersubcategory("Noodles"))}
+      >noodles </MenuItem>
+
+<MenuItem 
+                  onClick={() => dispatch(filtersubcategory("pasta"))}
+      >pasta </MenuItem>
+
+<MenuItem 
+                  onClick={() => dispatch(filtersubcategory("Sauces"))}
+      >sauces </MenuItem>
 
     </SubMenu>
   
