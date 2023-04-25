@@ -64,11 +64,11 @@ const RelatedProducts = () => {
   const settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToShow: 2,
+    slidesToScroll: 2,
     autoplay: true,
     speed: 800,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
     cssEase: "linear",
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />
@@ -89,7 +89,7 @@ const RelatedProducts = () => {
           return( 
           <div key={`${product.id}+${Date.now()}`} className="bg-white rounded-lg shadow-md px-4 w-40 p-4">
             <div onClick={()=> routetodetails(product)}>
-              <img src={product.cover} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.cover" />
+              <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.cover" />
             </div>
             <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
             <p className="text-gray-500 text-sm mb-5">{product.name}</p>

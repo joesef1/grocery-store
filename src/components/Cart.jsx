@@ -172,7 +172,7 @@ const exploreShop = () => {
         <div className='flex justify-between align-center py-4 my-5 '>
           <div className='w-[25%] relative rounded-md cursor-pointer'>
             <div className='relative '>
-              <img  className='' src={itemsIge} alt="" />
+              <img  className='' src={item.image} alt="" />
               <div className=' absolute  bg-slate-400 '>
                 <div className=' p-1  translate-x-[-10px] cursor-pointer absolute bg-[#212121] text-[#fff]  rounded-[100%] left-0 top-[50%] translate-y-[-50%]'>
                   <IoMdClose onClick={()=>dispatch(deleteitems(item))} />

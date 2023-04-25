@@ -6,7 +6,7 @@ const Banner = () => {
     backgroundImage: `url(${banner})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '380px',
+    height: '450px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

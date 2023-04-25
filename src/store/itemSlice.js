@@ -102,7 +102,7 @@ export const itemSlice = createSlice({
       // console.log(state.targetedsearchword);
 
       state.filteredItems = state.items.filter((item) =>
-    item.name.toLowerCase().startsWith(state.targetedsearchword.toLowerCase())
+    item.name.toLowerCase().includes(state.targetedsearchword.toLowerCase())
   );
 
       
