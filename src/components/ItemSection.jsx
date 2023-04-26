@@ -6,11 +6,15 @@ import { insertitem } from '../store/cartSlice';
 import { useNavigate } from "react-router-dom";
 import notFound  from "../assets/images/not-found.svg";
 import {increaseQuantity,decreaseQuantity } from '../store/cartSlice';
+import {showMorebtn ,hideMorebtn} from '../store/itemSlice';
+
 
 const ItemSection = () => {
+
+  // const [showMoreState, setShowMoreState] = useState(true);
   const [itemsToShow, setItemsToShow] = useState(36);
   const navigate = useNavigate();
-  const { isLoading, items,filteredItems, targetedsearchword } = useSelector(state => state.items);
+  const { isLoading, items,filteredItems, targetedsearchword ,showMoreState} = useSelector(state => state.items);
   const { cart } = useSelector(state => state.cart);
   // const { targetedsearchword } = useSelector(state => state.targetedsearchword);
   const dispatch = useDispatch();
@@ -19,6 +23,7 @@ const ItemSection = () => {
 
   useEffect(() => {
     dispatch(getitems());
+    dispatch(showMorebtn());
   }, [dispatch]);
 
   const routetodetails = (product) => {
@@ -36,7 +41,7 @@ const ItemSection = () => {
         const quantityInitem = item ? item.quantity : 0;
 
         return (
-          <div key={`${product.id}+${Date.now()}`} className="bg-white border-slate-0 border rounded-lg hover:shadow-md p-4 hover:translate-y-[-5px] ease-in duration-150 h-350px">
+          <div key={`${product.id}+${Date.now()}`} className="bg-white border-slate-0 border rounded-lg hover:shadow-md p-4 hover:translate-y-[-5px] ease-in duration-200 h-350px">
             <div onClick={() => routetodetails(product)}>
               <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.image" />
             </div>
@@ -51,7 +56,8 @@ const ItemSection = () => {
   <button
     onClick={() => dispatch(insertitem(product))}
     // className="hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">Add</button>
-            className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">Add</button>
+            className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-200 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative"
+            >Add</button>
 
 </div>
 </div>
@@ -187,9 +193,11 @@ const ItemSection = () => {
   
 
     {/* Show more button */}
-    {itemsToShow !== items.length &&
+    {
+    itemsToShow !== items.length && showMoreState
+    ?
     <button  className='text-white bg-[#212121] rounded-md py-2' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
-  }
+  :""}
 
 
     </div>

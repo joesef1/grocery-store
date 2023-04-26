@@ -76,13 +76,17 @@ export const cartSlice = createSlice({
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
-        icon: action.payload.img,
+        // icon: action.payload.image,
         className: 'foo-bar',
+        style: { 
+          color: '#212121',
+        }
       });
       
       
 
     }
+    console.log(action.payload);
     }, 
     
     

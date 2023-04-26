@@ -1,12 +1,14 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 // import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { Sidebar, Menu, MenuItem, SubMenu  } from 'react-pro-sidebar';
+import { Sidebar, Menu, MenuItem, SubMenu ,useProSidebar } from 'react-pro-sidebar';
 // import { Link } from 'react-router-dom';
 import  all from '../assets/images/category-icons/grocery-cart.png';
 import { filtercategory } from '../store/itemSlice';
 import { filtersubcategory } from '../store/itemSlice';
 import {useDispatch } from "react-redux";
 import { getitems } from '../store/itemSlice';
+import {showMorebtn ,hideMorebtn} from '../store/itemSlice';
+
 
 
 
@@ -14,24 +16,58 @@ import { getitems } from '../store/itemSlice';
 
 
 const CategorySection = () => {
+  const { collapseSidebar, toggleSidebar, collapsed, toggled, broken, rtl } = useProSidebar();
+  const [openSubMenuId, setOpenSubMenuId] = useState(null);
+
+
   const dispatch = useDispatch();
-  // const { filtercategory, filterSubcategory  } = usesubcategoryStore();
-  // const filtercategory = usesubcategoryStore((state) => state.filtercategory)
 
+  const handleSubMenuClick = (id) => {
+    if (id === 'all') {
+      dispatch(getitems());
+    } else {
+      dispatch(filtercategory(id));
+    }
 
+    // close the previously open submenu (if any)
+    if (openSubMenuId && openSubMenuId !== id) {
+      setOpenSubMenuId(null);
+    }
+
+    // toggle the clicked submenu
+    setOpenSubMenuId((prevId) => (prevId === id ? null : id));
+  };
+  
+
+  const handleMenuClick = () => {
+    dispatch(getitems());
+    dispatch(showMorebtn());
+
+  }
+  
+  
   return (
     <div >
     <div className='w-[340px] relative'></div>
 
-    <div className=' h-[100vh] top-[102px] bottom-0 fixed pt-6'>
+    <div
+     className=' h-[60vh] top-[102px] bottom-0 fixed pt-6'
+     >
 
     {/* <p className=' text-left w-[50%] '></p> */}
-<Sidebar  backgroundColor='#fff'	 className=' h-[100vh] text-[17px] font-medium  text-[#464646]' style={{width: '340px', backgroundColor: '#fff'}} >
-  <Menu >
-  <MenuItem onClick={()=> dispatch(getitems())}  className='bg-white my-1 mx-1'  icon={<img src={all} width='27' alt=""  />}> <p className=' text-left w-[50%] '>All categorys</p> </MenuItem>
+<Sidebar  backgroundColor='#fff'	 className=' h-[86vh] text-[17px] font-medium  text-[#464646]' style={{width: '340px', backgroundColor: '#fff'}} >
+  <Menu className='h-[100vh]'  >
+  <MenuItem 
+  
+  onClick={() => handleMenuClick()}
+  className='bg-white my-1 mx-1'  icon={<img src={all} width='27' alt=""  />}> <p className=' text-left w-[50%] '>All categorys</p> </MenuItem>
 
   <SubMenu
-                onClick={() => dispatch(filtercategory("fresh vegetables"))}
+                // onClick={() => handleSubMenuClick("fresh vegetables")}
+                isOpen={openSubMenuId === 'fresh vegetables'}
+                onClick={() => handleSubMenuClick('fresh vegetables')}
+
+
     className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Fresh-Vegetables.svg"    width='26' alt="" />} label="fresh vegetables">
       <MenuItem
       onClick={() => dispatch(filtersubcategory("flower vegetables"))}
@@ -67,8 +103,10 @@ const CategorySection = () => {
     </SubMenu>
 
     <SubMenu 
-    // onClick={() => filtercategory("")}
-    onClick={() => dispatch(filtercategory("fresh fruits"))}
+    
+    isOpen={openSubMenuId === 'fresh fruits'}
+    onClick={() => handleSubMenuClick('fresh fruits')}
+
 
      
      className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Fresh-Fruites.svg" width='24' alt="" />} label="fresh fruits">
@@ -100,7 +138,7 @@ const CategorySection = () => {
 
 
     <SubMenu 
-    onClick={() => dispatch(filtercategory("dairy & eggs"))}
+    onClick={() => handleSubMenuClick("dairy & eggs")}
 
     
     className='bg-white my-1 mx-1'  icon={<img className='' src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Dairy-eggs.svg" width='25' alt="" />} label="dairy & Eggs">
@@ -130,12 +168,12 @@ const CategorySection = () => {
        Yougurt</p> </MenuItem>
     </SubMenu>
       <MenuItem 
-    onClick={() => dispatch(filtercategory("breakfast"))}
+    onClick={() => handleSubMenuClick("breakfast")}
       
       className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124730/Bakery.svg" width='29' alt="" />} label="breakfast"> <p className=' text-left w-[50%] '>Breakfast</p></MenuItem>
 
       <SubMenu 
-    onClick={() => dispatch(filtercategory("frozen"))}
+    onClick={() => handleSubMenuClick("frozen")}
       className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124732/Frozen.svg" width='22' alt="" />} label="frozen">
       <MenuItem 
             onClick={() => dispatch(filtersubcategory("cutted fish"))}
@@ -176,7 +214,7 @@ const CategorySection = () => {
 
     
     <SubMenu 
-    onClick={() => dispatch(filtercategory("organic"))}
+    onClick={() => handleSubMenuClick("organic")}
     
     className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124732/Organic.svg" width='24' alt="" />} label="organic">
       <MenuItem 
@@ -200,13 +238,13 @@ const CategorySection = () => {
     </SubMenu>
 
       <MenuItem  
-                  onClick={() => dispatch(filtercategory("canned food"))}
+                  onClick={() => handleSubMenuClick("canned food")}
 
       className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/canned-food.svg" width='25' alt="" />}> <p className=' text-left w-[50%] '>Canned Food</p></MenuItem>
   
 
       <SubMenu 
-                  onClick={() => dispatch(filtercategory("coffe & snacks"))}
+                  onClick={() => handleSubMenuClick("coffe & snacks")}
       
       className='bg-white my-1 mx-1' 
       
@@ -235,7 +273,7 @@ const CategorySection = () => {
     </SubMenu>
 
     <SubMenu 
-                  onClick={() => dispatch(filtercategory("Beverage & Juice"))}
+                  onClick={() => handleSubMenuClick("Beverage & Juice")}
     className='bg-white my-1 mx-1'  icon={<img src='https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124730/Beverage-Juice.svg' width='18' alt="beverage & juice" />} label="beverage & juice">
       <MenuItem 
                   onClick={() => dispatch(filtersubcategory("fizzy drinks"))}
@@ -256,7 +294,7 @@ const CategorySection = () => {
 
     {/*  */}
     <SubMenu 
-                  onClick={() => dispatch(filtercategory("sauces & jams"))}
+                  onClick={() => handleSubMenuClick("sauces & jams")}
     className='bg-white my-1 mx-1'  icon={<img src='https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124732/Sauces-Jams.svg' width='24' alt="" />} label="sauces & jams">
       <MenuItem 
                   onClick={() => dispatch(filtersubcategory("jams"))}

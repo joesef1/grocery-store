@@ -93,34 +93,28 @@ export const currentSearchResult = createAsyncThunk(
 
 export const itemSlice = createSlice({
   name: 'items',
-  initialState: {items: [] , isLoading: false, error: null , readitem:null ,filteredItems: [],targetedsearchword: ''},
+  initialState: {items: [] ,showMoreState: false, isLoading: false, error: null , readitem:null ,filteredItems: [],targetedsearchword: ''},
   reducers: {
   
     setSearchQuery: (state, action) => {
        state.targetedsearchword = action.payload;
 
-      // console.log(state.targetedsearchword);
-
       state.filteredItems = state.items.filter((item) =>
     item.name.toLowerCase().includes(state.targetedsearchword.toLowerCase())
-  );
-
-      
-
-    },
-    // setFilteredItems: (state, action) => {
-    //   state.filteredItems = state.items.filter((item) =>
-    //     item.name.toLowerCase().includes(state.searchQuery.toLowerCase())
-    //   );
-    // },
+  )},
 
 
+  emptythesearch: (state, action) => {
+    state.targetedsearchword = "";
+  },
 
-    emptythesearch: (state, action) => {
-      state.targetedsearchword = "";
-    //  console.log(state.items);
-      // console.log(action.payload);
-    },
+  
+  showMorebtn: (state, action) => {
+    state.showMoreState = true
+  },
+  hideMorebtn: (state, action) => {
+    state.showMoreState = false
+  },
 
 
 
@@ -149,7 +143,9 @@ export const itemSlice = createSlice({
     [filtercategory.fulfilled]: (state, action) => {
       state.isLoading = false
       // console.log(action.payload);
-      state.items = action.payload;      
+      state.items = action.payload;     
+      state.showMoreState = false    
+
     },
     [filtercategory.rejected]: (state, action) => {
       state.isLoading = false
@@ -167,7 +163,8 @@ export const itemSlice = createSlice({
     [filtersubcategory.fulfilled]: (state, action) => {
       state.isLoading = false
     ////  console.log(action.payload);
-      state.items = action.payload;      
+      state.items = action.payload;  
+      state.showMoreState = false    
     },
     [filtersubcategory.rejected]: (state, action) => {
       state.isLoading = false
@@ -197,7 +194,7 @@ export const itemSlice = createSlice({
 })
 
 // export const {currentSearchResults} = itemSlice.actions
-export const { setSearchQuery, FilteredItems ,emptythesearch } = itemSlice.actions;
+export const { setSearchQuery, FilteredItems ,emptythesearch ,showMorebtn ,hideMorebtn } = itemSlice.actions;
 
 
 export default itemSlice.reducer

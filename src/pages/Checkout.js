@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate  } from 'react-router-dom';
 import Pagebanner from '../components/Pagebanner'
 import shop from '../assets/images/Grocery-1-1.jpg'
+import {clear} from '../store/cartSlice';
 
 
 
@@ -13,6 +14,7 @@ const Checkout = () => {
   const location = useLocation();
 const navigate = useNavigate();
   
+const dispatch = useDispatch();
 
 
   const checkoutprocess = location.state;
@@ -68,7 +70,16 @@ const navigate = useNavigate();
       {cart.length !== 0 ?
       <>
         <div className='my-12'>
-          <h1 className='text-2xl text-left mt-2 font-medium mb-6'>Your order</h1>
+  
+
+        <div className='flex justify-between'>
+            <h1 className='text-2xl text-left mt-2 font-medium mb-6'>Your order</h1>
+            <h1 
+ onClick={()=> dispatch(clear())}
+            className="border-[#e7e7e7] border hover:bg-[#424242]  bg-[#212121] cursor-pointer text-white ease-in duration-200  h-[35px] rounded items-center justify-center flex text-md  px-4 relative"
+            >clear the cart</h1>
+        </div>
+
           <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
             <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
               <tr>
