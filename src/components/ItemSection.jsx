@@ -174,7 +174,7 @@ const ItemSection = () => {
       }
 
 
-<div></div>
+{/* <div></div> */}
   {
     filteredItems.length || items.length === 0 &&
     <div className='flex justify-center items-center flex-col w-full mx-auto'>
@@ -191,16 +191,17 @@ const ItemSection = () => {
     </div>
   }
   
-
+<div className=' grid items-center '>
     {/* Show more button */}
     {
     itemsToShow !== items.length && showMoreState
     ?
-    <button  className='text-white bg-[#212121] rounded-md py-2' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
+    <button  className=' text-white bg-[#212121] rounded-md py-2 my-8 w-full mx-auto' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
   :""}
-
-
+</div>
+{/* <div></div> */}
     </div>
+    
   )
 }
 

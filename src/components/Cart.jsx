@@ -145,7 +145,7 @@ const handleItemHover = (itemId) => {
     <>
     <AnimatePresence>
         <motion.div
-          className="px-8 z-20 bg-white border-b-4 fixed top-0 bottom-0 right-0  w-[27rem] overflow-y-scroll  "
+          className="px-8 z-20 bg-white border-b-4 fixed top-0 bottom-0 right-0  w-[27rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-white scrollbar-thumb-rounded-full scrollbar-track-rounded-full"
           initial="closed"
           animate={globalState.sidecart.sidecartstate ? 'open' : 'closed'}
           exit="closed"

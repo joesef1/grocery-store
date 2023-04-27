@@ -8,6 +8,7 @@ import { filtersubcategory } from '../store/itemSlice';
 import {useDispatch } from "react-redux";
 import { getitems } from '../store/itemSlice';
 import {showMorebtn ,hideMorebtn} from '../store/itemSlice';
+import '../index.css'
 
 
 
@@ -48,15 +49,15 @@ const CategorySection = () => {
   
   return (
     <div >
-    <div className='w-[340px] relative'></div>
+    <div className='w-[340px] relative '></div>
 
     <div
-     className=' h-[60vh] top-[102px] bottom-0 fixed pt-6'
+     className=' h-[60vh] top-[102px] bottom-0 fixed pt-6 '
      >
 
     {/* <p className=' text-left w-[50%] '></p> */}
 <Sidebar  backgroundColor='#fff'	 className=' h-[86vh] text-[17px] font-medium  text-[#464646]' style={{width: '340px', backgroundColor: '#fff'}} >
-  <Menu className='h-[100vh]'  >
+  <Menu className='h-[100vh]   '  >
   <MenuItem 
   
   onClick={() => handleMenuClick()}

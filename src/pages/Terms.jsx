@@ -38,7 +38,7 @@ const Terms = () => {
       <div className='w-[30%] h-[100%] '>
         <ul>
 
-        <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-1'>
+        <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-2hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-1'>
           <Link
   activeClass="active"
   to="section1"
@@ -55,7 +55,7 @@ Purpose
 
           
 
-          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
+          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-2'>
           <Link
   activeClass="active"
   to="section2"
@@ -71,7 +71,7 @@ General Disclaimer
 
 
 
-          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
+          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-2'>
           <Link
   activeClass="active"
   to="section3"
@@ -87,7 +87,7 @@ Protecting Your Personal Information
 
 
 
-          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
+          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-2'>
           <Link
   activeClass="active"
   to="section4"
@@ -103,7 +103,7 @@ Trade Mark & Business Names
 
 
 
-          <li className='  cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
+          <li className='  cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-2'>
           <Link
   activeClass="active"
   to="section5"
@@ -119,7 +119,7 @@ Your Visit To Our Website
 
 
 
-          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2 '>
+          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-2 '>
           <Link
   activeClass="active"
   to="section6"
