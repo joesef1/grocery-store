@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FacebookAuthProvider } from "firebase/auth";
+import { TwitterAuthProvider } from "firebase/auth";
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -19,7 +21,7 @@ export const auth = getAuth(app);
 
 
 //google
-const googleProvider = new GoogleAuthProvider();
+export const googleProvider = new GoogleAuthProvider();
 
 export const signInWithGoogle = () => {
   signInWithPopup(auth, googleProvider)
@@ -38,20 +40,5 @@ export const signInWithGoogle = () => {
 // Create an instance of the Facebook provider object
 export const provider = new FacebookAuthProvider();
 
-// Authenticate with the provider using a popup window
-// firebase.auth().signInWithPopup(facebookprovider)
-//   .then((result) => {
-//     // The signed-in user info.
-//     const user = result.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     // Handle Errors here.
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // The email of the user's account used.
-//     const email = error.email;
-//     // The AuthCredential type that was used.
-//     const credential = FacebookAuthProvider.credentialFromError(error);
-//     // ...
-//   });
+export const twitterProvider = new TwitterAuthProvider();
+

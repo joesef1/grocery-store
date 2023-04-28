@@ -8,15 +8,15 @@ const BlogSideSection = () => {
     <div>
       
        {/* sidsection  */}
-<div className='w-[30%]'>
-  <div className='  shadow-md '>
+<div className=''>
+  <div className='  shadow-md border border-[#f5f5f5]'>
     <div className='flex justify-center '>
       <img className=' p-6'  src={salon} alt="salon" />
       </div>
   </div>
   
   
-  <div className='shadow-md mt-12 p-5'>
+  {/* <div className='shadow-md mt-12 p-5 border border-[#f5f5f5]'>
   
         <p className=' text-xl font-bold mb-6'>Recent posts</p>
         <ul>
@@ -117,7 +117,7 @@ Social Media
 
 
         </ul>
-      </div>
+      </div> */}
 
 
       

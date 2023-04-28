@@ -24,28 +24,55 @@ const BlogDetails = () => {
       pagename={blog.title}
       imgname={blogimg}
       />
-    <div>
-      <img src={blog.image} alt={blog.title} />
-        <p>{blog.date} </p> <p>{blog.category}</p>
-        <h1>{blog.title} </h1>
-        <h1>{blog.description} </h1>
-    </div>
+      
 
-    <h2>category:
-    <span>
+    <div className=' mx-auto lg:w-[70%] flex flex-col w-[70%] lg:flex-row  justify-center'>
+<div className='lg:w-[70%]   mx-auto  lg:mr-9'>
+{/*  */}
+<div>
+          <div className="" >
+            <img 
+            className='  rounded-lg mb-8'
+            src={blog.image} alt={blog.title} />
+            <p >
+              <span className=''>
+                {blog.date}
+              </span>
+              
+
+
+            
+
+            </p>
+            <h1 className=' text-[#333333] font-bold text-3xl my-5'>{blog.title}</h1>
+
+          <p className='mb-11 text-gray-500 '>
+              {blog.description}
+          </p>
+
+          </div>
+      
+    </div>
+{/*  */}
+<span className=' relative'>
+              <span className=' font-bold text-md'>Categories :  </span>
+
           {blog.category.map((category, index) => (
-            <button className='mx-2' key={index} onClick={() => handleCategoryClick(category)}>
-              {category}
+            <button
+            className="hover:underline decoration-solid  cursor-pointer  text-base  leading-1.26 transition-colors duration-300 ease-in mx-1"
+            key={index} onClick={() => handleCategoryClick(category)}>
+              {category} ,
             </button>
           ))}
         </span>
 
-      
-      </h2>
+</div>
 
-      <>
-       <BlogSideSection />
-      </>
+<div className='w-[50%] md:w-[330px]'>
+<BlogSideSection/>
+</div>      
+      </div>
+
     </>
   )
 }

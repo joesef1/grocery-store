@@ -6,7 +6,7 @@ const TextTruncate = ({ text, maxWords }) => {
     return <>{text}</>;
   } else {
     const truncatedText = words.slice(0, maxWords).join(" ");
-    return <>{truncatedText}...</>;
+    return <>{truncatedText}[...]</>;
   }
 };
 

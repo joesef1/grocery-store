@@ -26,27 +26,20 @@ const Blog = () => {
       pagename='Blog'
       imgname={blogimg}
       />
+
+
        {/* blog */}
-      <div className=' mx-auto w-[90%] flex justify-between'>
-        
+      <div className=' mx-auto lg:w-[70%] flex flex-col w-[70%] lg:flex-row  justify-center'>
 
-
-       {/* mainsection  */}
-<div className='w-[70%]  mr-9'>
+<div className='lg:w-[70%]   mx-auto  lg:mr-9'>
 <MainBlogSection />
-
-{/* {blog && blog.map((item, index) => (
-      <div className='' key={item.id*index*4000}> 
-        <h1>{item.date} blog</h1>
-      </div>
-    ))}
-{!blog.length && <p>No blog posts available.</p>} */}
 </div>
-       {/* mainsection  */}
 
-  <BlogSideSection/>
-       
-       </div>
+<div className='w-[50%] md:w-[330px]'>
+<BlogSideSection/>
+</div>      
+      
+      </div>
        {/* blog */}
 
     
