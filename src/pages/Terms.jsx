@@ -7,6 +7,9 @@ import '../index.css'
 
 
 const Terms = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [isVisible, setIsVisible] = useState(false);
 

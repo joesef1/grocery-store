@@ -11,6 +11,9 @@ import {increaseQuantity,decreaseQuantity } from '../store/cartSlice';
 
 
 const FilteredShop = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { cart } = useSelector(state => state.cart);
 
   const location = useLocation();

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { confirmPasswordReset, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase-config";
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 const Signup = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const schema = yup.object().shape({
     email: yup.string().email().required("enter email"),
     password: yup.string().min(8).max(20).required(),

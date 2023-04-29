@@ -1,20 +1,37 @@
-import React, { useEffect } from 'react';
+import React,{useEffect} from 'react'
+import { useLocation } from 'react-router-dom';
+import  blogimg  from "../assets/images/blog.jpg";
 import { useSelector, useDispatch } from 'react-redux';
-import { getblog } from '../store/blogSlice';
+import Pagebanner from '../components/Pagebanner';
 import { useNavigate } from 'react-router-dom';
-import TextTruncate from './TextTruncate';
-import Categoryblogcomp from "../components/Categoryblogcomp";
+import  BlogSideSection  from "../components/BlogSideSection";
+import TextTruncate from '../components/TextTruncate';
 
-const MainBlogSection = () => {
+const Categoryblogcomp = () => {
   const navigate = useNavigate();
 
-
-  const dispatch = useDispatch();
+  const location = useLocation();
+  const categoryName = location.state;
   const { blog, isLoading, error } = useSelector(state => state.blog);
 
-  useEffect(() => {
-    dispatch(getblog());
-  }, [dispatch]);
+
+
+
+  const filteredBlogs = blog.filter((blogPost) =>
+  blogPost.category.includes(categoryName)
+);
+
+
+const handleCategoryClick = categoryName => {
+  navigate('/CategoryBlog', { state: categoryName }).then(() => {
+    window.scrollTo(0, 0);
+    alert("scroll")
+  });
+
+
+
+  
+};
 
   const routetoblogdetails = blog => {
     navigate('/BlogDetails', { state: blog }).then(() => {
@@ -23,19 +40,11 @@ const MainBlogSection = () => {
     console.log(blog);
   };
 
-
-  const handleCategoryClick = categoryName => {
-    navigate('/CategoryBlog', { state: categoryName }).then(() => {
-      window.scrollTo(0, 0);
-    });
-  
-
-  };
-  
   return (
     <div>
-      {blog &&
-        blog.map((blog, index) => (
+        <div>
+      {filteredBlogs &&
+        filteredBlogs.map((blog, index) => (
           <div className="" key={blog.id * index * 4000}>
             <img 
             className='  rounded-lg mb-8'
@@ -45,8 +54,6 @@ const MainBlogSection = () => {
                 {blog.date}
               </span>
               
-
-
               <span className=' mx-3 px-5 relative'>
               <span class="absolute bg-[#212121] rounded-full h-2 w-2 left-0 top-1/2 transform -translate-y-1/2"></span>
 
@@ -57,10 +64,9 @@ const MainBlogSection = () => {
             key={index} onClick={() => handleCategoryClick(category)}>
               {category} ,
             </button>
-
           ))}
         </span>
-
+        
             </p>
             <h1 className=' text-[#333333] font-bold text-3xl my-5'>{blog.title}</h1>
 
@@ -78,9 +84,8 @@ const MainBlogSection = () => {
         ))}
       {!blog.length && <p>No blog posts available.</p>}
     </div>
-    // <Categoryblogcomp/>
+    </div>
+  )
+}
 
-  );
-};
-
-export default MainBlogSection;
+export default Categoryblogcomp

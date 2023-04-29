@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 import  blogimg  from "../assets/images/blog.jpg";
 import Pagebanner from '../components/Pagebanner';
@@ -9,15 +9,25 @@ import  BlogSideSection  from "../components/BlogSideSection";
 
 
 const BlogDetails = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   const handleCategoryClick = categoryName => {
-    navigate('/CategoryBlog', { state: categoryName });
+    navigate('/CategoryBlog', { state: categoryName }).then(() => {
+      window.scrollTo(0, 0);
+    });
 
   };
   
   const location = useLocation();
   const blog = location.state;
+
+  useEffect(() => {
+    console.log(blog);
+    }, [blog]);
+    
   return (
     <>
       <Pagebanner
@@ -26,7 +36,8 @@ const BlogDetails = () => {
       />
       
 
-    <div className=' mx-auto lg:w-[70%] flex flex-col w-[70%] lg:flex-row  justify-center'>
+    {/* <div className=' mx-auto lg:w-[70%] flex flex-col w-[70%] lg:flex-row  justify-center'> */}
+    <div className='  mx-auto lg:w-[74%] xl:w-[70%] md:w-[80%] flex flex-col w-[90%]  lg:flex-row  justify-center'>
 <div className='lg:w-[70%]   mx-auto  lg:mr-9'>
 {/*  */}
 <div>

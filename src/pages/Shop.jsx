@@ -11,6 +11,9 @@ import {useDispatch, useSelector } from "react-redux";
 //
 
 const Shop = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   //
   // const [selectedData, setSelectedData] = useState(null);
   const {isLoading , items} = useSelector(state => state.items);

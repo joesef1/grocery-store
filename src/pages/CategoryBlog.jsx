@@ -1,18 +1,27 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useLocation } from 'react-router-dom';
 import  blogimg  from "../assets/images/blog.jpg";
 import { useSelector, useDispatch } from 'react-redux';
 import Pagebanner from '../components/Pagebanner';
 import { useNavigate } from 'react-router-dom';
 import  BlogSideSection  from "../components/BlogSideSection";
+import TextTruncate from '../components/TextTruncate';
+import Categoryblogcomp from "../components/Categoryblogcomp";
+
+
+
 
 
 const CategoryBlog = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   const location = useLocation();
   const categoryName = location.state;
-  const { blog } = useSelector(state => state.blog);
+  const { blog, isLoading, error } = useSelector(state => state.blog);
+
 
 
 
@@ -24,45 +33,40 @@ const CategoryBlog = () => {
 const handleCategoryClick = categoryName => {
   navigate('/CategoryBlog', { state: categoryName });
 
+
+
+  
 };
+
+  const routetoblogdetails = blog => {
+    navigate('/BlogDetails', { state: blog });
+    console.log(blog);
+  };
+
   return (
     <div>
       <Pagebanner
       pagename={categoryName}
       imgname={blogimg}
       />
+{/* 
+       <Categoryblogcomp/>
 
-<div>
-      {filteredBlogs.length > 0 ? (
-        filteredBlogs.map((blogPost) => (
-          <div key={blogPost.id}>
-            <div> <img src={blogPost.image} alt="" />  </div>
-            <h1>{blogPost.title}</h1>
-            <p>{blogPost.date}</p>
-            <p>{blogPost.category.join(", ")}</p>
-            <p>{blogPost.description}</p>
-            <h2>category:
-    <span>
-          {blogPost.category.map((category, index) => (
-            <button className='mx-2' key={index} onClick={() => handleCategoryClick(category)}>
-              {category}
-            </button>
-          ))}
-        </span>
-
-      
-      </h2>
-          </div>
-        ))
-      ) : (
-        <p>No blog posts available for this category.</p>
-      )}
-    </div>
-      
       <>
       <BlogSideSection />
+      </> */}
+      {/* <div className=' mx-auto lg:w-[70%] flex flex-col w-[70%] lg:flex-row  justify-center'> */}
+      <div className='  mx-auto lg:w-[74%] xl:w-[70%] md:w-[80%] flex flex-col w-[90%]  lg:flex-row  justify-center'>
 
-      </>
+<div className='lg:w-[70%]   mx-auto  lg:mr-9'>
+<Categoryblogcomp />
+</div>
+
+<div className='w-[50%] md:w-[330px]'>
+<BlogSideSection/>
+</div>      
+      
+      </div>
     </div>
   )
 }

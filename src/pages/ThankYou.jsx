@@ -9,6 +9,9 @@ import {clear} from '../store/cartSlice';
 
 
 const ThankYou = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const navigatefromsucsess = () => {
     navigate('/Shop')

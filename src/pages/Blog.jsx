@@ -13,6 +13,9 @@ import { Link } from 'react-scroll';
 
 
 const Blog = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const dispatch = useDispatch();
   const { blog, isLoading, error } = useSelector(state => state.blog);
 
@@ -29,7 +32,7 @@ const Blog = () => {
 
 
        {/* blog */}
-      <div className=' mx-auto lg:w-[70%] flex flex-col w-[70%] lg:flex-row  justify-center'>
+      <div className='  mx-auto lg:w-[74%] xl:w-[70%] md:w-[80%] flex flex-col w-[90%]  lg:flex-row  justify-center'>
 
 <div className='lg:w-[70%]   mx-auto  lg:mr-9'>
 <MainBlogSection />

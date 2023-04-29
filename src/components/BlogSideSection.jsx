@@ -1,9 +1,21 @@
 import React from 'react'
 import  salon  from "../assets/images/salon.png";
 import { Link } from 'react-scroll';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const BlogSideSection = () => {
+  const navigate = useNavigate();
+  const { blog, isLoading, error } = useSelector(state => state.blog);
+ console.log(blog);
+ const routetoblogdetails = blog => {
+  navigate('/BlogDetails', { state: blog }).then(() => {
+    window.scrollTo(0, 0);
+  });
+  console.log(blog);
+};
+
   return (
     <div>
       
@@ -16,108 +28,26 @@ const BlogSideSection = () => {
   </div>
   
   
-  {/* <div className='shadow-md mt-12 p-5 border border-[#f5f5f5]'>
-  
-        <p className=' text-xl font-bold mb-6'>Recent posts</p>
-        <ul>
-
-        <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-1'>
+  <div className="shadow-md mt-12 p-5 border border-[#f5f5f5]">
+  <p className="text-xl font-bold mb-6">Recent posts</p>
+  <ul className="list-disc list-inside">
+    {blog.map((post, index) => {
+      return (
+        <li  key={index} className="cursor-pointer mb-4 text-sm" style={{ display: 'flex', alignItems: 'center' }}>
+          <span className="mr-2 text-[#6b7280]">•</span>
           <Link
-  activeClass="active"
-  to="section1"
-  spy={true}
-  smooth={true}
-  offset={-170}
-    duration={1000}
->
-Purpose
-</Link>
-          </li>
+          onClick={() => routetoblogdetails(post)}
+            className="block text-md hover:underline decoration-solid cursor-pointer text-[#212121] leading-1.26 transition-colors duration-300 ease-in p-1"
+          >
+            {post.title}
+          </Link>
+        </li>
+      );
+    })}
+  </ul>
+</div>
 
 
-
-          
-
-          <li className=' text cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
-          <Link
-  activeClass="active"
-  to="section2"
-  spy={true}
-  smooth={true}
-  offset={-170}
-    duration={1000}
->
-General Disclaimer
-
-</Link>
-          </li>
-
-
-
-          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
-          <Link
-  activeClass="active"
-  to="section3"
-  spy={true}
-  smooth={true}
-  offset={-170}
-    duration={1000}
->
-Protecting Your Personal Information
-</Link>
-          </li>
-
-
-
-
-          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
-          <Link
-  activeClass="active"
-  to="section4"
-  spy={true}
-  smooth={true}
-  offset={-170}
-    duration={1000}
->
-Trade Mark & Business Names
-</Link>
-          </li>
-
-
-
-
-          <li className='  cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2'>
-          <Link
-  activeClass="active"
-  to="section5"
-  spy={true}
-  smooth={true}
-  offset={-170}
-    duration={1000}
->
-Your Visit To Our Website
-</Link>
-          </li>
-
-
-
-
-          <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-slate-200 to-slate-50" transition duration-200 ease-in p-2 '>
-          <Link
-  activeClass="active"
-  to="section6"
-  spy={true}
-  smooth={true}
-  offset={-170}
-  duration={1000}
->
-Social Media
-</Link>
-          </li>
-
-
-        </ul>
-      </div> */}
 
 
       

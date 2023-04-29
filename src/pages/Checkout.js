@@ -11,6 +11,9 @@ import {clear} from '../store/cartSlice';
 
 
 const Checkout = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const location = useLocation();
 const navigate = useNavigate();
   
@@ -65,7 +68,7 @@ const dispatch = useDispatch();
 <>
 <Pagebanner imgname={shop} pagename='Checkout' />
   
-      <div className='flex flex-col w-[90%] my-12 mx-auto'>
+      <div className='flex flex-col w-[90%] my-12 mx-auto overflow-x-scroll'>
   
       {cart.length !== 0 ?
       <>

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React,{useState,useEffect} from 'react'
+
 import {signInWithPopup, signInWithEmailAndPassword , FacebookAuthProvider  } from "firebase/auth";
 import { auth } from "../firebase-config";
 import { Link } from "react-router-dom";
@@ -9,6 +10,9 @@ import { signInWithGoogle , provider ,googleProvider,twitterProvider} from "../f
 
 
 const Login = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
