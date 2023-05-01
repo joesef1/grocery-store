@@ -11,10 +11,14 @@ const FAQ = () => {
 return (
   <div className=''>
 <Pagebanner
- pagename={mypagenameProp}
- imgname={faq}
- />
-<AccordionSection />
+pagename={mypagenameProp}
+imgname={faq}
+/>
+
+<div className=' translate-y-[-100px] '>
+  <AccordionSection />
+</div>
+
 
   </div>
 

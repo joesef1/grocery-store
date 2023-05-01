@@ -48,7 +48,7 @@ function App() {
         <Route path="/BlogDetails" element={<BlogDetails />} />
         <Route path="/CategoryBlog" element={<CategoryBlog />} />
       </Routes>
-    {/* <Footer /> */}
+    <Footer />
     </BrowserRouter>
     </ContexAuthState>
     </Provider>

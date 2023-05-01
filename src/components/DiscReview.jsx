@@ -53,7 +53,7 @@ const DiscReview = () => {
 {/* reviews */}
 {toggleState === 2 &&
 <div className=''> 
-There is no reviews yet!
+this feature will be in the next release, I am working on it now &#128521;
 </div>
 }
 </div>

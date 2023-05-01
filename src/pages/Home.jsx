@@ -10,7 +10,7 @@ const Home = () => {
   }, []);
   return (
     <>
-    <div className=' bg-[rgb(249,249,249)] flex '>
+    <div className=' bg-[#F9F9F9] flex pb-[70px]'>
 
       <div  className='lg:block hidden bg-white'>
       <CategorySection/>

@@ -13,6 +13,16 @@ const ItemSection = () => {
 
   // const [showMoreState, setShowMoreState] = useState(true);
   const [itemsToShow, setItemsToShow] = useState(36);
+
+
+  const [addbtnstate, setAddbtnstate] = useState(false);
+  const handeladdbtnstate = (product) => {
+    const hoveredproduct = items.find((pro)=> pro.id === product.id)
+    console.log(hoveredproduct);
+    // setAddbtnstate(true)
+  }
+  
+
   const navigate = useNavigate();
   const { isLoading, items,filteredItems, targetedsearchword ,showMoreState} = useSelector(state => state.items);
   const { cart } = useSelector(state => state.cart);
@@ -28,10 +38,12 @@ const ItemSection = () => {
 
   const routetodetails = (product) => {
     navigate('/Details', { state: product });
-    console.log(product);
+    setAddbtnstate(true)
+
   }
 
   return ( 
+    <>
     <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xxl:grid-cols-6 gap-3 "> 
       {
       targetedsearchword !== "" ? 
@@ -55,9 +67,8 @@ const ItemSection = () => {
 <div className='w-[90%] '>
   <button
     onClick={() => dispatch(insertitem(product))}
-    // className="hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">Add</button>
-            className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-200 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative"
-            >Add</button>
+            className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-200 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative text-sm"
+            >ADD</button>
 
 </div>
 </div>
@@ -117,16 +128,24 @@ const ItemSection = () => {
             <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
             <p className="text-gray-500 text-sm mb-5  h-[40px]">{product.name}</p>
 
-            {/*  */}
+            {/* oreginal */}
             {quantityInitem === 0 ?
-            <div className='mb-3 flex w-[100%] justify-center items-center m-0 p-0 h-[35px]  translate-y-[5px]'>
-              <div className='w-[90%] '>
+            
+            <div onMouseMove={()=>handeladdbtnstate(product)} className='mb-3 flex w-[100%] justify-center items-center m-0 p-0 h-[35px]  translate-y-[5px]'>
+              <div className='w-[100%] '>
                 <button
                   onClick={() => dispatch(insertitem(product))}
-                  // className="hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">Add</button>
-            className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">Add</button>
+            className="border-[#e7e7e7] font-semibold text-sm border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">ADD</button>
 
               </div>
+
+              {/*  */}
+              {/* <button
+                    className={` bg-[#999999] text-[#fff] font-bold hover:bg-[#3f3f3f] hover:text-[#fff] h-full w-[65px] rounded-r cursor-pointer ${addbtnstate ? 'bg-[#3f3f3f] text-[#fff]':''} `}
+                  >
+                    <span className="m-auto text-xl leading-6 font-thin">+</span>
+                  </button> */}
+              {/*  */}
             </div>
             
             :
@@ -191,17 +210,22 @@ const ItemSection = () => {
     </div>
   }
   
-<div className=' grid items-center '>
-    {/* Show more button */}
-    {
+
+
+    </div>
+
+    <div className='flex justify-center items-center'>
+  {
     itemsToShow !== items.length && showMoreState
     ?
-    <button  className=' text-white bg-[#212121] rounded-md py-2 my-8 w-full mx-auto' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
-  :""}
+    <button  className='text-white bg-[#212121] rounded-md py-2 mt-16 px-16' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
+    : ""
+  }
 </div>
-{/* <div></div> */}
-    </div>
-    
+
+
+
+  </>
   )
 }
 

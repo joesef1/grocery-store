@@ -55,10 +55,12 @@ const Navbar = () => {
 
     function handleClickOutside(e) {
       if (searchRef.current.contains(e.target)) {
-        // console.log("icon");
+        console.log(inputRef);
+        inputRef.focus();
+
       } else {
         if (inputRef.current && inputRef.current.contains(e.target)) {
-          // console.log(inputRef);
+          // console.log("inputRe.........f");
         }else{
             hideinput()
             dispatch(closesearchIcon())
@@ -88,6 +90,8 @@ const Navbar = () => {
 
       const showsearchinput = (status) => {
         dispatch(opensearchIcon())
+        // inputRef.focus();
+        // console.log("inputRef");
         }
   //
 
@@ -124,12 +128,12 @@ const handleSearchQueryChange = (e) => {
     <div className=''>
 
       <input 
+        
         value={searchword}
         ref={inputRef}
-        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0' type="text" 
+        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0 p-3 bg-[#F3F3F3] rounded-lg' type="text" 
         placeholder='E.g: Meat,Egg'
         onChange={handleSearchQueryChange}
-
         />
         
     

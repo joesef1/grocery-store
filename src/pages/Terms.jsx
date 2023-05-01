@@ -38,7 +38,7 @@ const Terms = () => {
 
       {/* sidenav */}
       {/* <div  id="my-section"> */}
-      <div className='w-[30%] h-[100%] '>
+      <div className='w-[30%] h-[100%] hidden sm:block '>
         <ul>
 
         <li className=' cursor-pointer mb-4 text-sm hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-2hover:bg-gradient-to-r from-[#F3F3F3] to-slate-50" transition duration-200 ease-in p-1'>

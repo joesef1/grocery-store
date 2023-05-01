@@ -84,7 +84,7 @@ const Login = () => {
   
 
   return (
-    <div className="mb-6 ">
+    <div className="mb-16 mt-18 ">
       <Pagebanner pagename="account" imgname={account} />
       {errorMessage && (
           // <div class="text-red-500 text-sm mb-4">{errorMessage}</div>

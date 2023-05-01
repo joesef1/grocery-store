@@ -68,7 +68,7 @@ const dispatch = useDispatch();
 <>
 <Pagebanner imgname={shop} pagename='Checkout' />
   
-      <div className='flex flex-col w-[90%] my-12 mx-auto overflow-x-scroll'>
+      <div className='flex flex-col w-[90%] mx-auto overflow-x-scroll'>
   
       {cart.length !== 0 ?
       <>
@@ -131,7 +131,7 @@ const dispatch = useDispatch();
           </table>
         </div>
         <h1 className='text-2xl text-left mt-2 font-medium mb-6'>Billing details</h1>
-      <div className='border rounded-lg p-10 bg-[#F9FAFB] z-0'>
+      <div className='border rounded-lg p-10 bg-[#F9FAFB] z-0 mb-9'>
         <div className='flex justify-center' id='paypal-button'></div>
       </div>
         </>
@@ -142,7 +142,7 @@ const dispatch = useDispatch();
             <img src='https://cartsy.redq.io/wp-content/themes/cartsy/assets/images/not-found-alt.svg' alt='' />
             <h1 className='text-black mt-7 font-bold text-xl'>No products in the cart.</h1>
           </div>
-          <div className='flex justify-center'>
+          <div className='flex justify-center  mb-32'>
             {/* <p>Continue shopping</p> */}
             <div onClick={()=> exploreShop()} className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-center text-white items-center left-0 right-0  bg-[#212121] m-6 rounded-lg'>
   <div className='flex justify-center ><p '> <p> Continue shoping</p></div>

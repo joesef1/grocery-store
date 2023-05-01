@@ -55,87 +55,14 @@ const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
 
         {/*  */}
       </div>
-      {/* sorting
-  {/*  */}
-  {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {sortedData.map((product) =>{ 
-        const item = cart.find(item => item.id === product.id);
-        const quantityInitem = item ? item.quantity : 0;
-
-        return(
-
-          {quantityInitem === 0 ?
-            <div key={`${product.id}-${Date.now()}`} className="bg-white rounded-lg shadow-md p-4">
-          <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.image" />
-          <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
-          <p className="text-gray-500 text-sm mb-5">{product.name}</p>
-  
-          <div className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
-            <div className='w-[80%]'>
-            <button
-          onClick={()=>dispatch(insertitem(product))}
-            className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
-            </div>
-          
-          </div>
-          
-        </div>
-        :"zero"
-        }
-    
-      )})}
-    </div> */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {/*  */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6  gap-4">
   {sortedData.map((product) =>{ 
     const item = cart.find(item => item.id === product.id);
     const quantityInitem = item ? item.quantity : 0;
 
     return(
-      // <>
-      // {quantityInitem === 0 ?
-      //   <div key={`${product.id}-${Date.now()}`} className="bg-white rounded-lg shadow-md p-4">
-      //     <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.image" />
-      //     <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
-      //     <p className="text-gray-500 text-sm mb-5">{product.name}</p>
-
-      //     <div className='flex w-[100%] justify-center items-center m-0 p-0 h-[35px]'>
-      //       <div className='w-[80%]'>
-      //         <button
-      //           onClick={()=>dispatch(insertitem(product))}
-      //           className="bg-gray-100 w-[100%] h-[35px] flex rounded-l-md items-center justify-center flex text-md  px-4 relative">Add</button>
-      //       </div>
-      //     </div>
-
-      //   </div>
-        
-      // :
-      // <>
-            
-      //       <div className="flex flex-row  h-12  rounded-lg relative bg-transparent ">
-      //         <button
-      //           data-action="decrement"
-      //           className="border-[#212121] border text-[#212121] hover:text-white ease-in duration-200  hover:bg-[#212121] h-full w-20 rounded-l cursor-pointer outline-none"
-      //           onClick={() => dispatch(decreaseQuantity(product))}
-      //         >
-      //           <span className="m-auto text-xl leading-6 font-thin">−</span>
-      //         </button>
-      //         <input
-      //           type="text"
-      //           className="border-[#212121] border appearance-none focus:outline-none text-center   font-semibold text-md text-black focus:text-black md:text-base cursor-default flex items-center  outline-none"
-      //           name="custom-input-number"
-      //           value={quantityInitem}
-      //         />
-      //         <button
-      //           data-action="increment"
-      //           className="border-[#212121] border text-[#212121] hover:text-white ease-in duration-200  hover:bg-[#212121] h-full w-20 rounded-r cursor-pointer outline-none"
-      //           onClick={() => dispatch(increaseQuantity(product))}
-      //         >
-      //           <span className="m-auto text-xl leading-6 font-thin">+</span>
-      //         </button>
-      //       </div>
-      //       </>
-      //       }
-      //       </>
+    
       <div key={`${product.id}+${Date.now()}`} className="bg-white border-slate-0 border rounded-lg hover:shadow-md p-4 hover:translate-y-[-5px] ease-in duration-150 ">
       <div onClick={() => routetodetails(product)}>
         <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.image" />
@@ -149,15 +76,13 @@ const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
         <div className='w-[90%] '>
           <button
             onClick={() => dispatch(insertitem(product))}
-            className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">Add</button>
+            className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">ADD</button>
         </div>
       </div>
-
       
       :
       <>
       
-    
       <div className="custom-number-input mb-3 ">
                 <div className="flex flex-row translate-y-2 h-8 w-full rounded-lg relative bg-transparent ">
                   <button
@@ -185,14 +110,12 @@ const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
               </div>
       </>
     }
-      
-      {/*  */}
 
-      {/*  */}
     </div>
     )
   })}
 </div>
+{/*  */}
 
 
 

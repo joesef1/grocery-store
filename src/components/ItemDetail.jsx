@@ -55,7 +55,7 @@ navigate('/FilteredShop', { state: subcategoty });
       <>
       <div className='flex justify-between w-[90%] mx-auto mt-24'>
       <div className='h-[90vh] w-[50%]'>
-      <img className='w-[90%] h-[80%]' src={product.image} alt=''/>
+      <img className='w-[90%] h-[80%] bg-no-repeat	bg-cover	bg-center	' src={product.image} alt=''/>
       </div>
     <div className='w-[50%]'>
         <h1 className='text-3xl mb-5'>{product.name}</h1>
@@ -101,25 +101,27 @@ navigate('/FilteredShop', { state: subcategoty });
           </div>
         </div>
       
-        <span>category: <span className='text-bold text-lg'>
+        <span > <span className='text-md font-semibold'>category :</span>  <span className='text-bold text-lg'>
         
         {/* <p onClick={()=>shopwithcaregory(product.category)}>  
         <a 
         ></a> 
         </p> */}
         <p
+        className='inline-block	'
         onClick={()=>handleLinkClickcategoty(product.category)}
-          >{product.category}</p>
+          >{product.category}  , </p>
 
         
-        , 
+        &nbsp;
         {/* <Link
         onClick={()=>dispatch(filtersubcategoryShop(product.subcategory))}
           to="/FilteredShop">{product.subcategory}</Link> */}
 
 <p
+className='inline-block	'
         onClick={()=>handleLinkClicksubcategoty(product.subcategory)}
-          >{product.subcategory}</p>
+          >{product.subcategory} </p>
 
 
 

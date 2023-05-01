@@ -53,12 +53,12 @@ const Signup = () => {
   }
 
   return (
-    <div>
+    <div className="mb-[70px]">
       <Pagebanner
         pagename='account'
         imgname={account}
       />
-      <div class="bg-gray-50 p-8 rounded-lg shadow-md lg:w-[40%] md:w-[60%] sm:w-[70%] w-[85%] mx-auto">
+      <div class="bg-gray-50 p-8 rounded-lg shadow-md lg:w-[40%] md:w-[60%] sm:w-[70%] w-[85%] mx-auto ">
         <h3 class="text-lg font-bold mb-4">Register User</h3>
 
         <form onSubmit={handleSubmit(onSubmit)}>
