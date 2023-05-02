@@ -7,6 +7,8 @@ import { Link, useNavigate  } from 'react-router-dom';
 import Pagebanner from '../components/Pagebanner'
 import shop from '../assets/images/Grocery-1-1.jpg'
 import {clear} from '../store/cartSlice';
+import '../index.css'
+
 
 
 
@@ -68,7 +70,7 @@ const dispatch = useDispatch();
 <>
 <Pagebanner imgname={shop} pagename='Checkout' />
   
-      <div className='flex flex-col w-[90%] mx-auto overflow-x-scroll'>
+      <div className='flex flex-col w-[90%] mx-auto '>
   
       {cart.length !== 0 ?
       <>
@@ -83,52 +85,54 @@ const dispatch = useDispatch();
             >clear the cart</h1>
         </div>
 
-          <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
-            <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-              <tr>
-                <th scope='col' className='px-6 py-3'>
-                  Product name
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Category
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Qty
-                </th>
-                <th scope='col' className='px-6 py-3'>
-                  Price
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {cart.map((item, index) => (
-                <tr key={item.id * index * index * 10000} className='bg-white border-b dark:bg-gray-900 dark:border-gray-700'>
-                  <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
-                    {item.name}
+        <div className='overflow-x-scroll'>
+            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400 '>
+              <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                <tr>
+                  <th scope='col' className='px-6 py-3'>
+                    Product name
                   </th>
-                  <td className='px-6 py-4'>
-                    {item.category}
-                  </td>
-                  <td className='px-6 py-4'>
-                    {item.quantity}
-                  </td>
-                  <td className='px-6 py-4'>
-                    ${item.price * item.quantity}
+                  <th scope='col' className='px-6 py-3'>
+                    Category
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Qty
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {cart.map((item, index) => (
+                  <tr key={item.id * index * index * 10000} className='bg-white border-b dark:bg-gray-900 dark:border-gray-700'>
+                    <th scope='row' className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                      {item.name}
+                    </th>
+                    <td className='px-6 py-4'>
+                      {item.category}
+                    </td>
+                    <td className='px-6 py-4'>
+                      {item.quantity}
+                    </td>
+                    <td className='px-6 py-4'>
+                      ${item.price * item.quantity}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr className='font-semibold text-gray-900 dark:text-white'>
+                  <th scope='row' className='px-6 py-3 text-base'>Total</th>
+                  <td></td>
+                  <td className='px-6 py-3'>{cart.reduce((total, item) => total + item.quantity, 0)}</td>
+                  <td className='px-6 py-3'>
+                    ${cart.reduce((total, item) => total + item.price * item.quantity, 0)}
                   </td>
                 </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr className='font-semibold text-gray-900 dark:text-white'>
-                <th scope='row' className='px-6 py-3 text-base'>Total</th>
-                <td></td>
-                <td className='px-6 py-3'>{cart.reduce((total, item) => total + item.quantity, 0)}</td>
-                <td className='px-6 py-3'>
-                  ${cart.reduce((total, item) => total + item.price * item.quantity, 0)}
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+              </tfoot>
+            </table>
+        </div>
         </div>
         <h1 className='text-2xl text-left mt-2 font-medium mb-6'>Billing details</h1>
       <div className='border rounded-lg p-10 bg-[#F9FAFB] z-0 mb-9'>

@@ -4,7 +4,7 @@ import  blogimg  from "../assets/images/blog.jpg";
 import Pagebanner from '../components/Pagebanner';
 import { useNavigate } from 'react-router-dom';
 import  BlogSideSection  from "../components/BlogSideSection";
-
+import Comment from "../components/Comment";
 
 
 
@@ -37,7 +37,7 @@ const BlogDetails = () => {
       
 
     {/* <div className=' mx-auto lg:w-[70%] flex flex-col w-[70%] lg:flex-row  justify-center'> */}
-    <div className='  mx-auto lg:w-[74%] xl:w-[70%] md:w-[80%] flex flex-col w-[90%]  lg:flex-row  justify-center'>
+    <div className='mb-9  mx-auto lg:w-[74%] xl:w-[70%] md:w-[80%] flex flex-col w-[90%]  lg:flex-row  justify-center'>
 <div className='lg:w-[70%]   mx-auto  lg:mr-9'>
 {/*  */}
 <div>
@@ -77,11 +77,25 @@ const BlogDetails = () => {
           ))}
         </span>
 
+
+      
+        <div className='mt-20'>
+          <h1 className='mb-10 text-2xl font-bold text-[#1d1d1d]'>Comments :</h1>
+          <p>this feature will be in the next release, I am working on it now 😉</p>
+            <Comment/>
+        </div>
+
 </div>
 
 <div className='w-[50%] md:w-[330px]'>
 <BlogSideSection/>
-</div>      
+</div>  
+
+
+
+
+
+
       </div>
 
     </>

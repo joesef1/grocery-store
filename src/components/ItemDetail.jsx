@@ -53,7 +53,7 @@ navigate('/FilteredShop', { state: subcategoty });
     <div>
       
       <>
-      <div className='flex justify-between w-[90%] mx-auto mt-24'>
+      <div className='flex md:flex-row md:justify-between flex-col justify-center w-[90%] mx-auto mt-24'>
       <div className='h-[90vh] w-[50%]'>
       <img className='w-[90%] h-[80%] bg-no-repeat	bg-cover	bg-center	' src={product.image} alt=''/>
       </div>

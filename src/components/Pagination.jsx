@@ -12,13 +12,18 @@ const Pagination = ({
     pages.push(i);
   }
 
+  const setCurrentPagefunc = (page) => {
+    setCurrentPage(page);
+    window.scrollTo(0, 0);
+  }
+  
   return (
     <div className="flex flex-wrap justify-center my-10">
       {pages.map((page, index) => {
         return (
           <button
             key={index}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => setCurrentPagefunc(page)}
             className={`w-8 bg-[#212121]  h-8 font-semibold text-sm mx-2 rounded-md transition-colors duration-300 ${
               page === currentPage
                 ? "bg-[#212121] text-white"

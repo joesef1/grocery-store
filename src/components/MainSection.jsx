@@ -51,7 +51,7 @@
 // export default MainSection
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { opensidecategory, closesidecategory } from '../store/sidecategorySlice';
 import Banner from './Banner';
@@ -60,6 +60,7 @@ import MobileSideCategory from './MobileSideCategory';
 import arrow from '../assets/icons/down-arrow.png';
 
 const MainSection = () => {
+
   const dispatch = useDispatch();
   const sidecategory = useSelector(state => state.sidecategory);
   const [sidecategorystate, setSidecategorystate] = useState(sidecategory);
@@ -71,7 +72,9 @@ const MainSection = () => {
   const handleCategory = () => {
     setSidecategorystate(true);
   }
-
+  useEffect(() => {
+    handleClose()
+  }, []);
   return (
     <>
       <div 
@@ -83,7 +86,7 @@ const MainSection = () => {
       </div>
 
       {sidecategorystate && 
-        <div className='md:hidden fixed bg-white z-50 top-0 right-0 bottom-0 left-0'>
+        <div className='md:hidden  fixed bg-white z-50 top-0 right-0 bottom-0 left-0'>
           <MobileSideCategory handleClose={handleClose} />
         </div>
       }

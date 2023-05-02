@@ -5,10 +5,12 @@ import { Sidebar, Menu, MenuItem, SubMenu ,useProSidebar } from 'react-pro-sideb
 import  all from '../assets/images/category-icons/grocery-cart.png';
 import { filtercategory } from '../store/itemSlice';
 import { filtersubcategory } from '../store/itemSlice';
-import {useDispatch } from "react-redux";
+import {useDispatch,useSelector } from "react-redux";
 import { getitems } from '../store/itemSlice';
 import {showMorebtn ,hideMorebtn} from '../store/itemSlice';
 import '../index.css'
+
+
 
 
 
@@ -46,17 +48,25 @@ const CategorySection = () => {
 
   }
   
+
+
+
+  const filtersubcategorys = (sub) => {
+    dispatch(filtersubcategory(sub))
+  }
+  
   
   return (
     <div >
     <div className='w-[340px] relative '></div>
 
     <div
+    
      className=' md:h-[60vh] md:top-[102px] md:bottom-0 md:fixed md:pt-6   absolute top-0 bottom-0 left-0 right-0 '
      >
 
     {/* <p className=' text-left w-[50%] '></p> */}
-<Sidebar  backgroundColor='#fff'	 className=' md:w-[30px] bg-white md:h-[86vh] text-[17px] font-medium  text-[#464646]' style={{width: '340px', backgroundColor: '#fff'}} >
+<Sidebar  id='categorysection' backgroundColor='#fff'	 className=' md:w-[30px] bg-white md:h-[86vh] text-[17px] font-medium  text-[#464646]' style={{width: '340px', backgroundColor: '#fff'}} >
   <Menu className='h-[100vh]   '  >
   <MenuItem 
   
@@ -71,30 +81,30 @@ const CategorySection = () => {
 
     className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Fresh-Vegetables.svg"    width='26' alt="" />} label="fresh vegetables">
       <MenuItem
-      onClick={() => dispatch(filtersubcategory("flower vegetables"))}
+      onClick={() => filtersubcategorys("flower vegetables")}
       
       > <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  Flower Vegetables</p>  </MenuItem>
       <MenuItem 
-      onClick={() => dispatch(filtersubcategory("leaf vegetables"))}
-      // onClick={() => filterSubcategory('leaf vegetables')}
+      onClick={() => filtersubcategorys("leaf vegetables")}
+      // onClick={() => filtersubcategorys('leaf vegetables')}
       > 
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
           Leaf Vegetables</p> </MenuItem>
       <MenuItem 
-      onClick={() => dispatch(filtersubcategory("root vegetables"))}
+      onClick={() => filtersubcategorys("root vegetables")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Root Vegetables</p>  </MenuItem>
       <MenuItem
-      onClick={() => dispatch(filtersubcategory("seed vegetables"))}
+      onClick={() => filtersubcategorys("seed vegetables")}
       
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Seed Vegetables</p>  </MenuItem>
       <MenuItem 
-      onClick={() => dispatch(filtersubcategory("stem vegetables"))}
+      onClick={() => filtersubcategorys("stem vegetables")}
       
       >
                 <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
@@ -112,25 +122,25 @@ const CategorySection = () => {
      
      className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Fresh-Fruites.svg" width='24' alt="" />} label="fresh fruits">
       <MenuItem 
-      onClick={() => dispatch(filtersubcategory("rerries"))}
+      onClick={() => filtersubcategorys("rerries")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
        Berries</p></MenuItem>
       <MenuItem 
-      onClick={() => dispatch(filtersubcategory("citrus fruite"))}
+      onClick={() => filtersubcategorys("citrus fruite")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Citrus Fruits</p> </MenuItem>
       <MenuItem 
-      onClick={() => dispatch(filtersubcategory("drupes"))}
+      onClick={() => filtersubcategorys("drupes")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Drupes</p>  </MenuItem>
       <MenuItem 
-      onClick={() => dispatch(filtersubcategory("tropical fruits"))}
+      onClick={() => filtersubcategorys("tropical fruits")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
@@ -144,25 +154,25 @@ const CategorySection = () => {
     
     className='bg-white my-1 mx-1'  icon={<img className='' src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/Dairy-eggs.svg" width='25' alt="" />} label="dairy & Eggs">
       <MenuItem  
-            onClick={() => dispatch(filtersubcategory("butter"))}
+            onClick={() => filtersubcategorys("butter")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Butter</p> </MenuItem>
       <MenuItem  
-            onClick={() => dispatch(filtersubcategory("eggs"))}
+            onClick={() => filtersubcategorys("eggs")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Eggs</p></MenuItem>
       <MenuItem  
-            onClick={() => dispatch(filtersubcategory("milk"))}
+            onClick={() => filtersubcategorys("milk")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Milk</p>  </MenuItem>
       <MenuItem  
-            onClick={() => dispatch(filtersubcategory("yougurt"))}
+            onClick={() => filtersubcategorys("yougurt")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
@@ -177,35 +187,35 @@ const CategorySection = () => {
     onClick={() => handleSubMenuClick("frozen")}
       className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124732/Frozen.svg" width='22' alt="" />} label="frozen">
       <MenuItem 
-            onClick={() => dispatch(filtersubcategory("cutted fish"))}
+            onClick={() => filtersubcategorys("cutted fish")}
       
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Cutted Fish</p> </MenuItem>
       <MenuItem 
-            onClick={() => dispatch(filtersubcategory("cutted meat"))}
+            onClick={() => filtersubcategorys("cutted meat")}
       
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Cutted Meat</p></MenuItem>
       <MenuItem 
-            onClick={() => dispatch(filtersubcategory("icecream"))}
+            onClick={() => filtersubcategorys("icecream")}
       
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Ice cream</p></MenuItem>
       <MenuItem 
-            onClick={() => dispatch(filtersubcategory("packet Meals"))}
+            onClick={() => filtersubcategorys("packet Meals")}
       
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Packet Meal</p></MenuItem>
       <MenuItem 
-            onClick={() => dispatch(filtersubcategory("packet meat"))}
+            onClick={() => filtersubcategorys("packet meat")}
       
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
@@ -219,19 +229,19 @@ const CategorySection = () => {
     
     className='bg-white my-1 mx-1'  icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124732/Organic.svg" width='24' alt="" />} label="organic">
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("honey"))}
+                  onClick={() => filtersubcategorys("honey")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Honey</p></MenuItem>
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("oil"))}
+                  onClick={() => filtersubcategorys("oil")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Oil</p></MenuItem>
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("syrups"))}
+                  onClick={() => filtersubcategorys("syrups")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
@@ -251,21 +261,21 @@ const CategorySection = () => {
       
       icon={<img src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124731/coffee-cup.svg" width='28' alt="" />} label="coffe & snacks">
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("chocolate"))}
+                  onClick={() => filtersubcategorys("chocolate")}
 
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Chocolate</p></MenuItem>
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("coffee"))}
+                  onClick={() => filtersubcategorys("coffee")}
 
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       coffee</p></MenuItem>
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("chips"))}
+                  onClick={() => filtersubcategorys("chips")}
 
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
@@ -277,13 +287,13 @@ const CategorySection = () => {
                   onClick={() => handleSubMenuClick("Beverage & Juice")}
     className='bg-white my-1 mx-1'  icon={<img src='https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124730/Beverage-Juice.svg' width='18' alt="beverage & juice" />} label="beverage & juice">
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("fizzy drinks"))}
+                  onClick={() => filtersubcategorys("fizzy drinks")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Fizzy Drinks</p> </MenuItem>
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("juices"))}
+                  onClick={() => filtersubcategorys("juices")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
@@ -298,28 +308,28 @@ const CategorySection = () => {
                   onClick={() => handleSubMenuClick("sauces & jams")}
     className='bg-white my-1 mx-1'  icon={<img src='https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/11124732/Sauces-Jams.svg' width='24' alt="" />} label="sauces & jams">
       <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("jams"))}
+                  onClick={() => filtersubcategorys("jams")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Jams</p></MenuItem>
 
 <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("Noodles"))}
+                  onClick={() => filtersubcategorys("Noodles")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Noodles</p></MenuItem>
 
 <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("pasta"))}
+                  onClick={() => filtersubcategorys("pasta")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       
       Pasta</p></MenuItem>
 
 <MenuItem 
-                  onClick={() => dispatch(filtersubcategory("Sauces"))}
+                  onClick={() => filtersubcategorys("Sauces")}
       >
       <p className=' text-sm font-normal  text-left pl-6 text-[#8f8c8c] w-[50%]'>  
       

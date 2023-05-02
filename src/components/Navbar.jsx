@@ -26,15 +26,6 @@ import logo from "../assets/images/category-icons/grocery-store-low-resolution-c
 
 const Navbar = () => {
 
-// const currentSearchResults = (result) => {
-//   console.log(result);
-// }
-
-// const handleSearchQueryChange = (e) => {
-//   dispatch(currentSearchResults(e.target.value));
-// };
-
-
   const dispatch = useDispatch();
   const globalState = useSelector((state) => state);
   const {cart} = useSelector((state) => state.cart);

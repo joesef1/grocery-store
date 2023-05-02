@@ -36,25 +36,30 @@ const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
   return (
     <div className='w-[94%] mx-auto mb-6'>
       {/*  */}
-          {/* sorting */}
-          <div className='flex justify-between mx-auto w-[94%] mb-10'>
-        <div>Showing {firstPostIndex}-{lastPostIndex} of {totalPosts} results</div>
-        {/*  */}      
-<select
-  id="sort"
-  className="appearance-none block w-32 bg-white border border-gray-300 rounded-md py-2 px-3 leading-tight focus:outline-none focus:ring focus:ring-blue-200 focus:border-blue-300 text-sm"
-  value={sortingOrder}
 
-  onChange={(e) => setSortingOrder(e.target.value)}
->
-  <option value="Defult">Defult sorting</option>
-  <option value="low-to-high">Low to High</option>
-  <option value="high-to-low">High to Low</option>
-  <option value="latest">Latest</option>
-</select>
+          {/* sorting */}
+
+          <div className='flex items-center justify-between mx-auto w-[94%] mb-10 flex-col  sm:flex-row'>
+        <div><p className='md:text-md text-sm sm:mb-0 mb-5'>Showing {firstPostIndex}-{lastPostIndex} of {totalPosts} results</p> </div>
+        {/*  */}      
+<div>
+  <select
+    id="sort"
+    className="appearance-none block w-32 bg-white border border-gray-300 rounded-md py-2 px-3 leading-tight focus:outline-none focus:ring focus:ring-blue-200 focus:border-blue-300 text-sm"
+    value={sortingOrder}
+  
+    onChange={(e) => setSortingOrder(e.target.value)}
+  >
+    <option value="Defult">Defult sorting</option>
+    <option value="low-to-high">Low to High</option>
+    <option value="high-to-low">High to Low</option>
+    <option value="latest">Latest</option>
+  </select>
+</div>
 
         {/*  */}
       </div>
+
     {/*  */}
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6  gap-4">
   {sortedData.map((product) =>{ 

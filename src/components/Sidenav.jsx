@@ -5,9 +5,6 @@ import { auth } from "../firebase-config";
 import { IoMdClose } from 'react-icons/io';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate  } from 'react-router-dom';
-
-
-//
 import { useSelector, useDispatch } from 'react-redux';
 import { opensidenav , closesidenav } from '../store/sidebarSlice';
 import logo from "../assets/images/category-icons/grocery-store-low-resolution-color-logo.png";
@@ -95,7 +92,6 @@ const logoevent = () => {
                 alt=""
               />
               <div className="flex items-center justify-center text-2xl cursor-pointer">
-                {/* <IoMdClose onClick={closeNav} /> */}
                 <IoMdClose onClick={() => handelsidenav(globalState.sidenavigation.sidenavstate)} />
                 
 
