@@ -16,7 +16,7 @@ const Home = () => {
       <CategorySection/>
       </div>
 
-      <div className='mt-7 '>
+      <div className='md:mt-7 '>
       <MainSection/>
       </div>
 

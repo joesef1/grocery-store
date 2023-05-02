@@ -10,7 +10,8 @@ import { Link, useNavigate  } from 'react-router-dom';
 //
 import { useSelector, useDispatch } from 'react-redux';
 import { opensidenav , closesidenav } from '../store/sidebarSlice';
-//
+import logo from "../assets/images/category-icons/grocery-store-low-resolution-color-logo.png";
+
 
 
 const Sidenav = () => {
@@ -86,10 +87,11 @@ const logoevent = () => {
             exit="closed"
             variants={variants}
           >
-            <div className="flex justify-between py-9 cursor-pointer">
+            <div className="flex justify-between py-3  cursor-pointer w-full">
               <img
               onClick={()=>logoevent()}
-                src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
+                src={logo}
+                className='w-28'
                 alt=""
               />
               <div className="flex items-center justify-center text-2xl cursor-pointer">

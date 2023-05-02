@@ -20,6 +20,7 @@ import {opensearchIcon , closesearchIcon} from '../store/searchIconSlice';
 // import {currentSearchResult} from '../store/itemSlice';
 // import {currentSearchResults} from '../store/itemSlice';
 import { setSearchQuery, setFilteredItems , emptythesearch } from '../store/itemSlice';
+import logo from "../assets/images/category-icons/grocery-store-low-resolution-color-logo.png";
 
 //
 
@@ -144,8 +145,8 @@ const handleSearchQueryChange = (e) => {
     <div className='flex items-center justify-between px-8 mx-auto shadow-md shadow-gray-200/40'>
       {/* left */}
       <div className='flex justify-start'>
-    <div className="flex justify-between py-9">
-      <div className="mr-10 flex items-center justify-center text-3xl cursor-pointer">
+    <div className="flex justify-between py-2">
+      <div className="mr-5 flex items-center justify-center text-3xl cursor-pointer">
                 <RxHamburgerMenu 
                 // onClick={openNav} 
           onClick={() => sidebarHandeler(globalState.sidenavigation.sidenavstate)}
@@ -155,8 +156,9 @@ const handleSearchQueryChange = (e) => {
               </div>
               {/* {currentSearchState&&(  )} */}
                 <img
-                className=' cursor-pointer'
-                src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
+                className=' w-28  cursor-pointer'
+                // src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
+                src={logo}
                 alt=""
               onClick={()=>{navigate("/")}}
 

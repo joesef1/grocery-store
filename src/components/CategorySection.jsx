@@ -52,11 +52,11 @@ const CategorySection = () => {
     <div className='w-[340px] relative '></div>
 
     <div
-     className=' h-[60vh] top-[102px] bottom-0 fixed pt-6 '
+     className=' md:h-[60vh] md:top-[102px] md:bottom-0 md:fixed md:pt-6   absolute top-0 bottom-0 left-0 right-0 '
      >
 
     {/* <p className=' text-left w-[50%] '></p> */}
-<Sidebar  backgroundColor='#fff'	 className=' h-[86vh] text-[17px] font-medium  text-[#464646]' style={{width: '340px', backgroundColor: '#fff'}} >
+<Sidebar  backgroundColor='#fff'	 className=' md:w-[30px] bg-white md:h-[86vh] text-[17px] font-medium  text-[#464646]' style={{width: '340px', backgroundColor: '#fff'}} >
   <Menu className='h-[100vh]   '  >
   <MenuItem 
   

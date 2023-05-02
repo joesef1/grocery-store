@@ -7,6 +7,7 @@ import items from './itemSlice';
 import cart from './cartSlice';
 import shopitems from './shopItemSlice';
 import blog from './blogSlice';
+import sidecategory from './sidecategorySlice';
 
 export default configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export default configureStore({
     cart,
     shopitems,
     blog,
+    sidecategory,
   },
 });

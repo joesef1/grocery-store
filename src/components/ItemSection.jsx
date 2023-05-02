@@ -218,7 +218,7 @@ const ItemSection = () => {
   {
     itemsToShow !== items.length && showMoreState
     ?
-    <button  className='text-white bg-[#212121] rounded-md py-2 mt-16 px-16' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
+    <button  className='text-white bg-[#212121] rounded-md py-2 mt-10 px-16' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
     : ""
   }
 </div>
