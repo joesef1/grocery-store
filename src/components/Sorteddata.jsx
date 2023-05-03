@@ -68,13 +68,15 @@ const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
 
     return(
     
-      <div key={`${product.id}+${Date.now()}`} className="bg-white border-slate-0 border rounded-lg hover:shadow-md p-4 hover:translate-y-[-5px] ease-in duration-150 ">
-      <div onClick={() => routetodetails(product)}>
-        <img src={product.image} alt='' className="w-full h-[176px] object-cover mb-4 bg-product.image" />
-      </div>
-      <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
-      <p className="text-gray-500 text-sm mb-5 h-[40px]">{product.name}</p>
-
+    
+<div key={`${product.id}+${Date.now()}*100000000`}
+    className="bg-white border-slate-0 border rounded-lg hover:shadow-md p-4 hover:translate-y-[-5px] ease-in duration-150 "
+    >
+    <div onClick={() => routetodetails(product)}>
+      <img src={product.image} alt='' className=" cursor-pointer w-full h-[176px] object-cover mb-4 bg-product.image" />
+    </div>
+    <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
+    <p onClick={() => routetodetails(product)} className=" cursor-pointer text-gray-500 text-sm mb-5 h-[40px]">{product.name}</p>
       {/*  */}
       {quantityInitem === 0 ?
         <div className='mb-3  flex w-[100%] justify-center items-center m-0 p-0 h-[35px]  translate-y-[5px]'>

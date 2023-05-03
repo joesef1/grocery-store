@@ -20,19 +20,19 @@ const DiscReview = () => {
            {/*  */}
     <div className=' w-[90%] mx-auto mb-12'>
 {/* tabs */}
-<div className='flex mb-7 w-52 justify-between'>
+<div className='flex mb-7 w-52 justify-between text-gray-400'>
 
   <div 
     onClick={() => toggletab(1)}
-    className={`tab ${toggleState === 1 ? 'pb-3 border-b-2 border-black' : ''}`}
+    className={`tab ${toggleState === 1 ?  ' text-gray-800 font-semibold  pb-3 border-b-2 border-black' : ''}`}
   >
-    <span className=' cursor-pointer  text-bold text-xl' href="">Description</span>  
+    <span className=' cursor-pointer text-xl ' href="">Description</span>  
   </div>
   <div 
     onClick={() => toggletab(2)}
-    className={ `tab ${toggleState === 2 ? ' pb-3 border-b-2 border-black' : ''}`}
+    className={ `tab ${toggleState === 2 ? 'text-gray-800  font-semibold  pb-3 border-b-2 border-black' : ''}`}
   >
-    <span className=' cursor-pointer  text-bold text-xl' href="">reviews</span>  
+    <span className=' cursor-pointer  text-bold text-xl ' href="">reviews</span>  
   </div>
   
   </div>
@@ -42,7 +42,7 @@ const DiscReview = () => {
 {/* discription */}
 {toggleState === 1 &&
  <div className=''>
-          <p>{product.description}</p>
+          <p className='text-gray-500'>{product.description}</p>
 
 </div>
 }

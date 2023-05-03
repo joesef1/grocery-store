@@ -54,17 +54,18 @@ navigate('/FilteredShop', { state: subcategoty });
       
       <>
       <div className='flex md:flex-row md:justify-between flex-col justify-center w-[90%] mx-auto mt-24'>
-      <div className='h-[90vh] w-[50%]'>
-      <img className='w-[90%] h-[80%] bg-no-repeat	bg-cover	bg-center	' src={product.image} alt=''/>
+      <div className='h-[90vh]  md:w-[50%]'>
+      <img className='md:w-[90%] h-[80%] bg-no- object-cover	bg-cover	bg-center	' src={product.image} alt=''/>
       </div>
-    <div className='w-[50%]'>
+    <div className='md:w-[50%]'>
         <h1 className='text-3xl mb-5'>{product.name}</h1>
-        <p className='text-xl text-bold mb-7'>${product.price}</p>
-        <p>description{product.description}</p>
+        <p className='text-2xl font-semibold mb-7'>${product.price}</p>
+        <p className='text-gray-500'>description{product.description}</p>
 
-        <div className='my-12 flex  '>
-          <div className='mr-3 '>
-        
+
+        <div className='my-12 flex  md:items-start sm:items-start items-center  md:flex-row flex-col '>
+
+          <div className='md:mr-3  '>
           <div className="flex flex-row  h-12  rounded-lg relative bg-transparent ">
                   <button
                     data-action="decrement"
@@ -76,7 +77,7 @@ navigate('/FilteredShop', { state: subcategoty });
 
                   <input
                     type="text"
-                    className="border-[#212121] border appearance-none focus:outline-none text-center   font-semibold text-md text-black focus:text-black md:text-base cursor-default flex items-center  outline-none"
+                    className="border-[#212121] w-[150px] border appearance-none focus:outline-none text-center   font-semibold text-md text-black focus:text-black md:text-base cursor-default flex items-center  outline-none"
                     name="custom-input-number"
                     value={quantityInCart}
                   />
@@ -89,48 +90,36 @@ navigate('/FilteredShop', { state: subcategoty });
                     <span className="m-auto text-xl leading-6 font-thin">+</span>
                   </button>
                 </div>
-
-
-
           </div>
+
+
           <div>
             <button
-                      onClick={()=>dispatch(insertitem(product))}
-
-            className=' bg-[#212121] text-white rounded-md px-7 py-3 text-md'>add too cart</button>
+              onClick={()=>dispatch(insertitem(product))}
+              className=' bg-[#212121] md:my-0 mb-5 mt-5 text-white rounded-md md:px-7 px-28 py-3 text-md'>add too cart
+              </button>
           </div>
         </div>
+
+
+        <div className='mb-16'>
+        <span  className=''>
+          <span className='text-lg font-bold'>category :</span>  <span className='text-bold text-lg'>
       
-        <span > <span className='text-md font-semibold'>category :</span>  <span className='text-bold text-lg'>
-        
-        {/* <p onClick={()=>shopwithcaregory(product.category)}>  
-        <a 
-        ></a> 
-        </p> */}
         <p
-        className='inline-block	'
+        className='inline-block	 cursor-pointer'
         onClick={()=>handleLinkClickcategoty(product.category)}
           >{product.category}  , </p>
-
-        
         &nbsp;
-        {/* <Link
-        onClick={()=>dispatch(filtersubcategoryShop(product.subcategory))}
-          to="/FilteredShop">{product.subcategory}</Link> */}
-
+  
 <p
-className='inline-block	'
+className='inline-block	cursor-pointer'
         onClick={()=>handleLinkClicksubcategoty(product.subcategory)}
           >{product.subcategory} </p>
 
-
-
-
-        {/* <a
-        // onClick={()=>{shopwithsubcaregory(product.subcategory)}}
-        >{product.subcategory}</a> */}
-        </span> </span>
-        
+        </span> 
+        </span>
+        </div>
     </div>
 
   
