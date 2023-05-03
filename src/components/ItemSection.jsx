@@ -26,6 +26,7 @@ const ItemSection = () => {
   const navigate = useNavigate();
   const { isLoading,error, items,filteredItems, targetedsearchword ,showMoreState} = useSelector(state => state.items);
   const { cart } = useSelector(state => state.cart);
+  const { searchIcon } = useSelector(state => state.searchIcon);
 
   // const { targetedsearchword } = useSelector(state => state.targetedsearchword);
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ const ItemSection = () => {
 
   return ( 
     <>
-        {  isLoading && "loading" } 
+        {/* {  isLoading && "loading" }  */}
     <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xxl:grid-cols-6 gap-3 "> 
       {
       targetedsearchword !== "" ? 
@@ -209,18 +210,32 @@ const ItemSection = () => {
 
     <div className='flex justify-center items-center'>
   {
-    // itemsToShow !== items.length && showMoreState  &&
-    filteredItems.length  === 0 &&
+    // (itemsToShow !== items.length && showMoreState)  &&
+    (itemsToShow !== items.length)  &&
+    // filteredItems.length  === 0 &&
     
-    <button  className={`text-white bg-[#212121] rounded-md py-2 mt-10 px-16 ${filteredItems.length  === 0  ? 'hidden':'block'}` } onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
+    <button  className={`text-white bg-[#212121] rounded-md py-2 mt-10 px-16 ${(itemsToShow === items.length && isLoading)? 'hidden':'block'}` } onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
     
   }
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+{/* 
 {
-    filteredItems.length  === 0 &&
-    !isLoading
+    filteredItems.length  === 0
+    || !isLoading
+    // 
     ?
 
     <div>
@@ -237,13 +252,83 @@ const ItemSection = () => {
       </div>
     </div> 
     : (
-// loading animation
-      <>
-      <h1>gndrfnrf</h1>
-      </>
 
+<div class="h-screen bg-white">
+<div class="flex justify-center items-center h-full">
+  <img className="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="" />
+</div>
+</div>
     )
-  }
+  } */}
+
+  
+
+{/* {
+  (  filteredItems.length  === 0 && !searchIcon ) &&
+    
+    <div>
+      <div className='mt-9 flex justify-center items-center flex-col  mx-auto'>
+        
+      <div>
+      <img className='w-[80%] m-auto' src={notFound} alt="" />
+      </div>
+      
+      <div>
+      <h1 className='text-3xl font-semibold mt-14'> No Product Found :( </h1>
+      </div>
+      
+      </div>
+    </div>
+    
+      } */}
+
+
+{
+  isLoading &&
+  <div class="h-screen bg-white">
+<div class="flex justify-center items-center h-full">
+  <img className="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="" />
+</div>
+</div>
+}
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   </>

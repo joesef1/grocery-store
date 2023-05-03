@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
+  
   const routetodetails = (product) => {
     navigate('/Details', { state: product });
     console.log(product);
@@ -33,8 +34,20 @@ const Sorteddata = ({items,totalPosts,lastPostIndex,firstPostIndex}) => {
     sortedData.sort((a, b) => a.id - b.id);
   }
 
+  const { isLoading} = useSelector(state => state.items);
+
   return (
     <div className='w-[94%] mx-auto mb-6'>
+
+      
+{
+  isLoading &&
+  <div class="h-screen bg-white">
+<div class="flex justify-center items-center h-full">
+  <img className="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="" />
+</div>
+</div>
+}
       {/*  */}
 
           {/* sorting */}

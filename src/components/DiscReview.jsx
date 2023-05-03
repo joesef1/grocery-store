@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import { useLocation } from 'react-router-dom';
+import Reviewing from './Reviewing';
 
 
 const DiscReview = () => {
@@ -52,9 +53,13 @@ const DiscReview = () => {
 
 {/* reviews */}
 {toggleState === 2 &&
+<>
 <div className=''> 
 this feature will be in the next release, I am working on it now &#128521;
 </div>
+<Reviewing/>
+</>
+
 }
 </div>
 

@@ -34,6 +34,15 @@ const MainBlogSection = () => {
   
   return (
     <div>
+      
+{
+  isLoading &&
+  <div class="h-screen bg-white">
+<div class="flex justify-center items-center h-full">
+  <img className="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="" />
+</div>
+</div>
+}
       {blog &&
         blog.map((blog, index) => (
           <div className="" key={blog.id * index * 4000}>
@@ -84,3 +93,4 @@ const MainBlogSection = () => {
 };
 
 export default MainBlogSection;
+
