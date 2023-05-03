@@ -76,7 +76,7 @@ const MainSection = () => {
     handleClose()
   }, []);
   return (
-    <>
+    <div className=' w-full'>
       <div 
         onClick={handleCategory}
         className=' cursor-pointer  md:hidden flex justify-between items-center p-6 mb-3 bg-white'
@@ -95,7 +95,7 @@ const MainSection = () => {
         <Banner />
         <ItemSection />
       </div>
-    </>
+    </div>
   )
 }
 

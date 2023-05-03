@@ -26,7 +26,7 @@ const faqStyle = {
   <div  className=' mb-[50px] relative' style={faqStyle}>
     <div id='bannerimg' className='z-0'>
       <h1 id='eplore' className='font-dancingScript text-2xl mb-4 z-10'>explore</h1>
-    <h1 className='text-4xl bold font-bold mb-3 capitalize z-10'>{props.pagename}</h1>
+    <h1 className='md:text-4xl text-2xl w-[90%] bold font-bold mb-3 capitalize z-10'>{props.pagename}</h1>
     </div>
     
   </div>

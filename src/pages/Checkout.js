@@ -127,7 +127,7 @@ const dispatch = useDispatch();
                   <td></td>
                   <td className='px-6 py-3'>{cart.reduce((total, item) => total + item.quantity, 0)}</td>
                   <td className='px-6 py-3'>
-                    ${cart.reduce((total, item) => total + item.price * item.quantity, 0)}
+                    ${cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)}
                   </td>
                 </tr>
               </tfoot>

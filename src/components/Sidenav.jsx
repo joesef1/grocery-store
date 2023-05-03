@@ -8,6 +8,8 @@ import { Link, useNavigate  } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { opensidenav , closesidenav } from '../store/sidebarSlice';
 import logo from "../assets/images/category-icons/grocery-store-low-resolution-color-logo.png";
+import lock from   "../assets/images/lock.png";
+import logoutimg from "../assets/images/logout.png";
 
 
 
@@ -102,30 +104,30 @@ const logoevent = () => {
               <ul>
               
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link onClick={()=>dispatch(closesidenav())} to="/Shop">Shop</Link>
+                  <Link className='pr-64' onClick={()=>dispatch(closesidenav())} to="/Shop">Shop</Link>
 
 
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link onClick={()=>dispatch(closesidenav())} to="/Blog">Blog</Link>
+                  <Link className='pr-64' onClick={()=>dispatch(closesidenav())} to="/Blog">Blog</Link>
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link onClick={()=>dispatch(closesidenav())} to="/FAQ">FAQs</Link>
+                  <Link className='pr-64' onClick={()=>dispatch(closesidenav())} to="/FAQ">FAQs</Link>
 
                   
                 </li>
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link onClick={()=>dispatch(closesidenav())} to="/Terms">Terms & conditions</Link>
+                  <Link className='pr-24' onClick={()=>dispatch(closesidenav())} to="/Terms">Terms & conditions</Link>
                 </li>
 
                 <li class="py-3 text-lg cursor-pointer">
-                  <Link onClick={()=>dispatch(closesidenav())} to="/Checkout">Checkout</Link>
+                  <Link className='pr-64' onClick={()=>dispatch(closesidenav())} to="/Checkout">Checkout</Link>
                 </li>
 
                 <li class="py-3 text-lg cursor-pointer ">
                   {/* <a href="#">Contact</a> */}
-                  <Link onClick={()=>dispatch(closesidenav())} to="/Contact">Contact</Link>
+                  <Link  className='pr-64' onClick={()=>dispatch(closesidenav())} to="/Contact">Contact</Link>
 
                 </li>
 
@@ -133,11 +135,13 @@ const logoevent = () => {
                 <hr className=" border-gray-100 w-full mb-9" />
 
                   <a className='' href="">
-                    {/* <Link to="/Login">Login </Link> */}
+                    {/* <Link className='pr-64' to="/Login">Login </Link> */}
                     {user ? (
-        <button onClick={logout}> Sign Out </button>
+        // <span onClick={logout}> <img className='w-8 mr-3 inline-block' src={logout} alt="" /> <span>Sign Out</span> </span>
+        <Link className='pr-44' onClick={logout}> <img className='w-8 mr-3 inline-block' src={logoutimg} alt="" /> <span>Sign Out</span> </Link>
+
       ) : (
-        <Link onClick={()=>dispatch(closesidenav())} className='text-slate-500' to="/Login">Login </Link>
+        <Link className='pr-44' onClick={()=>dispatch(closesidenav())}  to="/Login"> <img className='w-8 mr-3 inline-block' src={lock} alt="" /> <span>Login</span> </Link>
       )}
                   </a>
 

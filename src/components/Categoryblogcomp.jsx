@@ -54,8 +54,10 @@ const handleCategoryClick = categoryName => {
                 {blog.date}
               </span>
               
-              <span className=' mx-3 px-5 relative'>
-              <span class="absolute bg-[#212121] rounded-full h-2 w-2 left-0 top-1/2 transform -translate-y-1/2"></span>
+              <span className='px-5 relative'>
+            
+              <span className='mr-2'>&#x2022;</span>
+
 
           {blog.category.map((category, index) => (
 

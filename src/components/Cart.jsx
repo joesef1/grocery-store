@@ -231,7 +231,7 @@ const handleItemHover = (itemId) => {
                   </button>
                 </div>
               </div>
-              <p className='font-bold translate-y-5 text-md'>{item.price*item.quantity}</p>
+              <p className='font-bold translate-y-5 text-md'>{(item.price*item.quantity).toFixed(2)}</p>
             </div>
           </div>
         </div>

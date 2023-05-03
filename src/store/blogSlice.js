@@ -6,7 +6,8 @@ export const getblog = createAsyncThunk(
   async(_, thunkAPI) => {
     const {rejectWithValue} = thunkAPI
   try {
-    const res = await fetch('http://localhost:3007/blog');
+    // const res = await fetch('http://localhost:3007/blog');
+    const res = await fetch('https://grocery-db.onrender.com/blog');
     const data = await res.json();
     return data;
   } catch (error) {
@@ -28,6 +29,7 @@ export const blogSlice = createSlice({
     [getblog.fulfilled]: (state, action) => {
       state.isLoading = false
       state.blog = action.payload;      
+      console.log(action.payload)
     },
     [getblog.rejected]: (state, action) => {
       state.isLoading = false

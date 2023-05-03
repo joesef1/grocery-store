@@ -6,7 +6,7 @@ export const getitems = createAsyncThunk(
   async(_, thunkAPI) => {
     const {rejectWithValue} = thunkAPI
   try {
-    const res = await fetch('http://localhost:3007/item');
+    const res = await fetch('https://grocery-db.onrender.com/item');
     const data = await res.json();
     return data;
   } catch (error) {
@@ -23,7 +23,7 @@ export const filtercategory = createAsyncThunk(
   async(category, thunkAPI) => {
     const {rejectWithValue, getState} = thunkAPI
   try {
-    const res = await fetch('http://localhost:3007/item',{
+    const res = await fetch('https://grocery-db.onrender.com/item',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -48,7 +48,7 @@ export const filtersubcategory = createAsyncThunk(
   async(subcategory, thunkAPI) => {
     const {rejectWithValue, getState} = thunkAPI
   try {
-    const res = await fetch('http://localhost:3007/item',{
+    const res = await fetch('https://grocery-db.onrender.com/item',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -71,7 +71,7 @@ export const currentSearchResult = createAsyncThunk(
   async(written, thunkAPI) => {
     const {rejectWithValue, getState} = thunkAPI
   try {
-    const res = await fetch('http://localhost:3007/item',{
+    const res = await fetch('https://grocery-db.onrender.com/item',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',

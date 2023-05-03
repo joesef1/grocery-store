@@ -62,7 +62,7 @@ const handleCategoryClick = categoryName => {
 <Categoryblogcomp />
 </div>
 
-<div className='w-[50%] md:w-[330px]'>
+<div className='md:w-[30%] mb-10'>
 <BlogSideSection/>
 </div>      
       

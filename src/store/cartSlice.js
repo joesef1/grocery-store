@@ -9,7 +9,7 @@ export const insertitem = createAsyncThunk(
   async(product, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-        await fetch(`http://localhost:3007/item/${product.id}`,{
+        await fetch(`https://grocery-db.onrender.com/item/${product.id}`,{
             method: 'GET',
             headers: {
               'Content-Type': 'application/json; charset=UTF-8',

@@ -34,7 +34,9 @@ const BlogSideSection = () => {
     {blog.map((post, index) => {
       return (
         <li  key={index} className="cursor-pointer mb-4 text-sm" style={{ display: 'flex', alignItems: 'center' }}>
-          <span className="mr-2 text-[#6b7280]">•</span>
+          {/* <span className="mr-2 text-[#6b7280]">•</span> */}
+          <span className='mr-2'>&#x2022;</span>
+
           <Link
           onClick={() => routetoblogdetails(post)}
             className="block text-md hover:underline decoration-solid cursor-pointer text-[#212121] leading-1.26 transition-colors duration-300 ease-in p-1"

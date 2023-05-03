@@ -24,8 +24,9 @@ const ItemSection = () => {
   
 
   const navigate = useNavigate();
-  const { isLoading, items,filteredItems, targetedsearchword ,showMoreState} = useSelector(state => state.items);
+  const { isLoading,error, items,filteredItems, targetedsearchword ,showMoreState} = useSelector(state => state.items);
   const { cart } = useSelector(state => state.cart);
+
   // const { targetedsearchword } = useSelector(state => state.targetedsearchword);
   const dispatch = useDispatch();
 // console.log(targetedsearchword);
@@ -44,6 +45,7 @@ const ItemSection = () => {
 
   return ( 
     <>
+        {  isLoading && "loading" } 
     <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xxl:grid-cols-6 gap-3 "> 
       {
       targetedsearchword !== "" ? 
@@ -117,7 +119,7 @@ const ItemSection = () => {
       )
       
       : 
-      
+//,,..,
       items.slice(0, itemsToShow).map((product) => {
         const item = cart.find(item => item.id === product.id);
         const quantityInitem = item ? item.quantity : 0;
@@ -192,27 +194,14 @@ const ItemSection = () => {
           </div>
         )
       }
+      //,,.,
       )
       
       }
 
 
 {/* <div></div> */}
-  {
-    filteredItems.length || items.length === 0 &&
-    <div className='flex justify-center items-center flex-col w-full mx-auto'>
-    <div>
-    <img src={notFound} alt="" />
-
-    </div>
-
-
-    <div>
-    <h1> No Product Found :( </h1>
-    </div>
-
-    </div>
-  }
+  
   
 
 
@@ -220,17 +209,47 @@ const ItemSection = () => {
 
     <div className='flex justify-center items-center'>
   {
-    itemsToShow !== items.length && showMoreState
-    ?
-    <button  className='text-white bg-[#212121] rounded-md py-2 mt-10 px-16' onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
-    : ""
+    // itemsToShow !== items.length && showMoreState  &&
+    filteredItems.length  === 0 &&
+    
+    <button  className={`text-white bg-[#212121] rounded-md py-2 mt-10 px-16 ${filteredItems.length  === 0  ? 'hidden':'block'}` } onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
+    
   }
 </div>
 
 
+{
+    filteredItems.length  === 0 &&
+    !isLoading
+    ?
+
+    <div>
+      <div className='mt-9 flex justify-center items-center flex-col  mx-auto'>
+        
+      <div>
+      <img className='w-[80%] m-auto' src={notFound} alt="" />
+      </div>
+      
+      <div>
+      <h1 className='text-3xl font-semibold mt-14'> No Product Found :( </h1>
+      </div>
+      
+      </div>
+    </div> 
+    : (
+// loading animation
+      <>
+      <h1>gndrfnrf</h1>
+      </>
+
+    )
+  }
+
 
   </>
   )
+
+  
 }
 
 export default ItemSection
