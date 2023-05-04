@@ -116,7 +116,7 @@ const dispatch = useDispatch();
                       {item.quantity}
                     </td>
                     <td className='px-6 py-4'>
-                      ${item.price * item.quantity}
+                      ${(item.price * item.quantity).toFixed(2)}
                     </td>
                   </tr>
                 ))}

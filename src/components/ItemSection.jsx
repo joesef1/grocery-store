@@ -1,7 +1,7 @@
 import React, {useEffect ,useState} from 'react'
 import usesubcategoryStore from '../statestore/usesubcategoryStore'
 import {useDispatch, useSelector } from "react-redux";
-import { getitems } from '../store/itemSlice';
+import { filtercategory, getitems } from '../store/itemSlice';
 import { insertitem } from '../store/cartSlice';
 import { useNavigate } from "react-router-dom";
 import notFound  from "../assets/images/not-found.svg";
@@ -211,10 +211,11 @@ const ItemSection = () => {
     <div className='flex justify-center items-center'>
   {
     // (itemsToShow !== items.length && showMoreState)  &&
-    (itemsToShow !== items.length)  &&
-    // filteredItems.length  === 0 &&
+
+    (itemsToShow !== items.length && items.length >= 36)
+        &&
     
-    <button  className={`text-white bg-[#212121] rounded-md py-2 mt-10 px-16 ${(itemsToShow === items.length && isLoading)? 'hidden':'block'}` } onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
+    <button  className={`text-white bg-[#212121] rounded-md py-2 mt-10 px-16 ${(itemsToShow === items.length && isLoading )? 'hidden':'block'}` } onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
     
   }
 </div>
@@ -286,7 +287,7 @@ const ItemSection = () => {
 {
   isLoading &&
   <div class="h-screen bg-white">
-<div class="flex justify-center items-center h-full">
+<div class="flex justify-center pt-24 h-full">
   <img className="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="" />
 </div>
 </div>

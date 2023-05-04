@@ -66,74 +66,72 @@ useEffect(() => {
 
         {/*  */}
       </div>
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> */}
+  <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xxl:grid-cols-6 gap-3  m-auto mb-12 w-[95%]"> 
 
 
 
 
-    {sortedShopItems &&
-      sortedShopItems.map((product) => {
-        const item = cart.find((item) => item.id === product.id);
+    {sortedShopItems ?( 
+      sortedShopItems.map((product) => { 
+        const item = cart.find(item => item.id === product.id);
         const quantityInitem = item ? item.quantity : 0;
-
-        return (
-          <div
-            key={`${product.id}+${Date.now()}`}
-            className="bg-white rounded-lg shadow-md p-4"
-          >
-            <div onClick={() => routetodetails(product)}>
-              <img
-                src={product.cover}
-                alt=""
-                className="w-full h-[176px] object-cover mb-4 bg-product.cover"
-              />
+    
+        return(
+        
+        
+    <div key={`${product.id}+${Date.now()}*100000000`}
+        className="bg-white border-slate-0 border rounded-lg hover:shadow-md p-4 hover:translate-y-[-5px] ease-in duration-150 "
+        >
+        <div onClick={() => routetodetails(product)}>
+          <img src={product.image} alt='' className=" cursor-pointer w-full h-[176px] object-cover mb-4 bg-product.image" />
+        </div>
+        <p className="text-gray-700 font-medium mb-2"> ${product.price}</p>
+        <p onClick={() => routetodetails(product)} className=" cursor-pointer text-gray-500 text-sm mb-5 h-[40px]">{product.name}</p>
+          {/*  */}
+          {quantityInitem === 0 ?
+            <div className='mb-3  flex w-[100%] justify-center items-center m-0 p-0 h-[35px]  translate-y-[5px]'>
+            <div className='w-[90%] '>
+              <button
+                onClick={() => dispatch(insertitem(product))}
+                className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">ADD</button>
             </div>
-            <p className="text-gray-700 font-medium mb-2">${product.price}</p>
-            <p className="text-gray-500 text-sm mb-5">{product.name}</p>
-
-            {quantityInitem === 0 ? (
-              <div className="flex w-[100%] justify-center items-center m-0 p-0 h-[35px]">
-                <div className="w-[80%]">
-                  <button
-                    onClick={() => dispatch(insertitem(product))}
-                    className="bg-gray-100 w-[100%] h-[35px] rounded items-center justify-center flex text-md px-4 relative"
-                  >
-                    Add
-                  </button>
-                </div>
-                {/* <div className="w-[20%]">
-                  <button className="bg-gray-200 px-3 h-[35px] flex w-[100%] rounded-r-md justify-center text-2xl">
-                    +
-                  </button>
-                </div> */}
-              </div>
-            ) : (
-              <div className="flex flex-row h-12 rounded-lg relative bg-transparent">
-                <button
-                  data-action="decrement"
-                  className="border-[#212121] border text-[#212121] hover:text-white ease-in duration-200  hover:bg-[#212121] h-full w-20 rounded-l cursor-pointer outline-none"
-                  onClick={() => dispatch(decreaseQuantity(product))}
-                >
-                  <span className="m-auto text-xl leading-6 font-thin">−</span>
-                </button>
-                <input
-                  type="text"
-                  className="border-[#212121] border appearance-none focus:outline-none text-center font-semibold text-md text-black focus:text-black md:text-base cursor-default flex items-center outline-none"
-                  name="custom-input-number"
-                  value={quantityInitem}
-                />
-                <button
-                  data-action="increment"
-                  className="border-[#212121] border text-[#212121] hover:text-white ease-in duration-200  hover:bg-[#212121] h-full w-20 rounded-r cursor-pointer outline-none"
-                  onClick={() => dispatch(increaseQuantity(product))}
-                >
-                  <span className="m-auto text-xl leading-6 font-thin">+</span>
-                </button>
-              </div>
-            )}
           </div>
-        );
-      })}
+          
+          :
+          <>
+          
+          <div className="custom-number-input mb-3 ">
+                    <div className="flex flex-row translate-y-2 h-8 w-full rounded-lg relative bg-transparent ">
+                      <button
+                        data-action="decrement"
+                        className="bg-[#212121] text-white hover:bg-[#3f3f3f] h-full w-20 rounded cursor-pointer outline-none"
+                        onClick={()=> dispatch(decreaseQuantity(item))}
+                      >
+                        <span className="m-auto text-xl leading-6 font-thin">−</span>
+                      </button>
+                      <input
+                        type="text"
+                        // className="appearance-none outline-none focus:outline-none text-center w-full bg-[#212121] font-semibold text-md text-white focus:text-black md:text-base cursor-default flex items-center text-gray-700 outline-none"
+                        className="appearance-none outline-none focus:outline-none text-center w-full bg-white font-semibold text-md text-[#212121]  focus:text-black md:text-base cursor-default flex items-center text-gray-700 outline-none"
+                        name="custom-input-number"
+                        value={item.quantity}
+                      />
+                      <button
+                        data-action="increment"
+                        className="bg-[#212121] text-white hover:bg-[#3f3f3f] h-full w-20 rounded cursor-pointer"
+                        onClick={()=> dispatch(increaseQuantity(item))}
+                      >
+                        <span className="m-auto text-xl leading-6 font-thin">+</span>
+                      </button>
+                    </div>
+                  </div>
+          </>
+        }
+    
+        </div>
+        )
+      })) :"no items" }
   </div>
 </div>
 

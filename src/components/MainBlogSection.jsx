@@ -35,10 +35,10 @@ const MainBlogSection = () => {
   return (
     <div>
       
-{
+      {
   isLoading &&
   <div class="h-screen bg-white">
-<div class="flex justify-center items-center h-full">
+<div class="flex justify-center mt-28 h-full">
   <img className="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="" />
 </div>
 </div>
