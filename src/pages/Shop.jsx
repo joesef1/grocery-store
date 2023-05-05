@@ -41,7 +41,7 @@ const Shop = () => {
 
 
       <Sorteddata 
-      items={currentPosts}
+      pageitems={currentPosts}
       totalPosts={items.length}
       lastPostIndex={lastPostIndex}
       firstPostIndex={firstPostIndex}

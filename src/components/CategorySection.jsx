@@ -1,3 +1,4 @@
+
 import React,{useState,useEffect} from 'react'
 // import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Sidebar, Menu, MenuItem, SubMenu ,useProSidebar } from 'react-pro-sidebar';
@@ -62,7 +63,7 @@ const CategorySection = () => {
 
     <div
     
-     className=' md:h-[60vh] md:top-[102px] md:bottom-0 md:fixed md:pt-6   absolute top-0 bottom-0 left-0 right-0 '
+     className=' md:h-[60vh] md:top-[102px] md:bottom-0 md:fixed md:pt-6   absolute top-0 bottom-0 left-0 '
      >
 
     {/* <p className=' text-left w-[50%] '></p> */}

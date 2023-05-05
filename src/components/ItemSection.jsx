@@ -16,6 +16,7 @@ const ItemSection = () => {
 
 
   const [addbtnstate, setAddbtnstate] = useState(false);
+
   const handeladdbtnstate = (product) => {
     const hoveredproduct = items.find((pro)=> pro.id === product.id)
     console.log(hoveredproduct);
@@ -26,7 +27,8 @@ const ItemSection = () => {
   const navigate = useNavigate();
   const { isLoading,error, items,filteredItems, targetedsearchword ,showMoreState} = useSelector(state => state.items);
   const { cart } = useSelector(state => state.cart);
-  const { searchIcon } = useSelector(state => state.searchIcon);
+  // const { searchIcon } = useSelector(state => state.searchIcon);
+  const { sidenavstate } = useSelector(state => state.searchIcon);
 
   // const { targetedsearchword } = useSelector(state => state.targetedsearchword);
   const dispatch = useDispatch();
@@ -46,7 +48,6 @@ const ItemSection = () => {
 
   return ( 
     <>
-        {/* {  isLoading && "loading" }  */}
     <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xxl:grid-cols-6 gap-3 "> 
       {
       targetedsearchword !== "" ? 
@@ -74,14 +75,11 @@ const ItemSection = () => {
     onClick={() => dispatch(insertitem(product))}
             className="border-[#e7e7e7] border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-200 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative text-sm"
             >ADD</button>
-
 </div>
-</div>
-            
+</div>          
             :
+
             <>
-            
-          
       <div className="custom-number-input mb-3 ">
                 <div className="flex flex-row translate-y-2 h-8 w-full rounded-lg relative bg-transparent ">
                   <button
@@ -109,15 +107,8 @@ const ItemSection = () => {
               </div>
             </>
           }
-            
-            {/*  */}
-
-            {/*  */}
           </div>
-        )
-      }
-      
-      )
+        )})
       
       : 
 //,,..,
@@ -143,21 +134,11 @@ const ItemSection = () => {
                 <button
                   onClick={() => dispatch(insertitem(product))}
             className="border-[#e7e7e7] font-semibold text-sm border hover:bg-[#212121] bg-[#F3F3F3] hover:text-white ease-in duration-150 w-[100%] h-[35px]  rounded items-center justify-center flex text-md  px-4 relative">ADD</button>
-
               </div>
-
-              {/*  */}
-              {/* <button
-                    className={` bg-[#999999] text-[#fff] font-bold hover:bg-[#3f3f3f] hover:text-[#fff] h-full w-[65px] rounded-r cursor-pointer ${addbtnstate ? 'bg-[#3f3f3f] text-[#fff]':''} `}
-                  >
-                    <span className="m-auto text-xl leading-6 font-thin">+</span>
-                  </button> */}
-              {/*  */}
             </div>
-            
+  
             :
             <>
-          
               <div className="custom-number-input mb-3 ">
                 <div className="flex flex-row translate-y-2 h-8 w-full rounded-lg relative bg-transparent ">
                   <button
@@ -183,36 +164,22 @@ const ItemSection = () => {
                   </button>
                 </div>
               </div>
-              
-            {/* </div> */}
             </>
           }
-            
-            {/*  */}
-
-            {/*  */}
-
           </div>
         )
       }
-      //,,.,
-      )
-      
+      )    
       }
-
-
-{/* <div></div> */}
-  
-  
-
-
     </div>
+    {/* //////////////////////////////////////////////////////////////////////////// */}
 
     <div className='flex justify-center items-center'>
   {
-    // (itemsToShow !== items.length && showMoreState)  &&
 
-    (itemsToShow !== items.length && items.length >= 36)
+
+    
+    (itemsToShow !== items.length && items.length >= 36 && !sidenavstate)
         &&
     
     <button  className={`text-white bg-[#212121] rounded-md py-2 mt-10 px-16 ${(itemsToShow === items.length && isLoading )? 'hidden':'block'}` } onClick={() => setItemsToShow(itemsToShow + 36)}>Show More</button>
@@ -232,12 +199,13 @@ const ItemSection = () => {
 
 
 
-{/* 
+
 {
-    filteredItems.length  === 0
-    || !isLoading
+      (  items.length  === 0 || 
+        filteredItems.length  === 0 && sidenavstate)
+    // || !isLoading
     // 
-    ?
+    &&
 
     <div>
       <div className='mt-9 flex justify-center items-center flex-col  mx-auto'>
@@ -252,15 +220,8 @@ const ItemSection = () => {
       
       </div>
     </div> 
-    : (
 
-<div class="h-screen bg-white">
-<div class="flex justify-center items-center h-full">
-  <img className="h-16 w-16" src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="" />
-</div>
-</div>
-    )
-  } */}
+  }
 
   
 
