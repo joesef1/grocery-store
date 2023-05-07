@@ -46,8 +46,48 @@ const ItemSection = () => {
 
   }
 
+
+
+
+    function Popup() {
+  return <div>This is a one-time popup!</div>;
+}
+const [showPopup, setShowPopup] = useState(false);
+useEffect(() => {
+  const popupShown = localStorage.getItem("popupShown");
+  if (!popupShown) {
+    setShowPopup(true);
+    localStorage.setItem("popupShown", "true");
+  }
+}, []);
+
+
   return ( 
     <>
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 xxl:grid-cols-6 gap-3 "> 
       {
       targetedsearchword !== "" ? 
@@ -201,8 +241,8 @@ const ItemSection = () => {
 
 
 {
-      (  items.length  === 0 || 
-        filteredItems.length  === 0 && sidenavstate)
+      // (filteredItems.length  === 0 && sidenavstate  && !isLoading || items.length  === 0)
+      (filteredItems.length  === 0 && sidenavstate  || (!isLoading && items.length  === 0))
     // || !isLoading
     // 
     &&

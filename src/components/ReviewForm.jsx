@@ -11,7 +11,7 @@ const ReviewForm = () => {
   };
 
   const notify = () =>  toast.warn('this feature still under development', {
-    position: "bottom-right",
+    position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,

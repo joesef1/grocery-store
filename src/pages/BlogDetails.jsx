@@ -80,8 +80,8 @@ const BlogDetails = () => {
 
       
         <div className='mt-20'>
-          <h1 className='mb-10 text-2xl font-bold text-[#1d1d1d]'>Comments :</h1>
-          <p>this feature will be in the next release, I am working on it now 😉</p>
+          <h1 className='mb-2 text-2xl font-bold text-[#1d1d1d]'>Comments :</h1>
+          {/* <p>this feature will be in the next release, I am working on it now 😉</p> */}
             <Comment/>
         </div>
 

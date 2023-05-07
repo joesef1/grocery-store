@@ -85,7 +85,7 @@ const MainBlogSection = () => {
 
           </div>
         ))}
-      {!blog.length && <p>No blog posts available.</p>}
+      
     </div>
     // <Categoryblogcomp/>
 

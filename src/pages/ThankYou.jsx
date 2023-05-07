@@ -38,13 +38,13 @@ const ThankYou = () => {
     <div >
       <img className='w-48' src={delivery} alt="" />
     </div>
-    <p class="description text-lg font-medium text-center my-6">
+    {/* <p class="description text-lg font-medium text-center my-6">
       If you have any questions, please contact us
       <a class="email text-red-500 ml-1" href="http://localhost:3000/Contact">http://localhost:3000/Contact</a>
-    </p>
+    </p> */}
     
     {/* <Link href="/"> */}
-      <button onClick={()=> navigatefromsucsess()} type="button" class="btn bg-[#212121] text-white py-2 px-4 rounded-lg mt-4">
+      <button onClick={()=> navigatefromsucsess()} type="button" class="btn bg-[#212121] text-white py-2 px-4 rounded-lg mt-8">
         Continue Shopping
       </button>
     {/* </Link> */}
