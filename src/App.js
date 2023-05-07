@@ -17,6 +17,7 @@ import BlogDetails from './pages/BlogDetails';
 import Shop from './pages/Shop.jsx';
 import Details from './pages/Details.jsx';
 import Notfoundpage from './pages/Notfoundpage';
+import CheckoutMultisteps from './components/CheckoutMultisteps';
 import FilteredShop from './pages/FilteredShop.jsx';
 import ThankYou from './pages/ThankYou';
 import { ContexAuthState } from './context/context-authstate';
@@ -49,6 +50,7 @@ function App() {
         <Route path="/BlogDetails" element={<BlogDetails />} />
         <Route path="/CategoryBlog" element={<CategoryBlog />} />
         <Route path="/Notfoundpage" element={<Notfoundpage />} />
+        <Route path="/CheckoutMultisteps" element={<CheckoutMultisteps />} />
       </Routes>
     <Footer />
     </BrowserRouter>
