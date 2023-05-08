@@ -80,7 +80,7 @@ const logoevent = () => {
     <>
       <AnimatePresence>
           <motion.div
-            className="px-8 z-20 bg-white border-b-4 border-black absolute h-screen w-[24.5rem]"
+            className="px-8 z-50 bg-white border-b-4 border-black absolute h-screen w-[24.5rem]"
             initial="closed"
             animate={globalState.sidenavigation.sidenavstate ? 'open' : 'closed'}
             exit="closed"

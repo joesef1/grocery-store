@@ -72,30 +72,10 @@
   bottom: 0;
   z-index: -1;
 }
-/* 
-#scrollable {
-  height: 300px;
-  overflow-y: scroll; 
-}
 
-#scrollable::-webkit-scrollbar {
-  width: 10px;
-}
-
-#scrollable::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-#scrollable::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-#scrollable::-webkit-scrollbar-thumb:hover {
-  background: #555;
-} */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   transition: all 1s ease-in-out;
 }
 
@@ -160,3 +140,46 @@ label {
 .checkbox:checked+.check-icon {
   display: flex;
 }
+
+
+/* For WebKit based browsers */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* For Internet Explorer 10+ */
+::-ms-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* For Opera and older versions of Chrome */
+::-o-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Styles for the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(224, 224, 224);
+  border-radius: 5px;
+}
+
+/* Styles for the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+/* Styles for the scrollbar thumb when hovered */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(182, 182, 182);
+}
+

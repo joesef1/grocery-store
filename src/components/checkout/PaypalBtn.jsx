@@ -46,11 +46,11 @@ const PaypalBtn = () => {
     
   
   return (
-    <div>
+    <div className=''>
         <div>
           <h1 className="text-2xl text-left font-medium mb-6 mt-12">Payment</h1>
-          <div className='border rounded-lg p-10 bg-[#F9FAFB] z-0 mb-9'>
-        <div className='flex justify-center'   id="paypal-button"></div>
+          <div className='border rounded-md h-[458px] p-10 z-0 mb-9'>
+        <div className='flex justify-center items-center z-10 relative'   id="paypal-button"></div>
       </div>
         </div>
     </div>

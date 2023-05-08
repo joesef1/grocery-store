@@ -9,8 +9,7 @@ const OrderTable = () => {
   return (
     <>
       <div 
-      // className="mb-12 mt-16"
-      class="w-full md:w-11/12 lg:w-10/12 sm:mx-auto rounded  mt-16 mb-12 mx-8"
+      class="w-full md:w-11/12 lg:w-10/12 mx-auto rounded  mt-16 mb-12 mx-8  "
 
       >
         <div className="flex justify-between">
@@ -25,7 +24,7 @@ const OrderTable = () => {
           </h1>
         </div>
 
-        <div className=" mt-2 py-8 px-3 overflow-x-scroll rounded-md border border-gray-200">
+        <div className=" mt-2 py-8 px-3 overflow-x-scroll rounded-md border border-gray-200 h-[414px] overflow-y-scroll">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>

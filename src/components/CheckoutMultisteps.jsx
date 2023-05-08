@@ -55,7 +55,7 @@ function CheckoutMultisteps() {
   return (
   <>
 <Pagebanner imgname={shop} pagename='Checkout' />
-  <div className='flex flex-col w-[90%] mx-auto mb-60'>
+  <div className='flex flex-col justify-center w-[90%] mx-auto md:mb-80 mb-96 m-auto'>
                
                       {cart.length !== 0 ?
                       <>
@@ -108,17 +108,26 @@ function CheckoutMultisteps() {
                   pagesAnswers={pagesAnswers}
                 />
               </div>
-              <div className="card-footer flex justify-between">
+              <div className="card-footer flex justify-between mb-72">
                 <button
-                  className="bg-[#212121] text-white rounded-md px-3 py-1"
+                  className="bg-[#212121] text-white rounded-md px-3 py-1 "
                   onClick={prevButton}
                   disabled={index === 1}
                 >
                   Previous
                 </button>
-                <button className="bg-[#212121] text-white rounded-md px-3 py-1" onClick={nextButton}>
-                  {index === totalPagesCount ? "Submit" : "Next"}
+
+          
+                  <button 
+                  className={`bg-[#212121] text-white rounded-md px-3 py-1 ${index === totalPagesCount ? "opacity-50 cursor-not-allowed" : ""}`} 
+                  disabled={index === totalPagesCount}
+                  onClick={nextButton}
+                >
+                  Next
                 </button>
+
+
+
               </div>
             </div>
           )}
@@ -128,7 +137,7 @@ function CheckoutMultisteps() {
     </div>
   </>
           :
-                     
+                    
                         <>
                           <div className='w-[100%] mt-[10vh] m-auto flex justify-center flex-col items-center'>
                             <img src='https://cartsy.redq.io/wp-content/themes/cartsy/assets/images/not-found-alt.svg' alt='' />

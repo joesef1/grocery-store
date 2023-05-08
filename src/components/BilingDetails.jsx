@@ -4,12 +4,11 @@ import '../index.css'
 export const BilingDetails = () => {
   return (
     <div>
-      <div class=" grid ">
-  <div 
-  class="w-full md:w-11/12 lg:w-8/12 sm:mx-auto rounded border mt-12 mx-8"
-  >
-    <div class="bg-white p-10 shadow-sm">
-      <h2 class="text-2xl font-bold text-gray-800 mb-8">Customer information</h2>
+      <div class=" grid "> 
+  <div class="w-full md:w-11/12 lg:w-8/12 mx-auto rounded  mt-12 mx-8" >
+    <h2 class="text-2xl font-bold text-gray-800 mb-8 md:text-left text-center">Customer information</h2>
+    <div class="bg-white p-10 shadow-sm border">
+      
       <div class="leading-loose">
         <form class="">
           <p class="text-gray-800 font-medium">Customer information</p>
