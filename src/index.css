@@ -132,7 +132,7 @@
   width: 20px;
   height: 20px;
   font-size: 12px;
-  background-color: indigo;
+  background-color: rgb(168, 168, 168);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -140,5 +140,23 @@
 }
 
 .step.completed {
-  background-color: indigo;
+  background-color: #212121;
+}
+
+label {
+  transform: translateY(-50%);
+}
+
+.empty input:not(:focus)+label {
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(121, 121, 121);
+}
+
+.checkbox:checked {
+  border: none;
+}
+
+.checkbox:checked+.check-icon {
+  display: flex;
 }

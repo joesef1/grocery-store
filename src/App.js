@@ -3,7 +3,7 @@ import store from './store/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
-import Checkout from './pages/Checkout.js';
+// import Checkout from './pages/Checkout.js';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar.jsx';
@@ -44,7 +44,7 @@ function App() {
         <Route path="/Blog" element={<Blog />} />
         <Route path="/Shop" element={<Shop />} />
         <Route path="/Details" element={<Details />} />
-        <Route path="/Checkout" element={<Checkout />} />
+        {/* <Route path="/Checkout" element={<Checkout />} /> */}
         <Route path="/ThankYou" element={<ThankYou />} />
         <Route path="/FilteredShop" element={<FilteredShop />} />
         <Route path="/BlogDetails" element={<BlogDetails />} />

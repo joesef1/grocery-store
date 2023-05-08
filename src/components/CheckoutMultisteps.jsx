@@ -5,6 +5,10 @@ import {MultiStepForm}  from "../components/multistep/MultiStepForm";
 import  {questions}  from "../components/multistep/Questions";
 import shop from '../assets/images/Grocery-1-1.jpg'
 import Pagebanner from '../components/Pagebanner'
+import { useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate  } from 'react-router-dom';
+
 
 
 function CheckoutMultisteps() {
@@ -38,12 +42,24 @@ function CheckoutMultisteps() {
     setIndex(1);
     setSubmitted(false);
   }
+  const {cart} = useSelector(state => state.cart);
+
+
+  const exploreShop = () => {
+    console.log("asd");
+    navigate('/Shop')
+  }
+
+  const navigate = useNavigate();
 
   return (
   <>
 <Pagebanner imgname={shop} pagename='Checkout' />
-
-      <div className="w-[90%] mx-auto mt-12">
+  <div className='flex flex-col w-[90%] mx-auto mb-60'>
+               
+                      {cart.length !== 0 ?
+                      <>
+      <div className="w-[90%] mx-auto">
       <div className=" h-[50vh]">
         <div className="row m-5">
           <div className="col self-center">
@@ -69,6 +85,7 @@ function CheckoutMultisteps() {
             />
           </div>
         </div>
+
         <div className="row">
           {submitted ? (
             <div className="card">
@@ -82,8 +99,8 @@ function CheckoutMultisteps() {
               </div>
             </div>
           ) : (
-            <div className="card">
-              <div className="card-body">
+            <div className="">
+              <div className="">
                 <MultiStepForm
                   list={questions}
                   step={index}
@@ -93,22 +110,43 @@ function CheckoutMultisteps() {
               </div>
               <div className="card-footer flex justify-between">
                 <button
-                  className="btn"
+                  className="bg-[#212121] text-white rounded-md px-3 py-1"
                   onClick={prevButton}
                   disabled={index === 1}
                 >
                   Previous
                 </button>
-                <button className="btn" onClick={nextButton}>
+                <button className="bg-[#212121] text-white rounded-md px-3 py-1" onClick={nextButton}>
                   {index === totalPagesCount ? "Submit" : "Next"}
                 </button>
               </div>
             </div>
           )}
         </div>
+
       </div>
     </div>
   </>
+          :
+                     
+                        <>
+                          <div className='w-[100%] mt-[10vh] m-auto flex justify-center flex-col items-center'>
+                            <img src='https://cartsy.redq.io/wp-content/themes/cartsy/assets/images/not-found-alt.svg' alt='' />
+                            <h1 className='text-black mt-7 font-bold text-xl'>No products in the cart.</h1>
+                          </div>
+                          <div className='flex justify-center  mb-32'>
+                            {/* <p>Continue shopping</p> */}
+                            <div onClick={()=> exploreShop()} className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-center text-white items-center left-0 right-0  bg-[#212121] m-6 rounded-lg'>
+                  <div className='flex justify-center ><p '> <p> Continue shoping</p></div>
+                  </div>
+                          </div>
+                        </>
+                      }
+                 
+                   
+                    </div>
+                 
+                </>
   );
 }
 

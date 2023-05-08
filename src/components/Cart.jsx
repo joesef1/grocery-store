@@ -54,7 +54,7 @@ const totalprice = cart.reduce((acc,item) => {
 
 const checkoutprocess = totalprice.toFixed(2);
 const navigatetocheckout = () => {
-  navigate('/Checkout', { state: checkoutprocess });
+  navigate('/CheckoutMultisteps', { state: checkoutprocess });
   dispatch(closesidecart());
 }
 
@@ -222,6 +222,8 @@ const handleItemHover = (itemId) => {
                     name="custom-input-number"
                     value={item.quantity}
                   />
+
+
                   <button
                     data-action="increment"
                     className="bg-[#212121] text-white hover:bg-[#3f3f3f] h-full w-20 rounded-r cursor-pointer ease-in duration-200"
@@ -258,7 +260,7 @@ const handleItemHover = (itemId) => {
 
 <div onClick={()=> exploreShop()} className=' cursor-pointer hover:bg-[#353535] px-10 text-lg py-3 flex justify-center text-white items-center left-0 right-0 bottom-0 bg-[#212121]  fixed m-6 rounded-lg'>
 <div className='flex justify-center ><p '> <p> Continue shoping</p></div>
-</div>
+</div> 
 
 </>
 

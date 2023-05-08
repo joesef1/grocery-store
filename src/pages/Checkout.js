@@ -57,6 +57,8 @@ const dispatch = useDispatch();
     // Clean up previous button instance
     return () => paypalButton.close();
   }, [location.state]);
+
+  
   const {cart} = useSelector(state => state.cart);
 
   const exploreShop = () => {
