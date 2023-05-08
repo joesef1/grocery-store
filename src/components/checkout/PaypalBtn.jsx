@@ -12,11 +12,10 @@ const PaypalBtn = () => {
       return () => {
         setTimeout(() => {
           const paypalButton = document.querySelector("#paypal-button > div");
-          console.log(paypalButton);
           if (paypalButton) {
             paypalButton.remove();
           }
-        }, 0);
+        }, 100);
       };
     }, []);
     
@@ -29,26 +28,22 @@ const PaypalBtn = () => {
           navigate('/ThankYou');
         });
       };
-  
-      window.paypal
-        .Buttons({
-          createOrder: function (data, actions) {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    currency_code: 'USD',
-                    value: checkoutprocess,
-                  },
-                },
-              ],
-            });
-          },
-          onApprove: handleApprove,
-        })
-        .render('#paypal-button');
-    // ./paypal
 
+    
+    window.paypal.Buttons({
+      createOrder: function(data, actions) {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              currency_code: 'USD',
+              value: checkoutprocess,
+            },
+          }],
+        });
+      },
+      onApprove: handleApprove,
+    }).render('#paypal-button');
+    
   
   return (
     <div>
