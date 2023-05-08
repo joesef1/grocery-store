@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FormItem } from "../multistep/FormItem";
+import { Griditems } from "./Griditems";
 
 
 export const MultiStepForm = (props) => {
@@ -28,7 +28,7 @@ export const MultiStepForm = (props) => {
       {
         props.list[props.step - 1].items?.map((item, index) => {
           return (
-            <FormItem key={`${index}_${item.label}`} item={item} onChange={updateAnswers} answer={props.pagesAnswers[props.step] ? props.pagesAnswers[props.step][item.value] : null} />
+            <Griditems key={`${index}_${item.label}`} item={item} onChange={updateAnswers} answer={props.pagesAnswers[props.step] ? props.pagesAnswers[props.step][item.value] : null} />
           )
         })
       }
