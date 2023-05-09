@@ -54,7 +54,9 @@ const DiscReview = () => {
 {/* reviews */}
 {toggleState === 2 &&
 <>
-<Itemreview/>
+<Itemreview
+product={product}
+/>
 </>
 
 }

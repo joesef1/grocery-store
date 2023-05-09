@@ -1,9 +1,6 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import firebase from '../firebase-config';
-// import '../firebase-config';
-
-
 //firestore
 import { commentsdb, auth, storage } from "../firebase-config";
 import {
@@ -17,7 +14,6 @@ import {
 import { ref, uploadBytes } from "firebase/storage";
 import { ToastContainer, toast } from 'react-toastify';
 
-
 const Comment = ({blog}) => {
 
   //.............................firestore
@@ -26,20 +22,8 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
   const [newcommentName, setNewcommentName] = useState("");
   const [newcommenttext, setNewcommenttext] = useState("");
   const [newcommenttime, setIsNewcommenttime] = useState(time);
-
-
-
-
-
-
-
-
-
-
   const [commentList, setCommentList] = useState([]);
-
   const commentsCollectionRef = collection(commentsdb, "blogcomments");
-
   const getMovieList = async () => {
     try {
       const data = await getDocs(commentsCollectionRef);
@@ -48,6 +32,7 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
         id: doc.id,
       }));
       setCommentList(filteredData);
+
     } catch (err) {
       console.error(err);
     }
@@ -76,6 +61,13 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
     }
     notify()
   };
+
+  const deletecomment = async (id) => {
+    const commentDoc = doc(commentsdb, "blogcomments", id);
+    await deleteDoc(commentDoc);
+    // console.log(id);
+  };
+
   //.............................firestore
 
   
@@ -92,23 +84,37 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
     
   const filterdcommentsblog = commentList.filter((comment) => comment.blogname === blog.id)
 
-  const [existcomment, setExistcomment] = useState(filterdcommentsblog);
+
+  const [dropdownStates, setDropdownStates] = useState(0);
+  console.log(dropdownStates);
+  const toggleDropdown = (blogName) => {
+    // setDropdownStates((prevState) => ({
+    //   ...prevState,
+    //   [blogName]: !prevState[blogName],
+    // }));
+    setDropdownStates(blogName)
+    console.log(dropdownStates);
+  };
+  
+  const dots = useRef();
+  window.addEventListener("click",(e) => { 
+    if (e.target.id !== "dots") {
+      setDropdownStates(0)
+    }
+
+   });
   return (
     <>
   
 <section class="bg-white dark:bg-gray-900 py-8 lg:py-16">
   <div class="max-w-2xl mx-auto px-4">
-      
+  <h1 className='mb-2 text-2xl font-bold text-[#1d1d1d]'>Comments ({filterdcommentsblog.length}):</h1>
   
-{/*    */}
-    {/*  */}
-
-    {/* {existcomment ? <p>there is no comments yes</p> : " "} */}
-
 {filterdcommentsblog ? (<>
-  {  filterdcommentsblog.map((comment) => (
+
+  {  filterdcommentsblog.map((comment,index) => (
       <>
-      <article class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900">
+      <article key={index*9898989}  class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900 border">
         <footer class="flex justify-between items-center mb-2">
             <div class="flex items-center">
                 <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
@@ -121,36 +127,68 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
                 </time>
                 </p>
             </div>
-            <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
-                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                type="button">
-                <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z">
-                    </path>
-                </svg>
-                <span class="sr-only">Comment settings</span>
-            </button>
-            {/* <!-- Dropdown menu --> */}
-            <div id="dropdownComment1"
-                class="hidden z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                <ul class="py-1 text-sm text-gray-700 dark:text-gray-200"
-                    aria-labelledby="dropdownMenuIconHorizontalButton">
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Remove</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Report</a>
-                    </li>
-                </ul>
-            </div>
+{/*  */}
+            <div className="relative">
+            <button
+        onClick={()=> toggleDropdown(comment.blogname)}
+        className="inline-flex items-center p-2 text-sm font-medium text-center text-gray-400 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        type="button"
+        ref={dots}
+      >
+        <svg
+          className="w-5 h-5"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+          />
+        </svg>
+        <span className="sr-only">Comment settings</span>
+      </button>
+
+      
+      <div className={`${dropdownStates === comment.blogname ? "block" : "hidden"}`}>
+          <div className=" absolute right-0 z-10 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+            <ul
+              className={`py-1 text-sm text-gray-700 dark:text-gray-200 `}
+              aria-labelledby="dropdownMenuIconHorizontalButton"
+            >
+              <li>
+                <a
+                  
+                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Edit
+                </a>
+              </li>
+              <li onClick={()=> deletecomment(comment.blogname)}>
+                <a
+                
+                  
+                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Remove
+                </a>
+              </li>
+              <li>
+                <a
+                
+                  className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  Report
+                </a>
+                
+              </li>
+            </ul>
+          </div>
+      </div>
+    
+    </div>
+{/*  */}
+
         </footer>
         <p class="text-gray-500 dark:text-gray-400">{comment.commenttext}</p>
         <div class="flex items-center mt-4 space-x-4">
@@ -166,19 +204,11 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
     ))}
 </>) : <p>there is no comments yes</p> }
   
-    
-
-
-
-  
-
-
-
     <div class="flex justify-between items-center mb-0">
         <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">Leave a comment</h2>
     </div>
 
-    <form className='mt-16'>
+    <form className='mt-16 border p-9 rounded-md'>
       <div className="mb-6">
           
           <input 

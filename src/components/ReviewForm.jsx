@@ -4,8 +4,8 @@ import StarRatingComponent from 'react-star-rating-component';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const ReviewForm = () => {
-  const [rating, setRating] = useState(1);
+const ReviewForm = ({onSubmitComment,stars}) => {
+  const [rating, setRating] = useState(stars);
   const onStarClick = (nextValue, prevValue, name) => {
     setRating(nextValue);
   };
@@ -43,6 +43,8 @@ const ReviewForm = () => {
         onStarClick={onStarClick}
         emptyStarColor={`#c4c4c4`}
         starColor={`#212121`}
+        onChange={(e) => setRating(e.target.value)}
+
       />
       </div>
 
@@ -67,7 +69,9 @@ const ReviewForm = () => {
       </div>
       <div className="flex   justify-center w-full">
           <button
-          onClick={notify}
+          // onClick={notify}
+          onClick={onSubmitComment}
+
               className="bg-[#212121] w-full hover:bg-[#363636] del text-white font-medium py-2 px-4 focus:outline-none focus:shadow-outline"
               type="button">Post Review </button>
       </div>

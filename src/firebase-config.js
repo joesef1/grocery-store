@@ -47,6 +47,10 @@ export const provider = new FacebookAuthProvider();
 export const twitterProvider = new TwitterAuthProvider();
 
 
-//firestore
+//firestore blog
 export const commentsdb = getFirestore(app);
 export const storage = getStorage(app);
+
+
+//firestore products
+export const productsdb = getFirestore(app);
