@@ -4,6 +4,10 @@ import { FacebookAuthProvider } from "firebase/auth";
 import { TwitterAuthProvider } from "firebase/auth";
 
 
+//firestore
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDhtUbNNxITMvDSCRs9ECdJEehA7WxqdcA",
@@ -42,3 +46,7 @@ export const provider = new FacebookAuthProvider();
 
 export const twitterProvider = new TwitterAuthProvider();
 
+
+//firestore
+export const commentsdb = getFirestore(app);
+export const storage = getStorage(app);
