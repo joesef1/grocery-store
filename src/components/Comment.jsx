@@ -27,11 +27,11 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
   const getMovieList = async () => {
     try {
       const data = await getDocs(commentsCollectionRef);
-      const filteredData = data.docs.map((doc) => ({
+      const filteredReviewData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
-      setCommentList(filteredData);
+      setCommentList(filteredReviewData);
 
     } catch (err) {
       console.error(err);
@@ -51,8 +51,6 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
         time: newcommenttime,
         blogname: blog.id,
         // userId: auth?.currentUser?.uid,
-        
-        //
 
       });
       getMovieList();
@@ -202,6 +200,8 @@ const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
     
       </>
     ))}
+
+
 </>) : <p>there is no comments yes</p> }
   
     <div class="flex justify-between items-center mb-0">

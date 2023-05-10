@@ -18,6 +18,7 @@ const Itemreviews = ({product}) => {
     //.............................firestore
     const current = new Date();
     const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
+    const [loading, setLoading] = useState(true);
       const [newreviewName, setNewreviewName] = useState("");
       const [newcommenttext, setNewcommenttext] = useState("");
       const [stars, setstars] = useState(0);
@@ -26,6 +27,8 @@ const Itemreviews = ({product}) => {
       const [reviewList, setReviewsList] = useState([]);
       const reviewsCollectionRef = collection(productsdb, "productcomments");
       const getreviewsList = async () => {
+        setLoading(true);
+
         try {
           const data = await getDocs(reviewsCollectionRef);
           const filteredData = data.docs.map((doc) => ({
@@ -33,14 +36,18 @@ const Itemreviews = ({product}) => {
             id: doc.id,
           }));
           setReviewsList(filteredData);
-
+          setLoading(false);
         } catch (err) {
           console.error(err);
+          setLoading(false);
+
         }
       };
     
       useEffect(() => {
         getreviewsList();
+      console.log(filterproductreviews);
+
       }, []);
     
       //submit
@@ -50,11 +57,7 @@ const Itemreviews = ({product}) => {
             name: newreviewName,
             commenttext: newcommenttext,
             stars: stars,
-            // time: newcommenttime,
             reviewid: product.id,
-            // userId: auth?.currentUser?.uid,
-            
-            //
     
           });
           getreviewsList();
@@ -64,11 +67,6 @@ const Itemreviews = ({product}) => {
         notify()
       };
     
-      // const deletecomment = async (id) => {
-      //   const commentDoc = doc(productsdb, "blogcomments", id);
-      //   await deleteDoc(commentDoc);
-      //   // console.log(id);
-      // };
 
       const notify = () =>  toast.success('your comment successfully added', {
         position: "top-right",
@@ -85,7 +83,7 @@ const Itemreviews = ({product}) => {
 
   const filterproductreviews = reviewList.filter((review) => review.reviewid === product.id)
   // const filterdcommentsblog = commentList.filter((comment) => comment.blogname === blog.id)
-console.log(reviewList);
+// console.log(reviewList);
 
       //.............................firestore
   return (
@@ -103,10 +101,12 @@ console.log(reviewList);
 
 
 <div className=' '>
-  {/*  */}
-
-
-<div div className='my-9'>
+  {/*hnjohniolhn*/}
+  {loading ? (
+          <p>Loading reviews...</p>
+        ) : (
+          
+<div  className='my-9'>
     
   <div class="flex items-center mb-3">
       <svg aria-hidden="true" class="w-5 h-5 text-[#212121]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
@@ -154,14 +154,19 @@ console.log(reviewList);
   </div>   
   
 </div>
-{/*  */}
+        )}
+
+
+{/* klbn */}
+
+
 
 
 
   {/* added review */}
     
 
-  {  filterproductreviews.map((review,index) =>(
+  {  filterproductreviews.map((review,index) => (
     <>
     
 <article key={index} className='md:w-[70%] '>
