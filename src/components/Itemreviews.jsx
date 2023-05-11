@@ -12,6 +12,7 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
+import StarRatingComponent from 'react-star-rating-component';
 
 
 const Itemreviews = ({product}) => {
@@ -21,9 +22,7 @@ const Itemreviews = ({product}) => {
     const [loading, setLoading] = useState(true);
       const [newreviewName, setNewreviewName] = useState("");
       const [newcommenttext, setNewcommenttext] = useState("");
-      const [stars, setstars] = useState(0);
-      const [newcommenttime, setIsNewcommenttime] = useState(time);
-
+      const [stars, setStars] = useState(0);
       const [reviewList, setReviewsList] = useState([]);
       const reviewsCollectionRef = collection(productsdb, "productcomments");
       const getreviewsList = async () => {
@@ -37,6 +36,7 @@ const Itemreviews = ({product}) => {
           }));
           setReviewsList(filteredData);
           setLoading(false);
+          
         } catch (err) {
           console.error(err);
           setLoading(false);
@@ -61,10 +61,17 @@ const Itemreviews = ({product}) => {
     
           });
           getreviewsList();
+        
         } catch (err) {
           console.error(err);
         }
         notify()
+        console.log(stars);
+
+      
+
+
+
       };
     
 
@@ -82,25 +89,25 @@ const Itemreviews = ({product}) => {
 
 
   const filterproductreviews = reviewList.filter((review) => review.reviewid === product.id)
-  // const filterdcommentsblog = commentList.filter((comment) => comment.blogname === blog.id)
-// console.log(reviewList);
+
 
       //.............................firestore
   return (
-    <div className='flex lg:flex-row-reverse flex-col-reverse justify-between'>
+    <div className='flex lg:flex-row-reverse flex-col-reverse justify-between w-full'>
 
-      <div className=' md:mt-0 mt-9 '> 
-      {/* <p>this feature will be in the next release, I am working on it now &#128521;</p> */}
+      <div className=' md:mt-0 mt-9 w-[90%] md:w-[50%] md:flex md:justify-end mx-auto'> 
         <ReviewForm
           onSubmitComment={onSubmitComment}
-          stars={stars}
+          setStars={setStars}
+          setNewcommenttext={setNewcommenttext}
+          setNewreviewName={setNewreviewName}
         
         />
       </div>
 
 
 
-<div className=' '>
+<div className=' md:w-[50%] w-[90%]'>
   {/*hnjohniolhn*/}
   {loading ? (
           <p>Loading reviews...</p>
@@ -157,11 +164,6 @@ const Itemreviews = ({product}) => {
         )}
 
 
-{/* klbn */}
-
-
-
-
 
   {/* added review */}
     
@@ -182,14 +184,17 @@ const Itemreviews = ({product}) => {
                 </time>
             </div>
         </div>
-        <div class="flex items-center mb-1">
-            <svg aria-hidden="true" class="w-5 h-5 text-[#212121]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>First star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-[#212121]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Second star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-[#212121]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Third star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-[#212121]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fourth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-            <svg aria-hidden="true" class="w-5 h-5 text-[#212121]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Fifth star</title><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-            <h3 class="ml-2 text-sm font-semibold text-gray-900 dark:text-white">Thinking to buy another one!</h3>
-        </div>
+
+        <StarRatingComponent
+        name="rate1"
+        starCount={5}
+        value={review.stars}
+        emptyStarColor={`#c4c4c4`}
+        starColor={`#212121`}
+      />
+        {/*  */}
+
+
         {/* <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400"><p>Reviewed in the United Kingdom on <time datetime="2017-03-03 19:00">March 3, 2017</time></p></footer> */}
         <p class="mb-3 text-gray-500 dark:text-gray-400 ">{review.commenttext}</p>
         <a href="#" class="block mb-5 text-sm font-medium text-[#212121] hover:underline dark:text-[#212121]">Read more</a>
@@ -205,24 +210,8 @@ const Itemreviews = ({product}) => {
     </>
   ))}
   
-
-
-
-
 </div>
-
     </div>
   )
 }
-
 export default Itemreviews
-
-
-
-
-    
-// {filterproductreviews ? (<>
-//   {  filterproductreviews.map((comment,index) =>(<>
-  
-//   </>))}
-// </>): "no reviews yet"}
