@@ -75,7 +75,7 @@ const Itemreviews = ({product}) => {
       };
     
 
-      const notify = () =>  toast.success('your comment successfully added', {
+      const notify = () =>  toast.success('your review successfully added', {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -174,37 +174,50 @@ const Itemreviews = ({product}) => {
 <article key={index} className='md:w-[70%] '>
   <div>
       <hr className='my-7'/>
-        <div class="flex items-center mb-4 space-x-4">
-            <img class="w-10 h-10 rounded-full" src={user} alt=""/>
-            <div class="space-y-1 font-medium dark:text-white">
-                <p>{review.name} </p>
-                {/* <time datetime="2014-08-16 19:00" class="block text-sm text-gray-500 dark:text-gray-400">Joined on August 2014</time> */}
-                <time className='block text-sm text-gray-500 dark:text-gray-400' pubdate datetime={time} title={time}>
-                    commented in: {time}
-                </time>
-            </div>
-        </div>
-
-        <StarRatingComponent
+        <div class="flex mb-4 space-x-4">
+            <img class="w-12 h-12 rounded-full" src={user} alt=""/>
+            <div class="space-y-1 font-medium dark:text-white  translate-y-[-3px]">
+                <p className='mb-4'>{review.name} </p>
+                
+<span className=''>
+    <StarRatingComponent
         name="rate1"
         starCount={5}
         value={review.stars}
         emptyStarColor={`#c4c4c4`}
         starColor={`#212121`}
       />
+      
+      <time className=' translate-x-2 translate-y-[-19px] inline-block text-sm text-gray-400 dark:text-gray-400' pubdate datetime={time} title={time}>
+                  |  commented in : {time}
+                </time>
+</span>
+
+
+
+            </div>
+            
+        </div>
+
+
+
+      
+
+
+
         {/*  */}
 
 
         {/* <footer class="mb-5 text-sm text-gray-500 dark:text-gray-400"><p>Reviewed in the United Kingdom on <time datetime="2017-03-03 19:00">March 3, 2017</time></p></footer> */}
         <p class="mb-3 text-gray-500 dark:text-gray-400 ">{review.commenttext}</p>
-        <a href="#" class="block mb-5 text-sm font-medium text-[#212121] hover:underline dark:text-[#212121]">Read more</a>
+        {/* <a href="#" class="block mb-5 text-sm font-medium text-[#212121] hover:underline dark:text-[#212121]">Read more</a>
         <aside>
             <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">19 people found this helpful</p>
             <div class="flex items-center mt-3 space-x-3 divide-x divide-gray-200 dark:divide-gray-600">
                 <a href="#" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-2 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Helpful</a>
                 <a href="#" class="pl-4 text-sm font-medium text-[#212121] hover:underline dark:text-[#212121]">Report abuse</a>
             </div>
-        </aside>
+        </aside> */}
   </div>
   </article>
     </>
