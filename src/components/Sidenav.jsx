@@ -126,8 +126,12 @@ const logoevent = () => {
                 </li>
 
                 <li class="py-3 text-lg cursor-pointer ">
-                  {/* <a href="#">Contact</a> */}
                   <Link  className='pr-64' onClick={()=>dispatch(closesidenav())} to="/Contact">Contact</Link>
+
+                </li>
+
+                <li class="py-3 text-lg cursor-pointer ">
+                  <Link  className='pr-64' onClick={()=>dispatch(closesidenav())} to="/OrderHistory">Orders</Link>
 
                 </li>
 

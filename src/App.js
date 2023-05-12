@@ -20,6 +20,7 @@ import Notfoundpage from './pages/Notfoundpage';
 import CheckoutMultisteps from './components/CheckoutMultisteps';
 import FilteredShop from './pages/FilteredShop.jsx';
 import ThankYou from './pages/ThankYou';
+import OrderHistory from './pages/OrderHistory.jsx';
 import { ContexAuthState } from './context/context-authstate';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -51,6 +52,7 @@ function App() {
         <Route path="/CategoryBlog" element={<CategoryBlog />} />
         <Route path="/Notfoundpage" element={<Notfoundpage />} />
         <Route path="/CheckoutMultisteps" element={<CheckoutMultisteps />} />
+        <Route path="/OrderHistory" element={<OrderHistory />} />
       </Routes>
     <Footer />
     </BrowserRouter>
