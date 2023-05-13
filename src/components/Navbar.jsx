@@ -103,97 +103,103 @@ const handleSearchQueryChange = (e) => {
   dispatch(setSearchQuery(searchword));
 };
 
+const { user } = useSelector(state => state.user);
 
 
 
   //
   return (
     <>
+    { user && 
     
-    <div className='fixed w-[100%] z-50 bg-white'>
-    <Sidenav/>
-
-    <Cart />
-
-    {/* {!currentSearchState&&( */}
-    {globalState.searchIcon.sidenavstate&&(
-    <div className=''>
-
-      <input 
-        
-        value={searchword}
-        ref={inputRef}
-        className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0 p-3 bg-[#F3F3F3] rounded-lg' type="text" 
-        placeholder='E.g: Meat,Egg'
-        onChange={handleSearchQueryChange}
-        />
-        
     
-
-    </div>
-      )}
-
-    <div className='flex items-center justify-between px-8 mx-auto shadow-md shadow-gray-200/40'>
-      {/* left */}
-      <div className='flex justify-start'>
-    <div className="flex justify-between py-2">
-      <div className="mr-5 flex items-center justify-center text-3xl cursor-pointer">
-                <RxHamburgerMenu 
-                // onClick={openNav} 
-          onClick={() => sidebarHandeler(globalState.sidenavigation.sidenavstate)}
-        
-                
-                />
-              </div>
-              {/* {currentSearchState&&(  )} */}
-                <img
-                className=' w-28  cursor-pointer'
-                // src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
-                src={logo}
-                alt=""
-              onClick={()=>{navigate("/")}}
-
-              />  
-            
+    
+  <>
+      <div className='fixed w-[100%] z-50 bg-white'>
+      <Sidenav/>
+    
+      <Cart />
+    
+      {/* {!currentSearchState&&( */}
+      {globalState.searchIcon.sidenavstate&&(
+      <div className=''>
+    
+        <input 
+          
+          value={searchword}
+          ref={inputRef}
+          className='w-[65%] absolute top-6 left-0 right-0 mx-auto py-4 z-0 p-3 bg-[#F3F3F3] rounded-lg' type="text" 
+          placeholder='E.g: Meat,Egg'
+          onChange={handleSearchQueryChange}
+          />
+          
+      
+    
+      </div>
+        )}
+    
+      <div className='flex items-center justify-between px-8 mx-auto shadow-md shadow-gray-200/40'>
+        {/* left */}
+        <div className='flex justify-start'>
+      <div className="flex justify-between py-2">
+        <div className="mr-5 flex items-center justify-center text-3xl cursor-pointer">
+                  <RxHamburgerMenu 
+                  // onClick={openNav} 
+            onClick={() => sidebarHandeler(globalState.sidenavigation.sidenavstate)}
+          
+                  
+                  />
+                </div>
+                {/* {currentSearchState&&(  )} */}
+                  <img
+                  className=' w-28  cursor-pointer'
+                  // src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
+                  src={logo}
+                  alt=""
+                onClick={()=>{navigate("/")}}
+    
+                />  
               
-            </div>
-    </div>
-      {/* left */}
-    
-    {/* right */}
-    <div className=' flex'>
-      {/* search */}
-      {/* {currentSearchState&&()} */}
-      <div ref={searchRef} className='text-2xl cursor-pointer'>
-        <FiSearch
+                
+              </div>
+      </div>
+        {/* left */}
+      
+      {/* right */}
+      <div className=' flex'>
+        {/* search */}
+        {/* {currentSearchState&&()} */}
+        <div ref={searchRef} className='text-2xl cursor-pointer'>
+          <FiSearch
+          
+          // onClick={()=>{showinput()}}
+          onClick={()=>{showsearchinput(globalState.searchIcon.sidenavstate)}}
+          />
+        </div>
         
-        // onClick={()=>{showinput()}}
-        onClick={()=>{showsearchinput(globalState.searchIcon.sidenavstate)}}
-        />
-      </div>
-      
-
-      {/* search */}
-      
-      {/* cart */}
-      <div className='text-2xl cursor-pointer ml-6 relative'>
-      <HiOutlineShoppingCart
-      //  onClick={opencart}
-       onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
-       />     
-         <span className=' bg-[#212121] text-white px-[6px] w-[19px] text-sm rounded-full absolute top-[-8px] right-[-5px] '>{cart.length}</span>
-
-      </div>
-      {/* cart */}
-      
-    </div>
-    {/* right */}
     
-    </div>
-  
+        {/* search */}
+        
+        {/* cart */}
+        <div className='text-2xl cursor-pointer ml-6 relative'>
+        <HiOutlineShoppingCart
+        //  onClick={opencart}
+         onClick={()=> handleopencart(globalState.sidecart.sidecartstate)}
+         />     
+           <span className=' bg-[#212121] text-white px-[6px] w-[19px] text-sm rounded-full absolute top-[-8px] right-[-5px] '>{cart.length}</span>
+    
+        </div>
+        {/* cart */}
+        
+      </div>
+      {/* right */}
       
       </div>
-      <div className='w-[100%] z-0 py-[51px]'></div>
+    
+        
+        </div>
+        <div className='w-[100%] z-0 py-[51px]'></div>
+  </>}
     </>
   );
 };

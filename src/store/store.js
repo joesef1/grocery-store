@@ -8,10 +8,10 @@ import cart from './cartSlice';
 import shopitems from './shopItemSlice';
 import blog from './blogSlice';
 import sidecategory from './sidecategorySlice';
+import user from './supportstaff/userSlice';
 
 export default configureStore({
   reducer: {
-    // counter: counterReducer,
     sidenavigation: sidebarReducer,
     sidecart: sidecartReducer,
     searchIcon: saerchReducer,
@@ -20,5 +20,6 @@ export default configureStore({
     shopitems,
     blog,
     sidecategory,
+    user,
   },
 });
