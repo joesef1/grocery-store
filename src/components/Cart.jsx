@@ -123,7 +123,7 @@ const handleopencart = (status) => {
 const exploreShop = () => {
   console.log("asd");
   dispatch(closesidecart())
-  navigate('/')
+  navigate("/Home")
 }
 // const [showclose, setShowclose] = useState(false);
 

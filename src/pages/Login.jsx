@@ -26,7 +26,7 @@ const Login = () => {
         loginPassword
       );
 
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -40,7 +40,7 @@ const Login = () => {
       const email = result.user.email;
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -53,7 +53,7 @@ const Login = () => {
       const email = result.user.email;
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -62,7 +62,7 @@ const Login = () => {
 
   // const signInWithGooglefunc = () => {
   //   signInWithGoogle().then(() => {
-  //     navigate("/");
+  //     navigate("/Home");
   //   }).catch(error => {
   //     console.error("Error signing in with Google: ", error);
   //   });
@@ -74,7 +74,7 @@ const Login = () => {
       const email = result.user.email;
       localStorage.setItem("name", name);
       localStorage.setItem("email", email);
-      navigate("/");
+      navigate("/Home");
     } catch (error) {
       console.error("Error signing in with Google: ", error);
       setErrorMessage(error.message);

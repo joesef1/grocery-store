@@ -20,6 +20,7 @@ import FilteredShop from './pages/FilteredShop.jsx';
 import ThankYou from './pages/ThankYou';
 import OrderHistory from './pages/OrderHistory.jsx';
 import Dashbaord from './pages/SupportStaff/Dashbaord.jsx';
+import Welcome from './pages/welcome/Welcome';
 import { ContexAuthState } from './context/context-authstate';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -36,7 +37,10 @@ function App() {
           <ToastContainer />
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
+
+          
+            <Route path="/" element={<Welcome />} />
+            <Route path="/Home" element={<Home />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<Signup />} />
             <Route path="/FAQ" element={<FAQ />} />
@@ -52,7 +56,9 @@ function App() {
             <Route path="/Notfoundpage" element={<Notfoundpage />} />
             <Route path="/CheckoutMultisteps" element={<CheckoutMultisteps />}/>
             <Route path="/OrderHistory" element={<OrderHistory />} />
+            {/* staff */}
             <Route path="/Dashbaord" element={<Dashbaord />} />
+
           </Routes>
           <Footer />
         </BrowserRouter>

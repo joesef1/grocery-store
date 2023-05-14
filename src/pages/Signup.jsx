@@ -38,7 +38,7 @@ const Signup = () => {
         registerPassword,
         confirmPasswordReset,
       );
-      // navigate('/');
+      // navigate("/Home");
     } catch (error) {
       console.log(error.message);
     }
@@ -48,7 +48,7 @@ const Signup = () => {
     console.log(data);
     if (data) {
       //private route
-      navigate('/');
+      navigate("/Home");
     }
   }
 

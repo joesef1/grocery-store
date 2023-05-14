@@ -43,7 +43,7 @@ const Sidenav = () => {
 
 const navigate = useNavigate();
 const logoevent = () => {
-  navigate("/")
+  navigate("/Home")
   dispatch(closesidenav())
 }
 
