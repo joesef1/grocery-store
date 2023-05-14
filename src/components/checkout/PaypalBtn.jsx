@@ -1,9 +1,71 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
+
+
+
+//
+import { orderSummrize } from "../../firebase-config";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
+//
+
 import '../../index.css';
 
 const PaypalBtn = () => {
+  const {fullNameState , adressState ,emailState , phoneState,stateState ,apertState ,dateState,zipState } = useSelector(state => state.form);
+  const [commentList, setCommentList] = useState([]);
+
+// for displaying data
+  const commentsCollectionRef = collection(orderSummrize, "ordersummarize");
+  const getMovieList = async () => {
+    try {
+      const data = await getDocs(commentsCollectionRef);
+      const filteredReviewData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setCommentList(filteredReviewData);
+
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // for submit data
+    //submit
+    const onSubmitUserInfo = async () => {
+      try {
+        await addDoc(commentsCollectionRef, {
+          // aderess: newcommentName,
+          // birth: newcommenttext,
+          // fullname: newcommenttime,
+          // note: blog.id,
+          // orderTotalPrice: blog.id,
+          // orderTotalQuantity: blog.id,
+          // phone: blog.id,
+          // proCategory: blog.id,
+          // proImg: blog.id,
+          // proPrice: blog.id,
+  
+        });
+        getMovieList();
+      } catch (err) {
+        console.error(err);
+      }
+    };
+  
+
+
+
     // //paypal
     const location = useLocation();
     const navigate = useNavigate();
@@ -26,6 +88,15 @@ const PaypalBtn = () => {
         return actions.order.capture().then((details) => {
           console.log('Thank you for your order');
           navigate('/ThankYou');
+          console.log(fullNameState);
+          console.log(adressState);
+          console.log(phoneState);
+          console.log(emailState);
+          console.log(dateState);
+          console.log(apertState);
+          console.log(stateState);
+          console.log(zipState);
+
         });
       };
 

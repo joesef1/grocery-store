@@ -5,7 +5,6 @@ import {MultiStepForm}  from "../components/multistep/MultiStepForm";
 import  {questions}  from "../components/multistep/Questions";
 import shop from '../assets/images/Grocery-1-1.jpg'
 import Pagebanner from '../components/Pagebanner'
-import { useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate  } from 'react-router-dom';
 
@@ -15,7 +14,6 @@ function CheckoutMultisteps() {
   const [index, setIndex] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const totalPagesCount = questions?.length || 0;
-  // numbered by pages. for exampe { 1: [{"key" : "value"}], 2:["key": "value"], 3: []}
   const [pagesAnswers, setPagesAnswers] = useState({});
 
   const prevButton = () => {
@@ -56,7 +54,7 @@ function CheckoutMultisteps() {
   <>
 <Pagebanner imgname={shop} pagename='Checkout' />
   <div className='flex flex-col justify-center w-[90%] mx-auto md:mb-80 mb-96 m-auto'>
-               
+              
                       {cart.length !== 0 ?
                       <>
       <div className="w-[90%] mx-auto">
@@ -151,10 +149,10 @@ function CheckoutMultisteps() {
                           </div>
                         </>
                       }
-                 
-                   
+                
+                  
                     </div>
-                 
+                
                 </>
   );
 }

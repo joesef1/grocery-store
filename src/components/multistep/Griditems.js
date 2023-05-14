@@ -12,16 +12,17 @@ export const Griditems = ({ item, onChange, answer }) => {
 
 
   switch (item.type) {
-    case 'grid':
-      return <OrderTable />;
-    case 'billing form':
-      return <BilingDetails />;
-    case 'paypal':
-      console.log('Rendering PayPal component');
 
-      return (
-      <PaypalBtn/>
-      );
+      case 'grid':
+      return <OrderTable />;
+
+      case 'billing form':
+      return <BilingDetails />;
+    
+      case 'paypal':
+      return  <PaypalBtn/> ;
+
+      
     default:
       return null;
   }

@@ -1,6 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react'
 import 'react-toastify/dist/ReactToastify.css';
-import firebase from '../firebase-config';
 //firestore
 import { commentsdb, auth, storage } from "../firebase-config";
 import {

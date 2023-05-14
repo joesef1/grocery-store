@@ -54,3 +54,7 @@ export const storage = getStorage(app);
 
 //firestore products
 export const productsdb = getFirestore(app);
+
+
+//firestore orderSummrize
+export const orderSummrize = getFirestore(app);
