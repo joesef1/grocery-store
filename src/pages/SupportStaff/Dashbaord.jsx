@@ -4,23 +4,33 @@ import { setordersumfunc  } from '../../store/orfferFormSlice';
 import { getorderList  } from '../../store/orfferFormSlice';
 
 
+
 const Dashbaord = () => {
+  const dispatch = useDispatch();
+
   const {ordersum } = useSelector(state => state.form);
 
+  // useEffect(() => {
+  //   getorderList()
+  // }, []);
+
+
   useEffect(() => {
-    getorderList()
-  }, []);
+    dispatch(getorderList());
+  }, [dispatch]);
 
   return (
     <>
-      <div>Dashbaord</div>  
+      <div>Dashbaord</div>
+
+  { ordersum.map( (comment,index) => (
+        <>
+        <div key={index*3490+comment}>{comment.fullname}</div>
+        </>
+      ))}
     </>
   )
 }
 export default Dashbaord
 
 
-
-  {/* { ordersum.map( (comment,index) => (
-        <><h1>{comment.fullname}</h1></>
-      ))} */}

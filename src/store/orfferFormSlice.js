@@ -48,6 +48,8 @@ const orfferFormSlice = createSlice({
     //
     setordersumfunc: (state , action) => {
       state.ordersum = action.payload;
+    console.log(state.ordersum);
+
     },
   }
 });
@@ -64,7 +66,7 @@ export const getorderList = () => async (dispatch) => {
     }));
 
     dispatch(setordersumfunc(filteredReviewData));
-    console.log("filteredReviewData");
+    // console.log(filteredReviewData);
 
   } catch (err) {
     console.error(err);
@@ -72,3 +74,4 @@ export const getorderList = () => async (dispatch) => {
 };
 
 export default orfferFormSlice.reducer;
+
