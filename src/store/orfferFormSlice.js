@@ -1,9 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { orderSummrize } from "../firebase-config";
+import {
+  getDocs,
+  collection,
+  addDoc,
+} from "firebase/firestore";
+
 
 
 const orfferFormSlice = createSlice({
   name: 'form',
-  initialState: { fullNameState: '', adressState: "",emailState: '', phoneState: 0,stateState: '',apertState: '',dateState: '', zipState:'' },
+  initialState: { ordersum: [], fullNameState: '', adressState: "",emailState: '', phoneState: 0,stateState: '',apertState: '',dateState: '', zipState:'' },
   reducers: {
 
     setuserinfo: (state , action) => {
@@ -38,15 +45,30 @@ const orfferFormSlice = createSlice({
       state.zipState = action.payload;
     },
 
-
+    //
+    setordersumfunc: (state , action) => {
+      state.ordersum = action.payload;
+    },
   }
-
 });
 
+export const  {setordersumfunc,setuserinfo,setuserAdress,setuserEmail,setuserPhone,setuserApert,setuserDate,setuserState,setuserZip}  = orfferFormSlice.actions
+const commentsCollectionRef = collection(orderSummrize, "ordersummarize");
 
-export const  {setuserinfo,setuserAdress,setuserEmail,setuserPhone,setuserApert,setuserDate,setuserState,setuserZip}  = orfferFormSlice.actions
+export const getorderList = () => async (dispatch) => {
+  try {
+    const data = await getDocs(commentsCollectionRef);
+    const filteredReviewData = data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id
+    }));
+
+    dispatch(setordersumfunc(filteredReviewData));
+    console.log("filteredReviewData");
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export default orfferFormSlice.reducer;
-
-
-
-

@@ -30,6 +30,9 @@ const navigate = useNavigate();
   const globalState = useSelector((state) => state);
 const {cart} = useSelector(state => state.cart);
 
+const {ordersum } = useSelector(state => state.form);
+
+// console.log(ordersum);
 // useEffect(() => {
 //   localStorage.setItem('cart', JSON.stringify(cart));
 //   }, [cart]);
@@ -121,7 +124,7 @@ const handleopencart = (status) => {
 
 
 const exploreShop = () => {
-  console.log("asd");
+  // console.log("asd");
   dispatch(closesidecart())
   navigate("/Home")
 }
