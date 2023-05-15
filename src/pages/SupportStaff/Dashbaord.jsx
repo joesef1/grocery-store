@@ -7,12 +7,7 @@ import { getorderList  } from '../../store/orfferFormSlice';
 
 const Dashbaord = () => {
   const dispatch = useDispatch();
-
   const {ordersum } = useSelector(state => state.form);
-
-  // useEffect(() => {
-  //   getorderList()
-  // }, []);
 
 
   useEffect(() => {

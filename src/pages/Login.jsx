@@ -1,63 +1,172 @@
-import React,{useState,useEffect} from 'react'
+// import React,{useState,useEffect} from 'react'
 
-import {signInWithPopup, signInWithEmailAndPassword , FacebookAuthProvider  } from "firebase/auth";
-import { auth } from "../firebase-config";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import Pagebanner from "../components/Pagebanner";
-import account from "../assets/images/my-account.jpg";
-import { signInWithGoogle , provider ,googleProvider,twitterProvider} from "../firebase-config";
+// import {signInWithPopup, signInWithEmailAndPassword , FacebookAuthProvider  } from "firebase/auth";
+// import { auth } from "../firebase-config";
+// import { Link } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+// import Pagebanner from "../components/Pagebanner";
+// import account from "../assets/images/my-account.jpg";
+// import { signInWithGoogle , provider ,googleProvider,twitterProvider} from "../firebase-config";
+
+
+// const Login = () => {
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, []);
+
+
+//   const [loginEmail, setLoginEmail] = useState("");
+//   const [loginPassword, setLoginPassword] = useState("");
+//   const [errorMessage, setErrorMessage] = useState("");
+//   const navigate = useNavigate();
+
+//   const login = async () => {
+//     try {
+//       const user = await signInWithEmailAndPassword(
+//         auth,
+//         loginEmail,
+//         loginPassword
+//       );
+
+//       navigate("/Home");
+//     } catch (error) {
+//       setErrorMessage(error.message);
+//     }
+//   };
+
+
+
+///////////////////////////////////////////
+import React, { useState, useEffect } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase-config';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Pagebanner from '../components/Pagebanner';
+import account from '../assets/images/my-account.jpg';
+import { signInWithGoogle, provider, googleProvider, twitterProvider } from '../firebase-config';
+import { useSelector, useDispatch } from 'react-redux';
+import {setuseridfunc} from '../store/supportstaff/userSlice';
 
 
 const Login = () => {
+// const {userid} = useSelector(state => state.user);
+const [useridstate, setUseridstate] = useState('');
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const login = async () => {
     try {
-      const user = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
+      const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      const user = userCredential.user;
+      
+      // Access the user ID
+      const userId = user.uid;
+      // setUseridstate(userId)
+      dispatch(setuseridfunc(userId))
+      // console.log(userId)
 
-      navigate("/Home");
+      navigate('/Home');
     } catch (error) {
       setErrorMessage(error.message);
     }
   };
 
+  
 
-  const handleFacebookLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const name = result.user.displayName;
-      const email = result.user.email;
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
-      navigate("/Home");
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-  };
-  // 
-  const handleTwitterLogin = async () => {
-    try {
-      const result = await signInWithPopup(auth, twitterProvider);
-      const name = result.user.displayName;
-      const email = result.user.email;
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
-      navigate("/Home");
-    } catch (error) {
-      setErrorMessage(error.message);
-    }
-  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // const handleFacebookLogin = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, provider);
+  //     const name = result.user.displayName;
+  //     const email = result.user.email;
+  //     localStorage.setItem("name", name);
+  //     localStorage.setItem("email", email);
+  //     navigate("/Home");
+  //   } catch (error) {
+  //     setErrorMessage(error.message);
+  //   }
+  // };
+  // // 
+  // const handleTwitterLogin = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, twitterProvider);
+  //     const name = result.user.displayName;
+  //     const email = result.user.email;
+  //     localStorage.setItem("name", name);
+  //     localStorage.setItem("email", email);
+  //     navigate("/Home");
+  //   } catch (error) {
+  //     setErrorMessage(error.message);
+  //   }
+  // };
   // 
 
   // const signInWithGooglefunc = () => {
@@ -67,19 +176,22 @@ const Login = () => {
   //     console.error("Error signing in with Google: ", error);
   //   });
   // }
-  const signInWithGooglefunc = async () => {
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      const name = result.user.displayName;
-      const email = result.user.email;
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
-      navigate("/Home");
-    } catch (error) {
-      console.error("Error signing in with Google: ", error);
-      setErrorMessage(error.message);
-    }
-  };
+
+
+
+  // const signInWithGooglefunc = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, googleProvider);
+  //     const name = result.user.displayName;
+  //     const email = result.user.email;
+  //     localStorage.setItem("name", name);
+  //     localStorage.setItem("email", email);
+  //     navigate("/Home");
+  //   } catch (error) {
+  //     console.error("Error signing in with Google: ", error);
+  //     setErrorMessage(error.message);
+  //   }
+  // };
   
   
 
