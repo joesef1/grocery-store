@@ -73,7 +73,7 @@ const [useridstate, setUseridstate] = useState('');
       const userId = user.uid;
       // setUseridstate(userId)
       dispatch(setuseridfunc(userId))
-      // console.log(userId)
+      console.log(userId)
 
       navigate('/Home');
     } catch (error) {
