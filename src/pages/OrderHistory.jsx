@@ -1,8 +1,8 @@
 import React,{useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-// import { setordersumfunc  } from '../../store/orfferFormSlice';
 import { getorderList  } from '../store/orfferFormSlice';
 import { getuserid  } from '../store/supportstaff/userSlice';
+import  OrderHistoryTable  from '../components/user_order_History/OrderHistoryTable';
 
 const OrderHistory = () => {
   const dispatch = useDispatch();
@@ -23,15 +23,17 @@ const OrderHistory = () => {
   
   return (
     <>
-    <div>Dashbaord</div>
+  <OrderHistoryTable
+  useridorders={useridorders}
+  />
 
 
     
-{useridorders.map((comment, index) => (
+{/* {useridorders.map((comment, index) => (
       <div key={index * 3490 + comment}>
         <h1>order {comment.fullname}</h1>
       </div>
-    ))}
+    ))} */}
 
 
   </>

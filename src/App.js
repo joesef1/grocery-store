@@ -19,6 +19,7 @@ import CheckoutMultisteps from './components/CheckoutMultisteps';
 import FilteredShop from './pages/FilteredShop.jsx';
 import ThankYou from './pages/ThankYou';
 import OrderHistory from './pages/OrderHistory.jsx';
+import OrderDetails from './pages/user_order_history/OrderDetails';
 import Dashbaord from './pages/SupportStaff/Dashbaord.jsx';
 import Welcome from './pages/welcome/Welcome';
 import { ContexAuthState } from './context/context-authstate';
@@ -56,6 +57,7 @@ function App() {
             <Route path="/Notfoundpage" element={<Notfoundpage />} />
             <Route path="/CheckoutMultisteps" element={<CheckoutMultisteps />}/>
             <Route path="/OrderHistory" element={<OrderHistory />} />
+            <Route path="/OrderDetails" element={<OrderDetails />} />
             {/* staff */}
             <Route path="/Dashbaord" element={<Dashbaord />} />
 
