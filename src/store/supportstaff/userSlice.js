@@ -1,31 +1,25 @@
+
 import { createSlice } from '@reduxjs/toolkit';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-
 import { auth } from '../../firebase-config';
-
-
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: { user: true, authuserid: '' ,registEmail: ''},
+  initialState: { user: true, authuserid: '', registEmail: localStorage.getItem('registEmail') || '' },
   reducers: {
-
-    CustomerStateFunc: (state ) => {
+    CustomerStateFunc: (state) => {
       state.user = true;
     },
-    staffStateFunc: (state ) => {
+    staffStateFunc: (state) => {
       state.user = false;
     },
-
-    setuseridfunc: (state,action ) => {
+    setuseridfunc: (state, action) => {
       state.authuserid = action.payload;
     },
-
-    storeUserEmail: (state,action ) => {
+    storeUserEmail: (state, action) => {
       state.registEmail = action.payload;
-      
+      localStorage.setItem('registEmail', action.payload); // Save registEmail in local storage
     }
-    
   },
 });
 

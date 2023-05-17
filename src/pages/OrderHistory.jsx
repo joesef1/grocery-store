@@ -16,8 +16,12 @@ const {registEmail} = useSelector(state => state.user);
   useEffect(() => {
     dispatch(getorderList());
     dispatch(getuserid());
-
+console.log(registEmail);
   }, [dispatch]);
+
+  useEffect(() => {
+console.log(registEmail);
+  }, [registEmail]);
 
   
 

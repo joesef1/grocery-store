@@ -136,6 +136,7 @@ const saveEmailToStore = () => {
   
   const registerUser = async () => {
     try {
+
       const signInMethods = await fetchSignInMethodsForEmail(auth, registerEmail);
       if (signInMethods.length > 0) {
         // Email is already in use, display an error message
@@ -155,6 +156,9 @@ const saveEmailToStore = () => {
       await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
       // User account created successfully, proceed with navigation
       navigate("/Home");
+
+      saveEmailToStore()
+
     } catch (error) {
       console.log(error.message);
     }
@@ -226,7 +230,6 @@ const saveEmailToStore = () => {
             placeholder="Email..."
             onChange={(event) => {
               setRegisterEmail(event.target.value);
-              saveEmailToStore()
             }}
           />
           <p className="text-red-500 mb-2 translate-y-[-3px]">{errors.email?.message}</p>
