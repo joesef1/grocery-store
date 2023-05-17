@@ -8,8 +8,9 @@ const OrderHistory = () => {
   const dispatch = useDispatch();
   const {ordersum } = useSelector(state => state.form);
   const {authuserid} = useSelector(state => state.user);
-
-  const useridorders = ordersum.filter((useridorder) => useridorder.userid === authuserid);
+const {registEmail} = useSelector(state => state.user);
+  const useridorders = ordersum.filter((useridorder) => useridorder.registeremail === registEmail);
+  
 
   
   useEffect(() => {
@@ -19,12 +20,16 @@ const OrderHistory = () => {
   }, [dispatch]);
 
   
-    console.log(authuserid);
+
+
+  
+    // console.log(authuserid);
   
   return (
     <>
   <OrderHistoryTable
   useridorders={useridorders}
+  registEmail={registEmail}
   />
 
 

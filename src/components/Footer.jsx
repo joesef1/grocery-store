@@ -17,17 +17,17 @@ const Footer = () => {
   <div><h1 class='text-gray-500  text-center mb-6 md:mb-0'>All right reserved - Developed by yousef el-kholy</h1></div>
   <div className='flex'>
     <a href="https://www.linkedin.com/in/yousef-el-kholy-190126214/">
-          <img className='w-7 cursor-pointer mr-6' src={linkedin} alt="" />
+          <img className='w-7 cursor-pointer mr-6' src={linkedin} alt="linkedin" />
     </a>
 
     <a href="https://github.com/joesef1">
-      <img className='w-7 cursor-pointer mr-6' src={github} alt="" />
+      <img className='w-7 cursor-pointer mr-6' src={github} alt="github" />
     </a>
 
 
 
     <a href="https://yousef-portfoli0.netlify.app/">
-      <img className='w-7 cursor-pointer ' src={myweb} alt="" />
+      <img className='w-7 cursor-pointer ' src={myweb} alt="myweb" />
     </a>
     
   </div>

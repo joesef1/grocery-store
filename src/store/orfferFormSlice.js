@@ -48,7 +48,7 @@ const orfferFormSlice = createSlice({
     //
     setordersumfunc: (state , action) => {
       state.ordersum = action.payload;
-    console.log(state.ordersum);
+    // console.log(state.ordersum);
 
     },
   }

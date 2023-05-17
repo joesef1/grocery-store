@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import {useNavigate  } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const OrderHistoryTable = ({useridorders}) => {
   const navigate = useNavigate();
@@ -8,11 +10,24 @@ const OrderHistoryTable = ({useridorders}) => {
     const targetorder = useridorders.find((order)=> order.orderid === theorderid)
   navigate('/OrderDetails', { state: targetorder });
 
-  console.log(targetorder);
-
+  // console.log(targetorder);
+  
     
   }
-  
+  // useEffect(() => {
+    // console.log(useridorders.find((order)=> order.orderid === );
+
+    //get the email of the user
+    const {registEmail} = useSelector(state => state.user);
+
+    const target = useridorders.filter((order)=> order.emailState === registEmail)
+    // const target = useridorders
+    // console.log(target)
+    console.log(registEmail)
+    // I can store the userid in the localStorage to be able to use it in filtering order history , and clear it after logout
+    // or using user egmail instead of userid if I can not grab it , and add validation when I sign up , to not to dublicate the emails 
+      // }, [useridorders]);
+
 
 
 
@@ -52,6 +67,8 @@ const OrderHistoryTable = ({useridorders}) => {
                     </div>
                 </div> */}
                 <h1 className='my-8 text-2xl font-semibold'>your orders</h1>
+                {/*  */}
+                { useridorders.length !== 0 ?
                 <div className="align-middle inline-block min-w-full shadow overflow-hidden border bg-white shadow-dashboard px-8 pt-3  rounded-lg mt-10 mb-[30%]">
                     <table className="min-w-full">
                         <thead>
@@ -72,7 +89,7 @@ const OrderHistoryTable = ({useridorders}) => {
 
 
 
-                            {useridorders.map((comment, index) => (
+                            { useridorders.map((comment, index) => (
                                   <tr key={index * 3490 + comment}>
                                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div className="flex items-center">
@@ -100,7 +117,8 @@ const OrderHistoryTable = ({useridorders}) => {
                                         className="px-5 py-2 border-[#212121] border text-[#212121] rounded transition duration-300 hover:bg-[#212121] hover:text-white focus:outline-none">View Details</button>
                                     </td>
                           </tr>
-                                ))}  
+                                ))
+                                }  
                         
 
 
@@ -232,6 +250,9 @@ const OrderHistoryTable = ({useridorders}) => {
         </div>
     </div>
                 </div>
+                :"no orders"}
+                {/*  */}
+
             </div>
       
     </div>

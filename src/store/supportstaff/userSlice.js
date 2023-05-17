@@ -7,7 +7,7 @@ import { auth } from '../../firebase-config';
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: { user: true, authuserid: ''},
+  initialState: { user: true, authuserid: '' ,registEmail: ''},
   reducers: {
 
     CustomerStateFunc: (state ) => {
@@ -20,6 +20,11 @@ const userSlice = createSlice({
     setuseridfunc: (state,action ) => {
       state.authuserid = action.payload;
     },
+
+    storeUserEmail: (state,action ) => {
+      state.registEmail = action.payload;
+      
+    }
     
   },
 });
@@ -40,7 +45,7 @@ const userSlice = createSlice({
       }
     };
 
-export const  {setuseridfunc ,staffStateFunc,CustomerStateFunc}  = userSlice.actions
+export const  {setuseridfunc ,staffStateFunc,CustomerStateFunc,storeUserEmail}  = userSlice.actions
 export default userSlice.reducer;
 
 

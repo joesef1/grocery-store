@@ -249,6 +249,7 @@ const getorderList = async () => {
   const current = new Date();
 const time = current.toISOString().slice(0, 10); // "yyyy-mm-dd"
 const [newcommenttime, setIsNewcommenttime] = useState(time);
+const {registEmail} = useSelector(state => state.user);
 
   //
   function generateUniqueId() {
@@ -299,6 +300,7 @@ const {cart} = useSelector(state => state.cart);
                     userid:authuserid,
                     orderid: uniqueId,
                     proTotalQuantity: '',
+                    registeremail: registEmail,
 
   
         });
