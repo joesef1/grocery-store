@@ -1,6 +1,8 @@
 import React,{ useEffect } from 'react'
 import {useNavigate  } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import notFound  from "../../assets/images/not-found.svg";
+
 
 
 const OrderHistoryTable = ({useridorders}) => {
@@ -250,7 +252,22 @@ const OrderHistoryTable = ({useridorders}) => {
         </div>
     </div>
                 </div>
-                :"no orders"}
+                :
+                <>
+                  <div>
+      <div className='mt-[6%] flex justify-center items-center flex-col  mx-auto mb-[13%]'>
+        
+      <div>
+      <img className='w-[80%] m-auto' src={notFound} alt="" />
+      </div>
+      
+      <div>
+      <h1 className='text-3xl font-semibold mt-14'> No orders Found :( </h1>
+      </div>
+      
+      </div>
+    </div> 
+                </>}
                 {/*  */}
 
             </div>
