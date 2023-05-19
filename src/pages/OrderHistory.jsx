@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { getorderList  } from '../store/orfferFormSlice';
+import { getorderList  } from './orfferFormSlice';
 import { getuserid  } from '../store/supportstaff/userSlice';
 import  OrderHistoryTable  from '../components/user_order_History/OrderHistoryTable';
 

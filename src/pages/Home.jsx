@@ -14,6 +14,7 @@ const Home = () => {
   }, []);
   return (
     <>
+    
     <div className=' bg-[#F9F9F9] flex pb-[70px] w-full'>
 
       <div  className='lg:block hidden bg-white'>

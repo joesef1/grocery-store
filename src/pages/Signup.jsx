@@ -38,7 +38,7 @@
 //         registerPassword,
 //         confirmPasswordReset,
 //       );
-//       // navigate("/Home");
+//       // navigate("/");
 //     } catch (error) {
 //       console.log(error.message);
 //     }
@@ -48,7 +48,7 @@
 //     console.log(data);
 //     if (data) {
 //       //private route
-//       navigate("/Home");
+//       navigate("/");
 //     }
 //   }
 
@@ -155,7 +155,7 @@ const saveEmailToStore = () => {
   
       await createUserWithEmailAndPassword(auth, registerEmail, registerPassword);
       // User account created successfully, proceed with navigation
-      navigate("/Home");
+      navigate("/");
 
       saveEmailToStore()
 

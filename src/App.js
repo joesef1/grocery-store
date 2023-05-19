@@ -1,6 +1,4 @@
-import React from 'react';
-import store from './store/store';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -20,49 +18,50 @@ import FilteredShop from './pages/FilteredShop.jsx';
 import ThankYou from './pages/ThankYou';
 import OrderHistory from './pages/OrderHistory.jsx';
 import OrderDetails from './pages/user_order_history/OrderDetails';
-import Dashbaord from './pages/SupportStaff/Dashbaord.jsx';
 import Welcome from './pages/welcome/Welcome';
 import { ContexAuthState } from './context/context-authstate';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Provider} from 'react-redux';
+import React from 'react';
+import store from './store/store';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './layouts/Layout';
+import Dashboard from './dashboard/Dashboard';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
-
-
   return (
     <Provider store={store}>
       <ContexAuthState>
         <BrowserRouter>
           <ToastContainer />
-          <Navbar />
+
           <Routes>
-
-          
-            <Route path="/" element={<Welcome />} />
-            <Route path="/Home" element={<Home />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/Signup" element={<Signup />} />
-            <Route path="/FAQ" element={<FAQ />} />
-            <Route path="/Terms" element={<Terms />} />
-            <Route path="/Contact" element={<Contact />} />
-            <Route path="/Blog" element={<Blog />} />
-            <Route path="/Shop" element={<Shop />} />
-            <Route path="/Details" element={<Details />} />
-            <Route path="/ThankYou" element={<ThankYou />} />
-            <Route path="/FilteredShop" element={<FilteredShop />} />
-            <Route path="/BlogDetails" element={<BlogDetails />} />
-            <Route path="/CategoryBlog" element={<CategoryBlog />} />
-            <Route path="/Notfoundpage" element={<Notfoundpage />} />
-            <Route path="/CheckoutMultisteps" element={<CheckoutMultisteps />}/>
-            <Route path="/OrderHistory" element={<OrderHistory />} />
-            <Route path="/OrderDetails" element={<OrderDetails />} />
-            {/* staff */}
-            <Route path="/Dashbaord" element={<Dashbaord />} />
-
-          </Routes>
-          <Footer />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route 
+                path="/" element={<Layout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/Login" element={<Login />} />
+                <Route path="/Signup" element={<Signup />} />
+                <Route path="/FAQ" element={<FAQ />} />
+                <Route path="/Terms" element={<Terms />} />
+                <Route path="/Contact" element={<Contact />} />
+                <Route path="/Blog" element={<Blog />} />
+                <Route path="/Shop" element={<Shop />} />
+                <Route path="/Details" element={<Details />} />
+                <Route path="/ThankYou" element={<ThankYou />} />
+                <Route path="/FilteredShop" element={<FilteredShop />} />
+                <Route path="/BlogDetails" element={<BlogDetails />} />
+                <Route path="/CategoryBlog" element={<CategoryBlog />} />
+                <Route path="/Notfoundpage" element={<Notfoundpage />} />
+                <Route path="/CheckoutMultisteps" element={<CheckoutMultisteps />}/>
+                <Route path="/OrderHistory" element={<OrderHistory />} />
+                <Route path="/OrderDetails" element={<OrderDetails />} />
+                </Route>
+      </Routes>
         </BrowserRouter>
       </ContexAuthState>
     </Provider>
@@ -70,4 +69,32 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -28,7 +28,7 @@
 //         loginPassword
 //       );
 
-//       navigate("/Home");
+//       navigate("/");
 //     } catch (error) {
 //       setErrorMessage(error.message);
 //     }
@@ -75,7 +75,7 @@ const [useridstate, setUseridstate] = useState('');
       dispatch(setuseridfunc(userId))
       console.log(userId)
 
-      navigate('/Home');
+      navigate('/');
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -149,7 +149,7 @@ const [useridstate, setUseridstate] = useState('');
   //     const email = result.user.email;
   //     localStorage.setItem("name", name);
   //     localStorage.setItem("email", email);
-  //     navigate("/Home");
+  //     navigate("/");
   //   } catch (error) {
   //     setErrorMessage(error.message);
   //   }
@@ -162,7 +162,7 @@ const [useridstate, setUseridstate] = useState('');
   //     const email = result.user.email;
   //     localStorage.setItem("name", name);
   //     localStorage.setItem("email", email);
-  //     navigate("/Home");
+  //     navigate("/");
   //   } catch (error) {
   //     setErrorMessage(error.message);
   //   }
@@ -171,7 +171,7 @@ const [useridstate, setUseridstate] = useState('');
 
   // const signInWithGooglefunc = () => {
   //   signInWithGoogle().then(() => {
-  //     navigate("/Home");
+  //     navigate("/");
   //   }).catch(error => {
   //     console.error("Error signing in with Google: ", error);
   //   });
@@ -186,7 +186,7 @@ const [useridstate, setUseridstate] = useState('');
   //     const email = result.user.email;
   //     localStorage.setItem("name", name);
   //     localStorage.setItem("email", email);
-  //     navigate("/Home");
+  //     navigate("/");
   //   } catch (error) {
   //     console.error("Error signing in with Google: ", error);
   //     setErrorMessage(error.message);

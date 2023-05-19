@@ -1,7 +1,7 @@
 import React from 'react'
 import '../index.css'
 import { useSelector, useDispatch } from 'react-redux';
-import {setuserAdress,setuserinfo,setuserState,setuserZip,setuserApert,setuserDate,setuserPhone,setuserEmail} from '../store/orfferFormSlice';
+import {setuserAdress,setuserinfo,setuserState,setuserZip,setuserApert,setuserDate,setuserPhone,setuserEmail} from '../pages/orfferFormSlice';
 
 
 

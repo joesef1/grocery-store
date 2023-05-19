@@ -43,7 +43,7 @@ const Sidenav = () => {
 
 const navigate = useNavigate();
 const logoevent = () => {
-  navigate("/Home")
+  navigate("/")
   dispatch(closesidenav())
 }
 
@@ -132,6 +132,12 @@ const logoevent = () => {
 
                 <li class="py-3 text-lg cursor-pointer ">
                   <Link  className='pr-64' onClick={()=>dispatch(closesidenav())} to="/OrderHistory">Orders</Link>
+
+                </li>
+
+                
+                <li class="py-3 text-lg cursor-pointer ">
+                  <Link  className='pr-64' onClick={()=>dispatch(closesidenav())} to="/Dashboard">dashboard</Link>
 
                 </li>
 

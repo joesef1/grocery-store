@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setordersumfunc  } from '../../store/orfferFormSlice';
+import { setordersumfunc  } from '../../pages/orfferFormSlice';
 
 import { orderSummrize } from "../../firebase-config";
 import {

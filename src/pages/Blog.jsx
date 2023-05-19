@@ -24,6 +24,8 @@ const Blog = () => {
   // }, [dispatch]);
 
   return (
+          // {/* <Navbar /> */}
+
     <div>
       <Pagebanner
       pagename='Blog'

@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { setordersumfunc  } from '../../store/orfferFormSlice';
-import { getorderList  } from '../../store/orfferFormSlice';
+import { setordersumfunc  } from '../pages/orfferFormSlice';
+import { getorderList  } from '../pages/orfferFormSlice';
 
 
 
@@ -18,11 +18,12 @@ const Dashbaord = () => {
     <>
       <div>Dashbaord</div>
 
-  { ordersum.map( (comment,index) => (
+  { ordersum.map( (order,index) => (
         <>
-        <div key={index*3490+comment}>{comment.fullname}</div>
+        <div key={index*3490+order}>{order.id}</div>
         </>
       ))}
+      
     </>
   )
 }

@@ -156,7 +156,7 @@ const { user } = useSelector(state => state.user);
                   // src="https://d1rn6kzjmi8824.cloudfront.net/wp-content/uploads/2020/07/16065923/Grocery.svg"
                   src={logo}
                   alt=""
-                onClick={()=>{navigate("/Home")}}
+                onClick={()=>{navigate("/")}}
     
                 />  
               

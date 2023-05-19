@@ -9,7 +9,8 @@ import shopitems from './shopItemSlice';
 import blog from './blogSlice';
 import sidecategory from './sidecategorySlice';
 import user from './supportstaff/userSlice';
-import form from './orfferFormSlice';
+import form from '../pages/orfferFormSlice';
+import navbarfooter from './hideNavbarFooter';
 
 export default configureStore({
   reducer: {
@@ -23,5 +24,6 @@ export default configureStore({
     sidecategory,
     user,
     form,
+    navbarfooter,
   },
 });
