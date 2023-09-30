@@ -94,7 +94,7 @@ const logoevent = () => {
                 alt=""
               />
               <div className="flex items-center justify-center text-2xl cursor-pointer">
-                <IoMdClose onClick={() => handelsidenav(globalState.sidenavigation.sidenavstate)} />
+              <IoMdClose onClick={() => handelsidenav(globalState.sidenavigation.sidenavstate)} />
                 
 
               </div>
@@ -136,10 +136,10 @@ const logoevent = () => {
                 </li>
 
                 
-                <li class="py-3 text-lg cursor-pointer ">
+                {/* <li class="py-3 text-lg cursor-pointer ">
                   <Link  className='pr-64' onClick={()=>dispatch(closesidenav())} to="/Dashboard">dashboard</Link>
 
-                </li>
+                </li> */}
 
                 <li class="py-15 text-lg cursor-pointer bottom-8 absolute w-[85%]">
                 <hr className=" border-gray-100 w-full mb-9" />

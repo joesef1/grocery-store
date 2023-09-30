@@ -17,8 +17,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { opensidenav  } from '../store/sidebarSlice';
 import { opensidecart  } from '../store/sidecartSlice.js';
 import {opensearchIcon , closesearchIcon} from '../store/searchIconSlice';
-// import {currentSearchResult} from '../store/itemSlice';
-// import {currentSearchResults} from '../store/itemSlice';
+
 import { setSearchQuery, setFilteredItems , emptythesearch } from '../store/itemSlice';
 import logo from "../assets/images/category-icons/grocery-store-low-resolution-color-logo.png";
 
@@ -32,7 +31,6 @@ const Navbar = () => {
 
   const openNav = useOpenNavStore((state) => state.openNav)
   const opencart = useopencartstore((state) => state.opencart)
-  // const currentSearchState = SearchState((state) => state.currentSearchState)
   const { showinput, hideinput } = SearchState();
 
 
@@ -63,8 +61,6 @@ const Navbar = () => {
         }
       
       }
-      
-      // dispatch(emptythesearch())
 
       
     }
@@ -82,16 +78,8 @@ const Navbar = () => {
 
       const showsearchinput = (status) => {
         dispatch(opensearchIcon())
-        // inputRef.focus();
-        // console.log("inputRef");
         }
-  //
 
-
-
-  // const searchQuery = useSelector((state) => state.items.searchQuery);
-  // const targetedsearchword = useSelector((state) => state.items.targetedsearchword);
-  // const {cart} = useSelector((state) => state.cart);
 
 
   const [searchword, setsearchword] = useState("");
