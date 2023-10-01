@@ -40,7 +40,6 @@ function App() {
           <ToastContainer />
 
           <Routes>
-                <Route path="/Dashboard" element={<Dashboard />} />
                 
                 <Route 
                 path="/" element={<Layout />}>
@@ -61,6 +60,9 @@ function App() {
                 <Route path="/CheckoutMultisteps" element={<CheckoutMultisteps />}/>
                 <Route path="/OrderHistory" element={<OrderHistory />} />
                 <Route path="/OrderDetails" element={<OrderDetails />} />
+
+                <Route path="/Dashboard" element={<Dashboard />} />
+    
                 </Route>
       </Routes>
         </BrowserRouter>
