@@ -27,7 +27,7 @@ import React from 'react';
 import store from './store/store';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './layouts/Layout';
-import Dashboard from './dashboard/Dashboard';
+import Dashboard from './pages/Dashboard/Dashboard';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -40,7 +40,8 @@ function App() {
           <ToastContainer />
 
           <Routes>
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/Dashboard" element={<Dashboard />} />
+                
                 <Route 
                 path="/" element={<Layout />}>
                 <Route path="/" element={<Home />} />
